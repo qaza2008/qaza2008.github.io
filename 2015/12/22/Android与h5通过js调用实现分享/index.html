@@ -3,40 +3,46 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>Android与h5通过js调用实现分享 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title:Android与h5通过js调用实现分享一.概述 现在越来越多的app内嵌h5,有诸多好处:
+  <meta name="description" content="一.概述 现在越来越多的app内嵌h5,有诸多好处:
 
 HTML5和原生相比优势在于跨平台，成本低，快速迭代，动态执行
 基于HTML5技术的应用流就会为我们的用户节省流量，带来便利同时也能节省我们手机上空间及电量“
 避免频繁发版本
 那么本文限定于以下情况:
 
-app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些信息可以通">
+app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些信息可以通过接口api获取
+
+把标题 , url ,分享语 ,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Android与h5通过js调用实现分享">
 <meta property="og:url" content="http://yoursite.com/2015/12/22/Android与h5通过js调用实现分享/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title:Android与h5通过js调用实现分享一.概述 现在越来越多的app内嵌h5,有诸多好处:
+<meta property="og:description" content="一.概述 现在越来越多的app内嵌h5,有诸多好处:
 
 HTML5和原生相比优势在于跨平台，成本低，快速迭代，动态执行
 基于HTML5技术的应用流就会为我们的用户节省流量，带来便利同时也能节省我们手机上空间及电量“
 避免频繁发版本
 那么本文限定于以下情况:
 
-app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些信息可以通">
+app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些信息可以通过接口api获取
+
+把标题 , url ,分享语 ,">
 <meta property="og:image" content="https://github.com/qaza2008/pic_bed/blob/master/app与h5分享流程.png?raw=true">
-<meta property="og:updated_time" content="2015-12-22T06:27:22.000Z">
+<meta property="og:updated_time" content="2015-12-22T06:32:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="title:Android与h5通过js调用实现分享一.概述 现在越来越多的app内嵌h5,有诸多好处:
+<meta name="twitter:title" content="Android与h5通过js调用实现分享">
+<meta name="twitter:description" content="一.概述 现在越来越多的app内嵌h5,有诸多好处:
 
 HTML5和原生相比优势在于跨平台，成本低，快速迭代，动态执行
 基于HTML5技术的应用流就会为我们的用户节省流量，带来便利同时也能节省我们手机上空间及电量“
 避免频繁发版本
 那么本文限定于以下情况:
 
-app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些信息可以通">
+app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些信息可以通过接口api获取
+
+把标题 , url ,分享语 ,">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -85,16 +91,26 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
         <section id="main"><article id="post-Android与h5通过js调用实现分享" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/22/Android与h5通过js调用实现分享/" class="article-date">
-  <time datetime="2015-12-22T06:27:22.000Z" itemprop="datePublished">2015-12-22</time>
+  <time datetime="2015-12-22T06:32:32.000Z" itemprop="datePublished">2015-12-22</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android与h5通过js调用实现分享
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="title_3AAndroid_u4E0Eh5_u901A_u8FC7js_u8C03_u7528_u5B9E_u73B0_u5206_u4EAB"><a href="#title_3AAndroid_u4E0Eh5_u901A_u8FC7js_u8C03_u7528_u5B9E_u73B0_u5206_u4EAB" class="headerlink" title="title:Android与h5通过js调用实现分享"></a>title:Android与h5通过js调用实现分享</h2><h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p> 现在越来越多的app内嵌h5,有诸多好处:</p>
+        <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p> 现在越来越多的app内嵌h5,有诸多好处:</p>
 <ul>
 <li>HTML5和原生相比优势在于跨平台，成本低，快速迭代，动态执行</li>
 <li>基于HTML5技术的应用流就会为我们的用户节省流量，带来便利同时也能节省我们手机上空间及电量“</li>
@@ -136,7 +152,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/22/Android与h5通过js调用实现分享/" data-id="ciih0f76o0004qc62k9g2r58z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/22/Android与h5通过js调用实现分享/" data-id="ciih0jxio0004rns6jobyxc06" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +198,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
       <ul>
         
           <li>
-            <a href="/2015/12/22/Android与h5通过js调用实现分享/">(no title)</a>
+            <a href="/2015/12/22/Android与h5通过js调用实现分享/">Android与h5通过js调用实现分享</a>
           </li>
         
           <li>
