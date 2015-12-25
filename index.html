@@ -65,7 +65,7 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post',
     motion: true
   };
@@ -149,7 +149,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
             
             分类
           </a>
@@ -159,7 +159,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
             关于
           </a>
@@ -179,7 +179,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
             标签
           </a>
@@ -217,6 +217,15 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
 
     
       
@@ -240,8 +249,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/25/Fragment之间的切换/" itemprop="url">
-                  2个Fragment之间的切换
+                <a class="post-title-link" href="/2015/12/22/快速开发AutoScrollViewPageWithIndicator/" itemprop="url">
+                  快速开发AutoScrollViewPagerWithIndicator
                 </a>
               
             
@@ -251,19 +260,34 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-25T11:28:53+08:00" content="2015-12-25">
-              2015-12-25
+            <time itemprop="dateCreated" datetime="2015-12-22T15:31:11+08:00" content="2015-12-22">
+              2015-12-22
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/25/Fragment之间的切换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/25/Fragment之间的切换/" itemprop="commentsCount"></span>
+                <a href="/2015/12/22/快速开发AutoScrollViewPageWithIndicator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/快速开发AutoScrollViewPageWithIndicator/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,10 +307,126 @@
 
       
         
-          <span itemprop="articleBody">
+          <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>项目需求在首页加入活动视图,每隔数秒钟自动切换到下一帧,支持手动滑动切换活动视图,在活动视图底部有圆形的指示点,整体的活动视图随着列表上拉而隐藏.<br>典型的ViewPager,加入自动滑动,加入指示器.并且和listview手势不冲突.</p>
+<p>在 github搜索了一下,发现了<a href="https://github.com/Trinea/android-auto-scroll-view-pager">android-auto-scroll-view-pager</a>,fork and clone.<br>发现demo还是很简洁的.</p>
+<ul>
+<li>支持自动滑动</li>
+<li>支持手势滑动</li>
+<li>支持自动回收</li>
+</ul>
+<p>但是:</p>
+<ul>
+<li>没有指示器</li>
+<li>与listview手势冲突</li>
+</ul>
+<p>基于以上,对 <a href="https://github.com/Trinea/android-auto-scroll-view-pager">android-auto-scroll-view-pager</a> 进行二次封装.解决以上2个问题.</p>
+<p><img src="https://raw.githubusercontent.com/qaza2008/AutoScrollViewPagerWithIndicator/master/ezgif.com-crop.gif" alt="demo"></p>
+<p><img src="https://raw.githubusercontent.com/qaza2008/AutoScrollViewPagerWithIndicator/master/ezgif.com-crop2.gif" alt="image"></p>
+<h4 id="u5F15_u7528_3A"><a href="#u5F15_u7528_3A" class="headerlink" title="引用:"></a>引用:</h4><p>环境: idea  ant编译</p>
+<p>源码地址: <a href="https://github.com/qaza2008/AutoScrollViewPagerWithIndicator">https://github.com/qaza2008/AutoScrollViewPagerWithIndicator</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/22/快速开发AutoScrollViewPageWithIndicator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <p>date: 2015-12-22 15:31:11</p>
-<h2 id="tags_3A_android_fragment__u5207_u6362"><a href="#tags_3A_android_fragment__u5207_u6362" class="headerlink" title="tags: android fragment 切换"></a>tags: android fragment 切换</h2><h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>  先展示下效果图,类似于这样的效果</p>
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/22/Fragment之间的切换/" itemprop="url">
+                  2个Fragment之间的切换
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-22T15:31:11+08:00" content="2015-12-22">
+              2015-12-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/22/Fragment之间的切换/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/Fragment之间的切换/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>  先展示下效果图,类似于这样的效果</p>
 <ul>
 <li>Fragment在需要展示的时候创建</li>
 <li>2个ragment切换互不影响 </li>
@@ -294,25 +434,12 @@
 <p>下面一个是原版效果,一个是简版效果</p>
 <p><img src="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif" alt="image"><br><img src="http://7vihs8.com1.z0.glb.clouddn.com/fragment2.gif" alt="image"></p>
 <h4 id="u5F15_u7528_3A"><a href="#u5F15_u7528_3A" class="headerlink" title="引用:"></a>引用:</h4><p>环境: idea  ant编译</p>
-<p>源码地址: <a href="https://github.com/qaza2008/Fragment_Switch" target="_blank" rel="external">https://github.com/qaza2008/Fragment_Switch</a></p>
-<h3 id="u4E8C-_u4EE3_u7801_u793A_u4F8B"><a href="#u4E8C-_u4EE3_u7801_u793A_u4F8B" class="headerlink" title="二.代码示例"></a>二.代码示例</h3><ol>
-<li>MyActivity 实例代码</li>
-</ol>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class MyActivity extends FragmentActivity implements View<span class="built_in">.</span>OnClickListener &#123;</span><br><span class="line">    <span class="keyword">private</span> FrameLayout container;</span><br><span class="line">    <span class="keyword">private</span> FragmentA fragmentA;</span><br><span class="line">    <span class="keyword">private</span> FragmentB fragmentB;</span><br><span class="line">    <span class="keyword">private</span> Fragment mCurrentFragment;</span><br><span class="line">    <span class="keyword">private</span> Button container_tab1, container_tab2;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">public</span> <span class="literal">void</span> onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super<span class="built_in">.</span>onCreate(savedInstanceState);</span><br><span class="line">        requestWindowFeature(Window<span class="built_in">.</span>FEATURE_NO_TITLE);</span><br><span class="line">        setContentView(R<span class="built_in">.</span>layout<span class="built_in">.</span>main);</span><br><span class="line">        <span class="keyword">if</span> (savedInstanceState != <span class="built_in">null</span>) &#123;</span><br><span class="line">            fragmentA = (FragmentA) getSupportFragmentManager()<span class="built_in">.</span>findFragmentByTag(FragmentA<span class="built_in">.</span><span class="built_in">TAG</span>);</span><br><span class="line">            fragmentB = (FragmentB) getSupportFragmentManager()<span class="built_in">.</span>findFragmentByTag(FragmentB<span class="built_in">.</span><span class="built_in">TAG</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        initView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="literal">void</span> initView() &#123;</span><br><span class="line">        container_tab1 = (Button) findViewById(R<span class="built_in">.</span>id<span class="built_in">.</span>container_tab1);</span><br><span class="line">        container_tab2 = (Button) findViewById(R<span class="built_in">.</span>id<span class="built_in">.</span>container_tab2);</span><br><span class="line">        container_tab1<span class="built_in">.</span>setOnClickListener(this);</span><br><span class="line">        container_tab2<span class="built_in">.</span>setOnClickListener(this);</span><br><span class="line">        container = (FrameLayout) findViewById(R<span class="built_in">.</span>id<span class="built_in">.</span>homepager_container);</span><br><span class="line">        container_tab1<span class="built_in">.</span>performClick();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">public</span> <span class="literal">void</span> onClick(View view) &#123;</span><br><span class="line">        switch (view<span class="built_in">.</span>getId()) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> R<span class="built_in">.</span>id<span class="built_in">.</span>container_tab1:</span><br><span class="line">                container_tab1<span class="built_in">.</span>setTextCol<span class="subst">or</span>(Col<span class="subst">or</span><span class="built_in">.</span>parseCol<span class="subst">or</span>(<span class="string">"#ffffff"</span>));</span><br><span class="line">                container_tab2<span class="built_in">.</span>setTextCol<span class="subst">or</span>(Col<span class="subst">or</span><span class="built_in">.</span>parseCol<span class="subst">or</span>(<span class="string">"#dddddd"</span>));</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (container_tab1<span class="built_in">.</span>getTag() == <span class="built_in">null</span>) &#123;</span><br><span class="line">                    container_tab1<span class="built_in">.</span>setTag(<span class="string">"1"</span>);</span><br><span class="line">                    fragmentA = <span class="literal">new</span> FragmentA();</span><br><span class="line">                    showContent(fragmentA);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    switchContent(fragmentB, fragmentA);</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            <span class="keyword">case</span> R<span class="built_in">.</span>id<span class="built_in">.</span>container_tab2:</span><br><span class="line">                container_tab2<span class="built_in">.</span>setTextCol<span class="subst">or</span>(Col<span class="subst">or</span><span class="built_in">.</span>parseCol<span class="subst">or</span>(<span class="string">"#ffffff"</span>));</span><br><span class="line">                container_tab1<span class="built_in">.</span>setTextCol<span class="subst">or</span>(Col<span class="subst">or</span><span class="built_in">.</span>parseCol<span class="subst">or</span>(<span class="string">"#dddddd"</span>));</span><br><span class="line">                <span class="keyword">if</span> (container_tab2<span class="built_in">.</span>getTag() == <span class="built_in">null</span>) &#123;</span><br><span class="line">                    container_tab2<span class="built_in">.</span>setTag(<span class="string">"1"</span>);</span><br><span class="line">                    fragmentB = <span class="literal">new</span> FragmentB();</span><br><span class="line">                    showContent(fragmentB);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    switchContent(fragmentA, fragmentB);</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="literal">void</span> switchContent(Fragment from, Fragment <span class="keyword">to</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mCurrentFragment != <span class="keyword">to</span>) &#123;</span><br><span class="line">            mCurrentFragment = <span class="keyword">to</span>;</span><br><span class="line">            FragmentTransaction transaction = getSupportFragmentManager()<span class="built_in">.</span>beginTransaction();</span><br><span class="line"><span class="comment">//                    .setCustomAnimations(</span></span><br><span class="line"><span class="comment">//                    android.R.anim.slide_in_left, android.R.anim.slide_out_right);</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="subst">!</span><span class="keyword">to</span><span class="built_in">.</span>isAdded()) &#123;    <span class="comment">// 先判断是否被add过</span></span><br><span class="line">                <span class="built_in">String</span> <span class="built_in">tag</span> = <span class="string">""</span>;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">to</span> == fragmentA) &#123;</span><br><span class="line">                    <span class="built_in">tag</span> = FragmentA<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">to</span> == fragmentB) &#123;</span><br><span class="line">                    <span class="built_in">tag</span> = FragmentB<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                transaction<span class="built_in">.</span>hide(from)<span class="built_in">.</span>add(container<span class="built_in">.</span>getId(), <span class="keyword">to</span>, <span class="built_in">tag</span>)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，add下一个到Activity中</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                transaction<span class="built_in">.</span>hide(from)<span class="built_in">.</span>show(<span class="keyword">to</span>)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，显示下一个</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="literal">void</span> showContent(Fragment cententFragment) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mCurrentFragment != cententFragment) &#123;</span><br><span class="line">            mCurrentFragment = cententFragment;</span><br><span class="line"></span><br><span class="line">            FragmentTransaction transaction = getSupportFragmentManager()<span class="built_in">.</span>beginTransaction();</span><br><span class="line">            <span class="keyword">if</span> (<span class="subst">!</span>cententFragment<span class="built_in">.</span>isAdded()) &#123;    <span class="comment">// 先判断是否被add过</span></span><br><span class="line">                <span class="built_in">String</span> <span class="built_in">tag</span> = <span class="string">""</span>;</span><br><span class="line">                <span class="keyword">if</span> (cententFragment == fragmentA) &#123;</span><br><span class="line">                    <span class="built_in">tag</span> = FragmentA<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cententFragment == fragmentB) &#123;</span><br><span class="line">                    <span class="built_in">tag</span> = FragmentB<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                transaction<span class="built_in">.</span>add(container<span class="built_in">.</span>getId(), cententFragment, <span class="built_in">tag</span>)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，add下一个到Activity中</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                transaction<span class="built_in">.</span>show(cententFragment)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，显示下一个</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>initView()方法用于初始化ui,并且container_tab1.performClick();点击左侧按钮,使页面进入FragmentA.</li>
-<li>主要方法在showContent(Fragment) 和 switchContent(Fragment,Fragment)<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="literal">void</span> switchContent(Fragment from, Fragment <span class="keyword">to</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mCurrentFragment != <span class="keyword">to</span>) &#123;</span><br><span class="line">            mCurrentFragment = <span class="keyword">to</span>;</span><br><span class="line">            FragmentTransaction transaction = getSupportFragmentManager()<span class="built_in">.</span>beginTransaction();</span><br><span class="line"><span class="comment">//                    .setCustomAnimations(</span></span><br><span class="line"><span class="comment">//                    android.R.anim.slide_in_left, android.R.anim.slide_out_right);</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="subst">!</span><span class="keyword">to</span><span class="built_in">.</span>isAdded()) &#123;    <span class="comment">// 先判断是否被add过</span></span><br><span class="line">                <span class="built_in">String</span> <span class="built_in">tag</span> = <span class="string">""</span>;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">to</span> == fragmentA) &#123;</span><br><span class="line">                    <span class="built_in">tag</span> = FragmentA<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">to</span> == fragmentB) &#123;</span><br><span class="line">                    <span class="built_in">tag</span> = FragmentB<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                transaction<span class="built_in">.</span>hide(from)<span class="built_in">.</span>add(container<span class="built_in">.</span>getId(), <span class="keyword">to</span>, <span class="built_in">tag</span>)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，add下一个到Activity中</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                transaction<span class="built_in">.</span>hide(from)<span class="built_in">.</span>show(<span class="keyword">to</span>)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，显示下一个</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="literal">void</span> showContent(Fragment cententFragment) &#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (mCurrentFragment != cententFragment) &#123;</span><br><span class="line">           mCurrentFragment = cententFragment;</span><br><span class="line"></span><br><span class="line">           FragmentTransaction transaction = getSupportFragmentManager()<span class="built_in">.</span>beginTransaction();</span><br><span class="line">           <span class="keyword">if</span> (<span class="subst">!</span>cententFragment<span class="built_in">.</span>isAdded()) &#123;    <span class="comment">// 先判断是否被add过</span></span><br><span class="line">               <span class="built_in">String</span> <span class="built_in">tag</span> = <span class="string">""</span>;</span><br><span class="line">               <span class="keyword">if</span> (cententFragment == fragmentA) &#123;</span><br><span class="line">                   <span class="built_in">tag</span> = FragmentA<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">               &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cententFragment == fragmentB) &#123;</span><br><span class="line">                   <span class="built_in">tag</span> = FragmentB<span class="built_in">.</span><span class="built_in">TAG</span>;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">               transaction<span class="built_in">.</span>add(container<span class="built_in">.</span>getId(), cententFragment, <span class="built_in">tag</span>)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，add下一个到Activity中</span></span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               transaction<span class="built_in">.</span>show(cententFragment)<span class="built_in">.</span>commit(); <span class="comment">// 隐藏当前的fragment，显示下一个</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>整体流程如下,当点击按钮时,通过按钮的tag是否为空判断Fragment是否创建,没创建就创建Fragment并且调用 <code>showContent()</code> 方法,如果创建就调用 <code>switchContent</code>方法.</li>
-<li>整体切换<code>Fragment</code>全靠<code>FragmentTransaction</code>调用,包括 <code>add()</code>,<code>show()</code>,<code>hide()</code>等方法.</li>
-</ul>
-<p>其实还是很好用的方法.</p>
-<h1 id="done"><a href="#done" class="headerlink" title="done"></a>done</h1><h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
-            
-          </span>
+<p>源码地址: <a href="https://github.com/qaza2008/Fragment_Switch">https://github.com/qaza2008/Fragment_Switch</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/22/Fragment之间的切换/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -363,11 +490,26 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-22T14:48:18+08:00" content="2015-12-22">
+            <time itemprop="dateCreated" datetime="2015-12-22T15:31:11+08:00" content="2015-12-22">
               2015-12-22
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -395,9 +537,7 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p> 现在越来越多的app内嵌h5,有诸多好处:</p>
+          <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p> 现在越来越多的app内嵌h5,有诸多好处:</p>
 <ul>
 <li>HTML5和原生相比优势在于跨平台，成本低，快速迭代，动态执行</li>
 <li>基于HTML5技术的应用流就会为我们的用户节省流量，带来便利同时也能节省我们手机上空间及电量“</li>
@@ -410,162 +550,11 @@
 <li>通过调用原生方法来与h5中的js通信,h5在通过调用js方法将需要的参数以json格式传到app上</li>
 </ul>
 <p><img src="https://github.com/qaza2008/pic_bed/blob/master/app与h5分享流程.png?raw=true" alt="图片"></p>
-<h3 id="u4E8C-_u4EE3_u7801_u793A_u4F8B"><a href="#u4E8C-_u4EE3_u7801_u793A_u4F8B" class="headerlink" title="二.代码示例"></a>二.代码示例</h3><ol>
-<li><p>android 代码示例:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">	WebView webView;</span><br><span class="line">   <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"> 			 webView = (WebView) findViewById(R.id.webView);</span><br><span class="line">            webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setLoadsImagesAutomatically(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setBlockNetworkImage(<span class="keyword">false</span>);</span><br><span class="line">            <span class="comment">//解决html太大超出屏幕</span></span><br><span class="line">            webView.getSettings().setLoadWithOverviewMode(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setUseWideViewPort(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setDefaultTextEncodingName(<span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">            webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//这个类主要能帮助调用你的JavaScript函数中的任意活动方式</span></span><br><span class="line">            <span class="comment">//创建一个JavaScriptInterface实现类</span></span><br><span class="line">            <span class="comment">//前一个参数是绑定到JavaScript的类实例。</span></span><br><span class="line">            <span class="comment">//后一个参数用来显示JavaScript中的实例的名称。</span></span><br><span class="line">            webView.addJavascriptInterface(<span class="keyword">new</span> InJavaScriptLocalObj(), <span class="string">"loadShareInfo"</span>);</span><br><span class="line"></span><br><span class="line">   			webView.setWebViewClient(<span class="keyword">new</span> CustomWebViewClient());          </span><br><span class="line">      		webView.loadUrl(url);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomWebViewClient</span> <span class="keyword">extends</span> <span class="title">WebViewClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(android.webkit.WebView view, String url)</span> </span>&#123;</span><br><span class="line">            PaiPaiLog.i(<span class="string">"orgUrl"</span>, url);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> dispathUrlAction(url);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageStarted</span><span class="params">(WebView view, String url, Bitmap favicon)</span> </span>&#123;</span><br><span class="line">            PaiPaiLog.d(<span class="string">"MyWebViewClient"</span>, <span class="string">"onPageStarted"</span>);</span><br><span class="line">            <span class="keyword">super</span>.onPageStarted(view, url, favicon);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;</span><br><span class="line">            PaiPaiLog.d(<span class="string">"MyWebViewClient"</span>, <span class="string">"onPageFinished "</span>);</span><br><span class="line">            <span class="comment">//当h5代码加载完成后,通过webview调用 js 方法:getShareInfo()</span></span><br><span class="line">            view.loadUrl(<span class="string">"javascript:getShareInfo()"</span>);</span><br><span class="line">            <span class="keyword">super</span>.onPageFinished(view, url);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.handleMessage(msg);</span><br><span class="line">                <span class="keyword">if</span> (msg.what == <span class="number">0</span>) &#123;</span><br><span class="line">                    String json = (String) msg.obj;</span><br><span class="line">                    <span class="keyword">if</span> (!TextUtils.isEmpty(json)) &#123;</span><br><span class="line">                        shareEntity = JsonTools.getCollFromJson(json, ShareEntity.class);</span><br><span class="line">                        iv_cdl_share.setVisibility(View.VISIBLE);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                        shareEntity = <span class="keyword">null</span>;</span><br><span class="line">                        iv_cdl_share.setVisibility(View.GONE);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InJavaScriptLocalObj</span> </span>&#123;</span><br><span class="line">            <span class="annotation">@JavascriptInterface</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInfo</span><span class="params">(String json)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (TextUtils.isEmpty(json)) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                PaiPaiLog.i(<span class="string">"getInfo"</span>, <span class="string">" json  "</span> + json);</span><br><span class="line">                <span class="comment">/*</span><br><span class="line">       &#123;"url":"http://www.paipai.com/m2/2015/rongmomo/index.html","title":"荣耀暑飙，疯狂暴走赢荣耀7！","desc":"荣耀暑飙，疯狂暴走赢荣耀7，不服来战！","img":"http://www.paipai.com/m2/2015/rongmomo/image/100X100.jpg"&#125;</span><br><span class="line">*/</span></span><br><span class="line"><span class="comment">//因为这里不是UI线程,所以通过Handler将数据传递出去,方便分享按钮展示或者隐藏.</span></span><br><span class="line">                mHandler.sendMessage(mHandler.obtainMessage(<span class="number">0</span>, json));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Js部分</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> optionToAndroid = &#123;</span><br><span class="line">  </span><br><span class="line">      					<span class="string">"url"</span>: <span class="string">"http://www.paipai.com/m2/2015/rongmomo/index.html"</span>,</span><br><span class="line">  </span><br><span class="line">      					<span class="string">"title"</span>: <span class="string">"荣耀暑飙，疯狂暴走赢荣耀7！"</span>,</span><br><span class="line">  </span><br><span class="line">      					<span class="string">"desc"</span>: <span class="string">"荣耀暑飙，疯狂暴走赢荣耀7，不服来战！"</span>,</span><br><span class="line">  </span><br><span class="line">      					<span class="string">"img"</span>: <span class="string">"http://www.paipai.com/m2/2015/rongmomo/image/100X100.jpg"</span>,</span><br><span class="line">  </span><br><span class="line">      				&#125;;</span><br><span class="line">  </span><br><span class="line">      </span><br><span class="line">  </span><br><span class="line">      			<span class="keyword">var</span> optionToAndroidJson = &#123;<span class="string">"url"</span>:optionToAndroid.url,<span class="string">"title"</span>:optionToAndroid.title,<span class="string">"desc"</span>:optionToAndroid.desc,<span class="string">"img"</span>:optionToAndroid.img&#125;;</span><br><span class="line">  </span><br><span class="line">      			</span><br><span class="line">      			<span class="function"><span class="keyword">function</span> <span class="title">getShareInfo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  </span><br><span class="line">      				<span class="built_in">window</span>.loadShareInfo.getInfo(<span class="built_in">JSON</span>.stringify(optionToAndroidJson));</span><br><span class="line">  </span><br><span class="line">      			&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>交互说明</li>
-</ol>
-<ul>
-<li><code>android</code> webview加载完url数据 调用    <code>view.loadUrl(&quot;javascript:getShareInfo()&quot;);</code>方法</li>
-<li><code>js</code> 调用 <code>function getShareInfo()</code>,实际上调用 <code>window.loadShareInfo.getInfo(JSON.stringify(optionToAndroidJson));</code>,<code>window</code> 代表android平台,<code>loadShareInfo</code>代表<code>InJavaScriptLocalObj</code> 对象,调用 <code>getInfo</code> 后将数据传递给android 平台.</li>
-<li><code>android</code> 得到json,解析,并且展示分享按钮.</li>
-</ul>
-<ol>
-<li>注意事宜  </li>
-</ol>
-<ul>
-<li>@JavascriptInterface 这个注解用在 getInfo()方法上,必要的.</li>
-<li>混淆注意:<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">keepclassmembers <span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">jd</span>.<span class="title">YOUR_WebView_ACTIVITY</span>$<span class="title">InJavaScriptLocalObj</span>&#123;</span></span><br><span class="line"></span>    public *;</span><br><span class="line">&#125;</span><br><span class="line">-<span class="ruby">keepattributes *<span class="constant">JavascriptInterface</span>*</span><br><span class="line"></span>-<span class="ruby">keepattributes *<span class="constant">Annotation</span>*</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Done!</p>
-<h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/22/快速开发AutoScrollViewPageWithIndicator/" itemprop="url">
-                  快速开发AutoScrollViewPagerWithIndicator
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-22T00:02:02+08:00" content="2015-12-22">
-              2015-12-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/22/快速开发AutoScrollViewPageWithIndicator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/快速开发AutoScrollViewPageWithIndicator/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>项目需求在首页加入活动视图,每隔数秒钟自动切换到下一帧,支持手动滑动切换活动视图,在活动视图底部有圆形的指示点,整体的活动视图随着列表上拉而隐藏.<br>典型的ViewPager,加入自动滑动,加入指示器.并且和listview手势不冲突.</p>
-<p>在 github搜索了一下,发现了<a href="https://github.com/Trinea/android-auto-scroll-view-pager" target="_blank" rel="external">android-auto-scroll-view-pager</a>,fork and clone.<br>发现demo还是很简洁的.</p>
-<ul>
-<li>支持自动滑动</li>
-<li>支持手势滑动</li>
-<li>支持自动回收</li>
-</ul>
-<p>但是:</p>
-<ul>
-<li>没有指示器</li>
-<li>与listview手势冲突</li>
-</ul>
-<p>基于以上,对 <a href="https://github.com/Trinea/android-auto-scroll-view-pager" target="_blank" rel="external">android-auto-scroll-view-pager</a> 进行二次封装.解决以上2个问题.</p>
-<p><img src="https://raw.githubusercontent.com/qaza2008/AutoScrollViewPagerWithIndicator/master/ezgif.com-crop.gif" alt="demo"></p>
-<p><img src="https://raw.githubusercontent.com/qaza2008/AutoScrollViewPagerWithIndicator/master/ezgif.com-crop2.gif" alt="image"></p>
-<h4 id="u5F15_u7528_3A"><a href="#u5F15_u7528_3A" class="headerlink" title="引用:"></a>引用:</h4><p>环境: idea  ant编译</p>
-<p>源码地址: <a href="https://github.com/qaza2008/AutoScrollViewPagerWithIndicator" target="_blank" rel="external">https://github.com/qaza2008/AutoScrollViewPagerWithIndicator</a></p>
-<h3 id="u4E8C-_u4EE3_u7801_u793A_u4F8B"><a href="#u4E8C-_u4EE3_u7801_u793A_u4F8B" class="headerlink" title="二.代码示例"></a>二.代码示例</h3><p>1.AutoScrollViewPagerWithIndicator 展示</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by qaza2008 on 15/7/31.</span><br><span class="line"> * www.androidso.com</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> AutoScrollViewPagerWithIndicator extends FrameLayout &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoScrollViewPagerWithIndicator</span><span class="params">(Context paramContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(paramContext, null);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    LinearLayout indicatorLayout;</span><br><span class="line">    AutoScrollViewPager viewPager;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoScrollViewPagerWithIndicator</span><span class="params">(Context paramContext, AttributeSet paramAttributeSet)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(paramContext, paramAttributeSet, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoScrollViewPagerWithIndicator</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">        super(context, attrs, defStyle);</span><br><span class="line">        <span class="keyword">this</span>.setLongClickable(<span class="literal">true</span>);</span><br><span class="line">        viewPager = <span class="keyword">new</span> AutoScrollViewPager(context, attrs);</span><br><span class="line">        addView(viewPager);</span><br><span class="line"></span><br><span class="line">        indicatorLayout = <span class="keyword">new</span> LinearLayout(context);</span><br><span class="line">        LayoutParams params = <span class="keyword">new</span> LayoutParams(LayoutParams.WRAP_CONTENT, AndroidUtils.dip2px(context, <span class="number">20</span>));</span><br><span class="line">        params.gravity = Gravity.BOTTOM | Gravity.CENTER;</span><br><span class="line">        params.setMargins(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, AndroidUtils.dip2px(context, <span class="number">15</span>));</span><br><span class="line">        indicatorLayout.setLayoutParams(params);</span><br><span class="line">        indicatorLayout.setBackgroundResource(R.drawable.viewpage_header_ad_container_shape);</span><br><span class="line">        indicatorLayout.setVisibility(View.INVISIBLE);</span><br><span class="line">        addView(indicatorLayout);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AutoScrollViewPager <span class="title">getViewPager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> viewPager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAdapter</span><span class="params">(PagerAdapter adapter)</span> </span>&#123;</span><br><span class="line">        viewPager.setAdapter(adapter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnPageChangeListener</span><span class="params">(ViewPager.OnPageChangeListener listener)</span> </span>&#123;</span><br><span class="line">        viewPager.setOnPageChangeListener(listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LinearLayout <span class="title">getIndicatorLayout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> indicatorLayout;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initIndicator</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initIndicator(count, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initIndicator</span><span class="params">(<span class="keyword">int</span> count, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count &lt;= index) &#123;</span><br><span class="line">            index = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        indicatorLayout.setVisibility(VISIBLE);</span><br><span class="line">        indicatorLayout.removeAllViews();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line"></span><br><span class="line">            ImageView ivDot = <span class="keyword">new</span> ImageView(getContext());</span><br><span class="line">            LinearLayout.LayoutParams ivParams = <span class="keyword">new</span> LinearLayout.LayoutParams(AndroidUtils.dip2px(getContext(), <span class="number">9</span>), AndroidUtils.dip2px(getContext(), <span class="number">9</span>));</span><br><span class="line">            ivParams.setMargins(AndroidUtils.dip2px(getContext(), <span class="number">2.5f</span>), <span class="number">0</span>, AndroidUtils.dip2px(getContext(), <span class="number">2.5f</span>), <span class="number">0</span>);</span><br><span class="line">            ivParams.gravity = Gravity.CENTER;</span><br><span class="line">            ivDot.setLayoutParams(ivParams);</span><br><span class="line">            <span class="keyword">if</span> (index == i) &#123;</span><br><span class="line">                ivDot.setImageResource(R.drawable.dot_white);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ivDot.setImageResource(R.drawable.dot_gray_c6c6c6);</span><br><span class="line">            &#125;</span><br><span class="line">            indicatorLayout.addView(ivDot);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectIndicator</span><span class="params">(<span class="keyword">int</span> pos)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (indicatorLayout != null &amp;&amp; indicatorLayout.getChildCount() &gt; pos) &#123;</span><br><span class="line">            clearIndicator();</span><br><span class="line">            chooseIndicator(pos);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">clearIndicator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; indicatorLayout.getChildCount(); i++) &#123;</span><br><span class="line">            View view = indicatorLayout.getChildAt(i);</span><br><span class="line">            <span class="keyword">if</span> (view instanceof ImageView) &#123;</span><br><span class="line">                ((ImageView) view).setImageResource(R.drawable.dot_gray_c6c6c6);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        invalidate();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">chooseIndicator</span><span class="params">(<span class="keyword">int</span> pos)</span> </span>&#123;</span><br><span class="line">        View view = indicatorLayout.getChildAt(pos);</span><br><span class="line">        <span class="keyword">if</span> (view instanceof ImageView) &#123;</span><br><span class="line">            ((ImageView) view).setImageResource(R.drawable.dot_white);</span><br><span class="line">        &#125;</span><br><span class="line">        invalidate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mDownX, mDownY;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * if ViewPager is added as header in Listview .this Method can keep ListView and ViewPager scroll by the finger oritation.</span><br><span class="line">     *</span><br><span class="line">     * @param ev</span><br><span class="line">     * @return</span><br><span class="line">     */</span></span><br><span class="line">    @<span class="function">Override</span><br><span class="line">    <span class="keyword">public</span> boolean <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (ev.getAction()) &#123;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line"></span><br><span class="line">                mDownX = ev.getX();</span><br><span class="line">                mDownY = ev.getY();</span><br><span class="line">                getParent().requestDisallowInterceptTouchEvent(<span class="literal">true</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                Log.d(<span class="string">"ACTION_MOVE"</span> , <span class="string">"X:"</span>+Math.<span class="built_in">abs</span>(ev.getX() - mDownX)+ <span class="string">" : Y :"</span>+  (ev.getY() - mDownY));</span><br><span class="line">                <span class="keyword">if</span> (Math.<span class="built_in">abs</span>(ev.getX() - mDownX) &gt; Math.<span class="built_in">abs</span>(ev.getY() - mDownY)) &#123;</span><br><span class="line">                    Log.d(<span class="string">"ACTION_MOVE"</span> , <span class="string">"X&gt;Y"</span>);</span><br><span class="line">                    getParent().requestDisallowInterceptTouchEvent(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    Log.d(<span class="string">"ACTION_MOVE"</span> , <span class="string">"X&lt;Y"</span>);</span><br><span class="line">                    getParent().requestDisallowInterceptTouchEvent(<span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_CANCEL:</span><br><span class="line">                getParent().requestDisallowInterceptTouchEvent(<span class="literal">false</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> super.dispatchTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">调用:</span><br><span class="line">  autoScrollViewPager.setOnPageChangeListener(<span class="keyword">new</span> ViewPager.OnPageChangeListener() &#123;</span><br><span class="line">                <span class="annotation">@Override</span></span><br><span class="line">                <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">float</span> v, <span class="keyword">int</span> i1)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="annotation">@Override</span></span><br><span class="line">                <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">                    autoScrollViewPager.selectIndicator(position % (idList.size()));</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="annotation">@Override</span></span><br><span class="line">                <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将AutoScrollViewPager 封装到FrameLayout中.</li>
-<li>新增LinearLayout用于镶嵌indicator,并保存到距离底部15dp的位置处.添加到FrameLayout.</li>
-<li>initIndicator()方法用于初始化indicatoer数量和初始位置.</li>
-<li>通过ViewPager.OnPageChangeListener中的onPageSelected 方法回调处理indicator的位置.</li>
-<li>dispatchTouchEvent 方法的重写是避免作为ListView 的Header 时手势冲突.//我就遇到了</li>
-<li>以上很到理解.</li>
-</ul>
-<p>2.单独的viewPager 展示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Called when the activity is first created.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.main);</span><br><span class="line">        initViewPager();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> AutoScrollViewPagerWithIndicator autoScrollViewPager;</span><br><span class="line">    <span class="keyword">private</span> ADViewPagerAdapter adViewPagerAdapter;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Integer&gt; idList;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initViewPager</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        View headerView = <span class="keyword">this</span>.findViewById(R.id.view_pager_layout);</span><br><span class="line">        autoScrollViewPager = (AutoScrollViewPagerWithIndicator) headerView.findViewById(R.id.header_view_pager);</span><br><span class="line">        idList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        idList.add(R.drawable.a);</span><br><span class="line">        idList.add(R.drawable.b);</span><br><span class="line">        idList.add(R.drawable.c);</span><br><span class="line">        adViewPagerAdapter = <span class="keyword">new</span> ADViewPagerAdapter(<span class="keyword">this</span>, idList);</span><br><span class="line">        assemData();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">assemData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (idList != <span class="keyword">null</span> &amp;&amp; !idList.isEmpty()) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (idList.size() &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">                adViewPagerAdapter.setInfiniteLoop(<span class="keyword">false</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                adViewPagerAdapter.setInfiniteLoop(<span class="keyword">true</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            autoScrollViewPager.setVisibility(View.VISIBLE);</span><br><span class="line">            AutoScrollViewPager viewPager = autoScrollViewPager.getViewPager();</span><br><span class="line">            autoScrollViewPager.initIndicator(idList.size());</span><br><span class="line">            autoScrollViewPager.setOnPageChangeListener(<span class="keyword">new</span> ViewPager.OnPageChangeListener() &#123;</span><br><span class="line">                <span class="annotation">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">float</span> v, <span class="keyword">int</span> i1)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="annotation">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">                    autoScrollViewPager.selectIndicator(position % (idList.size()));</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="annotation">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            viewPager.setInterval(<span class="number">2000</span>);</span><br><span class="line">            viewPager.setAutoScrollDurationFactor(<span class="number">3</span>);</span><br><span class="line">            viewPager.startAutoScroll();</span><br><span class="line">            viewPager.setCurrentItem(Integer.MAX_VALUE / <span class="number">2</span> - Integer.MAX_VALUE / <span class="number">2</span> % idList.size());</span><br><span class="line">            autoScrollViewPager.setAdapter(adViewPagerAdapter);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            autoScrollViewPager.setVisibility(View.GONE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ChangeDemo</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">        intent.setClass(<span class="keyword">this</span>, HeaderListViewActivity.class);</span><br><span class="line">        startActivity(intent);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>从布局文件中获取autoScrollViewPager对象,初始化数据及Adapter.</li>
-<li>通过判断当初始化的数据来进行展示.当只有一条的时候停止自动滑动展示.</li>
-<li>具体的AutoScrollViewPager的设置参数可以参考 <a href="https://github.com/Trinea/android-auto-scroll-view-pager" target="_blank" rel="external">android-auto-scroll-view-pager</a>.</li>
-</ul>
-<p>3.作为ListView的Header调用的方式.</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">rivate List&lt;<span class="keyword">String</span>&gt; dataList;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_headerlistview);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> init() &#123;</span><br><span class="line"></span><br><span class="line">        lv = (ListView) findViewById(R.id.lv);</span><br><span class="line">        initViewPager();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        idList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        idList.<span class="built_in">add</span>(R.drawable.a);</span><br><span class="line">        idList.<span class="built_in">add</span>(R.drawable.b);</span><br><span class="line">        idList.<span class="built_in">add</span>(R.drawable.c);</span><br><span class="line"></span><br><span class="line">        dataList = <span class="keyword">new</span> ArrayList&lt;<span class="keyword">String</span>&gt;();</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line">        dataList.<span class="built_in">add</span>(<span class="string">"a"</span>);</span><br><span class="line"></span><br><span class="line">        adapter = <span class="keyword">new</span> ArrayAdapter&lt;<span class="keyword">String</span>&gt;(<span class="keyword">this</span>, android.R.layout.simple_list_item_1, android.R.id.text1, dataList);</span><br><span class="line">        lv.setAdapter(adapter);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> initViewPager() &#123;</span><br><span class="line"></span><br><span class="line">        View headerView = LayoutInflater.from(<span class="keyword">this</span>).inflate(R.layout.autoscroll_viewpager, <span class="keyword">null</span>);</span><br><span class="line">        autoScrollViewPager = (AutoScrollViewPagerWithIndicator) headerView.findViewById(R.id.header_view_pager);</span><br><span class="line">        idList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        idList.<span class="built_in">add</span>(R.drawable.a);</span><br><span class="line">        idList.<span class="built_in">add</span>(R.drawable.b);</span><br><span class="line">        idList.<span class="built_in">add</span>(R.drawable.c);</span><br><span class="line">        adViewPagerAdapter = <span class="keyword">new</span> ADViewPagerAdapter(<span class="keyword">this</span>, idList);</span><br><span class="line">        lv.addHeaderView(headerView);</span><br><span class="line">        assemData();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> assemData() &#123;</span><br><span class="line">        <span class="keyword">if</span> (idList != <span class="keyword">null</span> &amp;&amp; !idList.isEmpty()) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (idList.<span class="built_in">size</span>() &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">                adViewPagerAdapter.setInfiniteLoop(<span class="keyword">false</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                adViewPagerAdapter.setInfiniteLoop(<span class="keyword">true</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            autoScrollViewPager.setVisibility(View.VISIBLE);</span><br><span class="line">            AutoScrollViewPager viewPager = autoScrollViewPager.getViewPager();</span><br><span class="line">            autoScrollViewPager.initIndicator(idList.<span class="built_in">size</span>());</span><br><span class="line">            autoScrollViewPager.setOnPageChangeListener(<span class="keyword">new</span> ViewPager.OnPageChangeListener() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> onPageScrolled(<span class="built_in">int</span> i, <span class="built_in">float</span> v, <span class="built_in">int</span> i1) &#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                @Override</span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> onPageSelected(<span class="built_in">int</span> position) &#123;</span><br><span class="line">                    autoScrollViewPager.selectIndicator(position % (idList.<span class="built_in">size</span>()));</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                @Override</span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> onPageScrollStateChanged(<span class="built_in">int</span> i) &#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            viewPager.setInterval(<span class="number">2000</span>);</span><br><span class="line">            viewPager.setAutoScrollDurationFactor(<span class="number">3</span>);</span><br><span class="line">            viewPager.startAutoScroll();</span><br><span class="line">            viewPager.setCurrentItem(Integer.MAX_VALUE / <span class="number">2</span> - Integer.MAX_VALUE / <span class="number">2</span> % idList.<span class="built_in">size</span>());</span><br><span class="line">            autoScrollViewPager.setAdapter(adViewPagerAdapter);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            autoScrollViewPager.setVisibility(View.GONE);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>和直接调用大同小异,此次直接作为header.</li>
-<li>由于有了手势的判断处理,不会有多余的判断了.</li>
-</ul>
-
-            
-          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/22/Android与h5通过js调用实现分享/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -729,14 +718,14 @@
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -804,7 +793,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 

@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android,fragment,switch," />
 
 
 
@@ -51,8 +51,7 @@
 
 
 
-<meta name="description" content="date: 2015-12-22 15:31:11
-tags: android fragment 切换一.概述  先展示下效果图,类似于这样的效果
+<meta name="description" content="一.概述  先展示下效果图,类似于这样的效果
 
 Fragment在需要展示的时候创建
 2个ragment切换互不影响 
@@ -63,10 +62,9 @@ Fragment在需要展示的时候创建
 源码地址: https://github.com/qaza2008/Fragment_Switch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2个Fragment之间的切换">
-<meta property="og:url" content="http://androidso.com/2015/12/25/Fragment之间的切换/index.html">
+<meta property="og:url" content="http://androidso.com/2015/12/22/Fragment之间的切换/index.html">
 <meta property="og:site_name" content="qaza2008's blog">
-<meta property="og:description" content="date: 2015-12-22 15:31:11
-tags: android fragment 切换一.概述  先展示下效果图,类似于这样的效果
+<meta property="og:description" content="一.概述  先展示下效果图,类似于这样的效果
 
 Fragment在需要展示的时候创建
 2个ragment切换互不影响 
@@ -77,11 +75,10 @@ Fragment在需要展示的时候创建
 源码地址: https://github.com/qaza2008/Fragment_Switch">
 <meta property="og:image" content="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif">
 <meta property="og:image" content="http://7vihs8.com1.z0.glb.clouddn.com/fragment2.gif">
-<meta property="og:updated_time" content="2015-12-25T03:28:52.000Z">
+<meta property="og:updated_time" content="2015-12-25T14:49:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2个Fragment之间的切换">
-<meta name="twitter:description" content="date: 2015-12-22 15:31:11
-tags: android fragment 切换一.概述  先展示下效果图,类似于这样的效果
+<meta name="twitter:description" content="一.概述  先展示下效果图,类似于这样的效果
 
 Fragment在需要展示的时候创建
 2个ragment切换互不影响 
@@ -95,7 +92,7 @@ Fragment在需要展示的时候创建
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post',
     motion: true
   };
@@ -177,7 +174,7 @@ Fragment在需要展示的时候创建
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
             
             分类
           </a>
@@ -187,7 +184,7 @@ Fragment在需要展示的时候创建
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
             关于
           </a>
@@ -207,7 +204,7 @@ Fragment在需要展示的时候创建
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
             标签
           </a>
@@ -270,19 +267,34 @@ Fragment在需要展示的时候创建
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-25T11:28:53+08:00" content="2015-12-25">
-              2015-12-25
+            <time itemprop="dateCreated" datetime="2015-12-22T15:31:11+08:00" content="2015-12-22">
+              2015-12-22
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/25/Fragment之间的切换/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/25/Fragment之间的切换/" itemprop="commentsCount"></span>
+                <a href="/2015/12/22/Fragment之间的切换/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/Fragment之间的切换/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -301,8 +313,7 @@ Fragment在需要展示的时候创建
       
 
       
-        <span itemprop="articleBody"><p>date: 2015-12-22 15:31:11</p>
-<h2 id="tags_3A_android_fragment__u5207_u6362"><a href="#tags_3A_android_fragment__u5207_u6362" class="headerlink" title="tags: android fragment 切换"></a>tags: android fragment 切换</h2><h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>  先展示下效果图,类似于这样的效果</p>
+        <span itemprop="articleBody"><h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>  先展示下效果图,类似于这样的效果</p>
 <ul>
 <li>Fragment在需要展示的时候创建</li>
 <li>2个ragment切换互不影响 </li>
@@ -311,6 +322,7 @@ Fragment在需要展示的时候创建
 <p><img src="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif" alt="image"><br><img src="http://7vihs8.com1.z0.glb.clouddn.com/fragment2.gif" alt="image"></p>
 <h4 id="u5F15_u7528_3A"><a href="#u5F15_u7528_3A" class="headerlink" title="引用:"></a>引用:</h4><p>环境: idea  ant编译</p>
 <p>源码地址: <a href="https://github.com/qaza2008/Fragment_Switch" target="_blank" rel="external">https://github.com/qaza2008/Fragment_Switch</a></p>
+<a id="more"></a>
 <h3 id="u4E8C-_u4EE3_u7801_u793A_u4F8B"><a href="#u4E8C-_u4EE3_u7801_u793A_u4F8B" class="headerlink" title="二.代码示例"></a>二.代码示例</h3><ol>
 <li>MyActivity 实例代码</li>
 </ol>
@@ -332,6 +344,16 @@ Fragment在需要展示的时候创建
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+            <a href="/tags/fragment/" rel="tag">#fragment</a>
+          
+            <a href="/tags/switch/" rel="tag">#switch</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -344,6 +366,10 @@ Fragment在需要展示的时候创建
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/22/快速开发AutoScrollViewPageWithIndicator/" rel="prev" title="快速开发AutoScrollViewPagerWithIndicator">
+                快速开发AutoScrollViewPagerWithIndicator <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -358,10 +384,10 @@ Fragment在需要展示的时候创建
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/12/25/Fragment之间的切换/"
+        <div class="ds-share flat" data-thread-key="2015/12/22/Fragment之间的切换/"
      data-title="2个Fragment之间的切换"
      data-content=""
-     data-url="http://androidso.com/2015/12/25/Fragment之间的切换/">
+     data-url="http://androidso.com/2015/12/22/Fragment之间的切换/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -392,8 +418,8 @@ Fragment在需要展示的时候创建
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/25/Fragment之间的切换/"
-           data-title="2个Fragment之间的切换" data-url="http://androidso.com/2015/12/25/Fragment之间的切换/">
+      <div class="ds-thread" data-thread-key="2015/12/22/Fragment之间的切换/"
+           data-title="2个Fragment之间的切换" data-url="http://androidso.com/2015/12/22/Fragment之间的切换/">
       </div>
     
   </div>
@@ -444,14 +470,14 @@ Fragment在需要展示的时候创建
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -501,7 +527,7 @@ Fragment在需要展示的时候创建
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags_3A_android_fragment__u5207_u6362"><span class="nav-number">1.</span> <span class="nav-text">tags: android fragment 切换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00-_u6982_u8FF0"><span class="nav-number">1.1.</span> <span class="nav-text">一.概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5F15_u7528_3A"><span class="nav-number">1.1.1.</span> <span class="nav-text">引用:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C-_u4EE3_u7801_u793A_u4F8B"><span class="nav-number">1.2.</span> <span class="nav-text">二.代码示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#done"><span class="nav-number"></span> <span class="nav-text">done</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Welcome_To_My_Website"><span class="nav-number">1.</span> <span class="nav-text">Welcome To My Website</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http_3A//androidso-com"><span class="nav-number">2.</span> <span class="nav-text">http://androidso.com</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00-_u6982_u8FF0"><span class="nav-number">1.</span> <span class="nav-text">一.概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5F15_u7528_3A"><span class="nav-number">1.1.</span> <span class="nav-text">引用:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E8C-_u4EE3_u7801_u793A_u4F8B"><span class="nav-number">2.</span> <span class="nav-text">二.代码示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#done"><span class="nav-number"></span> <span class="nav-text">done</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Welcome_To_My_Website"><span class="nav-number"></span> <span class="nav-text">Welcome To My Website</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http_3A//androidso-com"><span class="nav-number"></span> <span class="nav-text">http://androidso.com</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -536,7 +562,7 @@ Fragment在需要展示的时候创建
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 

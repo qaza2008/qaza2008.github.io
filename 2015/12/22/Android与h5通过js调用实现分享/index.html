@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="H5,android," />
 
 
 
@@ -76,7 +76,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
 
 把标题 , url ,分享语 ,">
 <meta property="og:image" content="https://github.com/qaza2008/pic_bed/blob/master/app与h5分享流程.png?raw=true">
-<meta property="og:updated_time" content="2015-12-22T06:48:17.000Z">
+<meta property="og:updated_time" content="2015-12-25T14:48:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android与h5通过js调用实现分享">
 <meta name="twitter:description" content="一.概述 现在越来越多的app内嵌h5,有诸多好处:
@@ -94,7 +94,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: 'post',
     motion: true
   };
@@ -176,7 +176,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
             
             分类
           </a>
@@ -186,7 +186,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
             
             关于
           </a>
@@ -206,7 +206,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-question-circle fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
             标签
           </a>
@@ -269,11 +269,26 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-22T14:48:18+08:00" content="2015-12-22">
+            <time itemprop="dateCreated" datetime="2015-12-22T15:31:11+08:00" content="2015-12-22">
               2015-12-22
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -313,6 +328,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
 <li>通过调用原生方法来与h5中的js通信,h5在通过调用js方法将需要的参数以json格式传到app上</li>
 </ul>
 <p><img src="https://github.com/qaza2008/pic_bed/blob/master/app与h5分享流程.png?raw=true" alt="图片"></p>
+<a id="more"></a>
 <h3 id="u4E8C-_u4EE3_u7801_u793A_u4F8B"><a href="#u4E8C-_u4EE3_u7801_u793A_u4F8B" class="headerlink" title="二.代码示例"></a>二.代码示例</h3><ol>
 <li><p>android 代码示例:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">	WebView webView;</span><br><span class="line">   <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"> 			 webView = (WebView) findViewById(R.id.webView);</span><br><span class="line">            webView.getSettings().setJavaScriptEnabled(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setLoadsImagesAutomatically(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setBlockNetworkImage(<span class="keyword">false</span>);</span><br><span class="line">            <span class="comment">//解决html太大超出屏幕</span></span><br><span class="line">            webView.getSettings().setLoadWithOverviewMode(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setUseWideViewPort(<span class="keyword">true</span>);</span><br><span class="line">            webView.getSettings().setDefaultTextEncodingName(<span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">            webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//这个类主要能帮助调用你的JavaScript函数中的任意活动方式</span></span><br><span class="line">            <span class="comment">//创建一个JavaScriptInterface实现类</span></span><br><span class="line">            <span class="comment">//前一个参数是绑定到JavaScript的类实例。</span></span><br><span class="line">            <span class="comment">//后一个参数用来显示JavaScript中的实例的名称。</span></span><br><span class="line">            webView.addJavascriptInterface(<span class="keyword">new</span> InJavaScriptLocalObj(), <span class="string">"loadShareInfo"</span>);</span><br><span class="line"></span><br><span class="line">   			webView.setWebViewClient(<span class="keyword">new</span> CustomWebViewClient());          </span><br><span class="line">      		webView.loadUrl(url);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomWebViewClient</span> <span class="keyword">extends</span> <span class="title">WebViewClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldOverrideUrlLoading</span><span class="params">(android.webkit.WebView view, String url)</span> </span>&#123;</span><br><span class="line">            PaiPaiLog.i(<span class="string">"orgUrl"</span>, url);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> dispathUrlAction(url);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageStarted</span><span class="params">(WebView view, String url, Bitmap favicon)</span> </span>&#123;</span><br><span class="line">            PaiPaiLog.d(<span class="string">"MyWebViewClient"</span>, <span class="string">"onPageStarted"</span>);</span><br><span class="line">            <span class="keyword">super</span>.onPageStarted(view, url, favicon);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;</span><br><span class="line">            PaiPaiLog.d(<span class="string">"MyWebViewClient"</span>, <span class="string">"onPageFinished "</span>);</span><br><span class="line">            <span class="comment">//当h5代码加载完成后,通过webview调用 js 方法:getShareInfo()</span></span><br><span class="line">            view.loadUrl(<span class="string">"javascript:getShareInfo()"</span>);</span><br><span class="line">            <span class="keyword">super</span>.onPageFinished(view, url);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> 	<span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">super</span>.handleMessage(msg);</span><br><span class="line">                <span class="keyword">if</span> (msg.what == <span class="number">0</span>) &#123;</span><br><span class="line">                    String json = (String) msg.obj;</span><br><span class="line">                    <span class="keyword">if</span> (!TextUtils.isEmpty(json)) &#123;</span><br><span class="line">                        shareEntity = JsonTools.getCollFromJson(json, ShareEntity.class);</span><br><span class="line">                        iv_cdl_share.setVisibility(View.VISIBLE);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                        shareEntity = <span class="keyword">null</span>;</span><br><span class="line">                        iv_cdl_share.setVisibility(View.GONE);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InJavaScriptLocalObj</span> </span>&#123;</span><br><span class="line">            <span class="annotation">@JavascriptInterface</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getInfo</span><span class="params">(String json)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (TextUtils.isEmpty(json)) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                PaiPaiLog.i(<span class="string">"getInfo"</span>, <span class="string">" json  "</span> + json);</span><br><span class="line">                <span class="comment">/*</span><br><span class="line">       &#123;"url":"http://www.paipai.com/m2/2015/rongmomo/index.html","title":"荣耀暑飙，疯狂暴走赢荣耀7！","desc":"荣耀暑飙，疯狂暴走赢荣耀7，不服来战！","img":"http://www.paipai.com/m2/2015/rongmomo/image/100X100.jpg"&#125;</span><br><span class="line">*/</span></span><br><span class="line"><span class="comment">//因为这里不是UI线程,所以通过Handler将数据传递出去,方便分享按钮展示或者隐藏.</span></span><br><span class="line">                mHandler.sendMessage(mHandler.obtainMessage(<span class="number">0</span>, json));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
@@ -344,20 +360,28 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/H5/" rel="tag">#H5</a>
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/22/快速开发AutoScrollViewPageWithIndicator/" rel="next" title="快速开发AutoScrollViewPagerWithIndicator">
-                <i class="fa fa-chevron-left"></i> 快速开发AutoScrollViewPagerWithIndicator
+              <a href="/2015/12/16/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/25/Fragment之间的切换/" rel="prev" title="2个Fragment之间的切换">
+              <a href="/2015/12/22/Fragment之间的切换/" rel="prev" title="2个Fragment之间的切换">
                 2个Fragment之间的切换 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -460,14 +484,14 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -552,7 +576,7 @@ app分享h5页面需要 标题 , url ,分享语 , 图标 ,正常情况下这些�
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
