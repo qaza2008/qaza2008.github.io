@@ -65,7 +65,7 @@
 123456&amp;lt;ImageView&amp;gt;xmlns:android=">
 <meta property="og:image" content="http://7vihs8.com1.z0.glb.clouddn.com/image1.png">
 <meta property="og:image" content="http://7vihs8.com1.z0.glb.clouddn.com/image2.png">
-<meta property="og:updated_time" content="2015-12-28T14:59:13.000Z">
+<meta property="og:updated_time" content="2015-12-28T15:18:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ImageViewWithFullPic">
 <meta name="twitter:description" content="概述&amp;nbsp;&amp;nbsp;需求如下:
@@ -285,7 +285,7 @@
 <p>结果发现当图片特别长的时候,发现头部会有一部分没有展示,尤其是当图片在广告机这种大屏尺寸,尤为明显.</p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> ImageView.ScaleType  CENTER_CROP</span><br><span class="line"></span><br><span class="line">均衡的缩放图像（保持图像原始比例），使图片的两个坐标（宽、高）都大于等于 相应的视图坐标（负的内边距）。图像则位于视图的中央。 在 <span class="keyword">XML</span> 中可以使用的语法：</span><br></pre></td></tr></table></figure>
 <p>即便改成CENTER_INSIDE/CENTER就会图片变小,达不到想要的效果.</p>
-<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/image1.png" alt="image"></p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/image1.png" alt="image"><br><a id="more"></a></p>
 <h4 id="u6539_u5584"><a href="#u6539_u5584" class="headerlink" title="改善"></a>改善</h4><p>  后来忍无可忍了,那就只有动态计算图片的尺寸和屏幕尺寸,保证图片的宽和屏幕的宽一致,动态给ImageView height赋值.</p>
 <p> 由于我目前将图片放到ListView中,所以以ListView的Adapter为示例代码.</p>
 <p>layout文件: 注意是scaleType=”fitXY”</p>
