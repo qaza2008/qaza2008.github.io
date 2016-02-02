@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="armeabi,ndk,so," />
+  <meta name="keywords" content="H5,android," />
 
 
 
@@ -51,25 +51,28 @@
 
 
 
-<meta name="description" content="android的armeabi和armeabi-v7a:转载: http://gybin.iteye.com/blog/2031565
-在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。
-可以贴个ADT代码说明问题:
-12345678910//m_configType.equals(&quot;apk">
+<meta name="description" content="概述  介绍一种在Android WebView获取h5页面中title,并在原生的TextView展示title的方法:
+  欢迎围观另一篇: Android与h5通过js调用实现分享
+  一.一般做法
+ 当使用WebView加载H5页面,可以在
+ 123456789101112131415webView.setWebChromeClient(new WebChromeClient() &amp;#12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="介绍下armeabi和sdk vs ndk">
-<meta property="og:url" content="http://androidso.com/2016/01/12/whats-armeabi/index.html">
+<meta property="og:title" content="android_webview_goback_title">
+<meta property="og:url" content="http://androidso.com/2016/02/02/android-webview-goback-title/index.html">
 <meta property="og:site_name" content="qaza2008's blog">
-<meta property="og:description" content="android的armeabi和armeabi-v7a:转载: http://gybin.iteye.com/blog/2031565
-在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。
-可以贴个ADT代码说明问题:
-12345678910//m_configType.equals(&quot;apk">
-<meta property="og:updated_time" content="2016-01-12T11:11:07.000Z">
+<meta property="og:description" content="概述  介绍一种在Android WebView获取h5页面中title,并在原生的TextView展示title的方法:
+  欢迎围观另一篇: Android与h5通过js调用实现分享
+  一.一般做法
+ 当使用WebView加载H5页面,可以在
+ 123456789101112131415webView.setWebChromeClient(new WebChromeClient() &amp;#12">
+<meta property="og:updated_time" content="2016-02-02T17:21:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="介绍下armeabi和sdk vs ndk">
-<meta name="twitter:description" content="android的armeabi和armeabi-v7a:转载: http://gybin.iteye.com/blog/2031565
-在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。
-可以贴个ADT代码说明问题:
-12345678910//m_configType.equals(&quot;apk">
+<meta name="twitter:title" content="android_webview_goback_title">
+<meta name="twitter:description" content="概述  介绍一种在Android WebView获取h5页面中title,并在原生的TextView展示title的方法:
+  欢迎围观另一篇: Android与h5通过js调用实现分享
+  一.一般做法
+ 当使用WebView加载H5页面,可以在
+ 123456789101112131415webView.setWebChromeClient(new WebChromeClient() &amp;#12">
 
 
 
@@ -81,7 +84,7 @@
   };
 </script>
 
-  <title> 介绍下armeabi和sdk vs ndk | qaza2008's blog </title>
+  <title> android_webview_goback_title | qaza2008's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -221,7 +224,7 @@
             
             
               
-                介绍下armeabi和sdk vs ndk
+                android_webview_goback_title
               
             
           </h1>
@@ -230,8 +233,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-12T18:00:56+08:00" content="2016-01-12">
-              2016-01-12
+            <time itemprop="dateCreated" datetime="2016-02-02T22:24:56+08:00" content="2016-02-02">
+              2016-02-02
             </time>
           </span>
 
@@ -240,8 +243,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -256,8 +259,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/12/whats-armeabi/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/whats-armeabi/" itemprop="commentsCount"></span>
+                <a href="/2016/02/02/android-webview-goback-title/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/android-webview-goback-title/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -276,40 +279,21 @@
       
 
       
-        <span itemprop="articleBody"><h4 id="android_u7684armeabi_u548Carmeabi-v7a_3A"><a href="#android_u7684armeabi_u548Carmeabi-v7a_3A" class="headerlink" title="android的armeabi和armeabi-v7a:"></a>android的armeabi和armeabi-v7a:</h4><p>转载: <a href="http://gybin.iteye.com/blog/2031565" target="_blank" rel="external">http://gybin.iteye.com/blog/2031565</a></p>
-<p>在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。</p>
-<p>可以贴个ADT代码说明问题:</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/m_configType.equals("apk") 是否是发行模式</span><br><span class="line">/</span><span class="regexp">/(hasCaptiveRuntime() 是否带运行时</span><br><span class="line"> if ((m_configType.equals("apk")) || (hasCaptiveRuntime()))</span><br><span class="line">    &#123;</span><br><span class="line">      destApkDirectory = "lib/armeabi</span>-v7a/<span class="string">";</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">      destApkDirectory = "</span><span class="class"><span class="keyword">lib</span>/<span class="title">armeabi</span>/";</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>而这个armeabi和armeabi-v7a究竟是什么意思？</p>
-<p>有什么深意么？</p>
-<p>为什么调试模式和发行模式adobe会选择不同的文件夹？<br><a id="more"></a></p>
-<p>我在这篇记录下我对于这个小问题的理解。</p>
-<p>armeabi与armeabi-v7a表示支持不同的CPU类型<br>armeabi是指的该so库用于ARM的通用CPU，而v7a的CPU支持硬件浮点运算。因此armeabi通用性强，但速度慢，而v7a能充分发挥v7a CPU的能力，在AIR打包APK调试模式adobe选择的是通用性强的armeabi模式。</p>
-<p>android支持不同CPU的深层含义<br>首先从硬件支持方便来看，我们的adnroid设备目前为止大部分都是支持ARM芯片，（当然市面上此刻最新的android机器还支持intel等另外的几个芯片，例如intel最新的凌动项目芯片，就获得了android4.1的青睐）。从android版本与支持ARM硬件编码的程度来看：</p>
+        <span itemprop="articleBody"><h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  介绍一种在Android WebView获取h5页面中title,并在原生的TextView展示title的方法:</p>
+<p>  欢迎围观另一篇: <a href="http://androidso.com/2015/12/21/Android_h5_js_share/">Android与h5通过js调用实现分享</a></p>
+<p>  一.一般做法</p>
+<p> 当使用WebView加载H5页面,可以在</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">webView.setWebChromeClient(<span class="keyword">new</span> WebChromeClient() &#123;</span><br><span class="line">           @<span class="function">Override</span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivedTitle</span><span class="params">(android.webkit.WebView view, String title)</span> </span>&#123;</span><br><span class="line">                   <span class="keyword">if</span> (!TextUtils.isEmpty(title)) &#123;</span><br><span class="line">                       <span class="keyword">if</span> (title.length() &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">                           tv_title.setText(title.substring(<span class="number">0</span>, <span class="number">10</span>) + <span class="string">"..."</span>);</span><br><span class="line">                       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                           tv_title.setText(title);</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               super.onReceivedTitle(view, title);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p>存在的问题在于:  </p>
 <ul>
-<li><p>起初android1.6：只支持armv4与armv5te指令集。</p>
-</li>
-<li><p>到了android2.0：增加了支持arm-vfp，armv6，armv6t2指令集。</p>
-</li>
-<li><p>到了android2.2：增加支持armv7-a指令集。</p>
-</li>
+<li>当h5页面进入多层级页面,调用<code>webview.goBack()</code>返回上一层页面时,不会调用上面的<code>onReceivedTitle</code>,所有页面的tv_title仍然是上一个title.  </li>
 </ul>
-<p>所以armeabi-v7a 应该是与AIR限定支持android2.2以上的条件有关。android2.2以上能让硬件发挥更大的作用。</p>
-<p>我项目中使用armeabi还是armeabi-v7a<br>对于AIR项目来说性能问题是最大的瓶颈，能优化一点就一点，所以如果接平台方SDK或者写ANE的时候使用到SO库，个人推荐全部放到armeabi-v7a下，而不要为了兼容放到armeabi。</p>
-<p>-EOF-</p>
-<p>在我们android APK的根目录有一个 libs文件夹，此文件夹下包含了armeabi 和armeabi-v7a两个文件夹，我们的c代码编译成的本地库（各种.so）就会放在这两个文件夹其中的一个。那armeabi-v7a 与 armeabi有什么区别，都是什么意思呢？<br>    armeabi和armeabi-v7a是表示cpu的类型，我们知道一般的手机或平板都是用arm的cpu（mips的就悲催的被忽视了），不同的cpu的特性不一样，armeabi就是针对普通的或旧的arm v5 cpu，armeabi-v7a是针对有浮点运算或高级扩展功能的arm v7 cpu。<br>      在android.mk里可配置以下宏：<br>TARGET_CPU_API := armeabi<br>APP_ABI := armeabi</p>
-<p>当你编译时出现一些链接动态库的undefine错误，或你的apk运行时出现装载.so动态库错误时，不妨看一下这个cpu类型的配置是否有误。</p>
-<p>现在还有x86的了，其实armeabi 、armeabi-v7a 和x86是编译 NDK 库时，可以使用三种支持的应用二进制接口(ABI)：  </p>
-<pre><code>‘armeabi’ – 默认选项，将创建以基于 ARM* v5TE 的设备为目标的库。 具有这种目标的浮点运算使用软件浮点运算。 使用此 ABI 创建的二进制代码将可以在所有 ARM* 设备上运行。
-‘armeabi-v7a’ – 创建支持基于 ARM* v7 的设备的库，并将使用硬件 FPU 指令。
-‘x86’ – 生成的二进制代码可支持包含基于硬件的浮点运算的 IA-32 指令集。
-</code></pre><h4 id="u5B89_u5353sdk_u548Cndk_u90FD_u662F_u4EC0_u4E48"><a href="#u5B89_u5353sdk_u548Cndk_u90FD_u662F_u4EC0_u4E48" class="headerlink" title="安卓sdk和ndk都是什么"></a>安卓sdk和ndk都是什么</h4><p>android sdk （Android Software Development Kit, 即Android软件开发工具包）可以说只要你使用java去开发Android这个东西就必须用到。</p>
-<p>他包含了SDK Manager 和 AVD Manage<br>对于android系统的一些开发版本的管理以及模拟器管理。<br>而ndk （Native Development Kit）跟sdk差不多的是他也是一个开发工具包。用他开发c/c++是很方便的。他有一个强大的编译集合。</p>
-<p>其实名词的解释我也不想多说。这点你只需要百度分别输入sdk 和 ndk 百度百科里就有你想要的。</p>
-<p>我来说说android他为什么会有一个ndk把。<br>很早以前android是只有sdk的。并没有ndk。这就意味着一旦android的开发者要使用c/c++的三方库或者需要用到c/c++就必须使用非官方的法子。用java的jni去调用c/c++。耍小聪明走后门一样。而ndk的出现就意味着jni调用的这种方法转正了变成官方了以后你不需要再走后面大路正面随你走。</p>
-<p>可是这样还是没有说到为什么要有ndk啊。是的我只想说的就是如果你要操作底层直接操作内存。操作地址那你不得不去使用c/c++因为java这块想做这些。那恐怕有点困难。所以ndk是必须需要出现的。</p>
-<p>而这个sdk和ndk并不是完全不相溶的2门语言。对于android来说是同种语言的2种不同时期的必须品。</p>
-</span>
+<p>  二.改善做法</p>
+<p> 针对上面的问题,其实系统为WebView提供了<a href="http://wear.techbrood.com/reference/android/webkit/WebBackForwardList.html" target="_blank" rel="external">WebBackForwardList</a>,包含WebView的后退/前进集合.<code>WebView.copyBackForwardList()</code>通过这个方法来获得曾进入过的list的备份.<br> 这里还有另外一个需求:当一次进入页面的时候会传入一个指定title,所以当退到最top的页面,使用的仍然是指定的title.</p>
+ <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">webView<span class="built_in">.</span>setWebViewClient(<span class="literal">new</span> WebViewClient()&#123;</span><br><span class="line"><span class="attribute">...</span></span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line"><span class="keyword">public</span> <span class="literal">void</span> onPageFinished(WebView view, <span class="built_in">String</span> url) &#123;</span><br><span class="line">    super<span class="built_in">.</span>onPageFinished(view, url);</span><br><span class="line">    updateTitle();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="literal">void</span> updateTitle() &#123;</span><br><span class="line">            <span class="keyword">if</span> (webView != <span class="built_in">null</span>) &#123;</span><br><span class="line">                WebBackForwardList <span class="built_in">list</span> = webView<span class="built_in">.</span>copyBackForwardList();</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">list</span> != <span class="built_in">null</span>) &#123;</span><br><span class="line">                    WebHistoryItem item = <span class="built_in">list</span><span class="built_in">.</span>getCurrentItem();</span><br><span class="line">                    <span class="keyword">if</span> (item != <span class="built_in">null</span>) &#123;</span><br><span class="line">      </span><br><span class="line">                        <span class="keyword">if</span> (url<span class="built_in">.</span><span class="keyword">equals</span>(item<span class="built_in">.</span>getUrl())) &#123;</span><br><span class="line">                            <span class="comment">//top 层 ,更新为 传过来的 title</span></span><br><span class="line">                            <span class="keyword">if</span> (TextUtils<span class="built_in">.</span>isEmpty(title)) &#123;</span><br><span class="line">                                activity<span class="built_in">.</span>setTitle(item<span class="built_in">.</span>getTitle());</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                activity<span class="built_in">.</span>setTitle(title);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="comment">//更新为当前页面的title</span></span><br><span class="line">                            activity<span class="built_in">.</span>setTitle(item<span class="built_in">.</span>getTitle());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p> 这里主要用到了一个思想:使用一个集合记录浏览过往的记录,每次页面加载完毕后,把对应的title并通过对比记录判断当前页面是否是最初的url,并更新title.</p>
+<p> Done!</p>
+<h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2></span>
       
     </div>
 
@@ -317,11 +301,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/armeabi/" rel="tag">#armeabi</a>
+            <a href="/tags/H5/" rel="tag">#H5</a>
           
-            <a href="/tags/ndk/" rel="tag">#ndk</a>
-          
-            <a href="/tags/so/" rel="tag">#so</a>
+            <a href="/tags/android/" rel="tag">#android</a>
           
         </div>
       
@@ -330,17 +312,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/07/record-voice-from-Android/" rel="next" title="record_voice_from_Android">
-                <i class="fa fa-chevron-left"></i> record_voice_from_Android
+              <a href="/2016/01/12/whats-armeabi/" rel="next" title="介绍下armeabi和sdk vs ndk">
+                <i class="fa fa-chevron-left"></i> 介绍下armeabi和sdk vs ndk
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/02/android-webview-goback-title/" rel="prev" title="android_webview_goback_title">
-                android_webview_goback_title <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -355,10 +333,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/12/whats-armeabi/"
-     data-title="介绍下armeabi和sdk vs ndk"
+        <div class="ds-share flat" data-thread-key="2016/02/02/android-webview-goback-title/"
+     data-title="android_webview_goback_title"
      data-content=""
-     data-url="http://androidso.com/2016/01/12/whats-armeabi/">
+     data-url="http://androidso.com/2016/02/02/android-webview-goback-title/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -389,8 +367,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/12/whats-armeabi/"
-           data-title="介绍下armeabi和sdk vs ndk" data-url="http://androidso.com/2016/01/12/whats-armeabi/">
+      <div class="ds-thread" data-thread-key="2016/02/02/android-webview-goback-title/"
+           data-title="android_webview_goback_title" data-url="http://androidso.com/2016/02/02/android-webview-goback-title/">
       </div>
     
   </div>
@@ -498,7 +476,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#android_u7684armeabi_u548Carmeabi-v7a_3A"><span class="nav-number">1.</span> <span class="nav-text">android的armeabi和armeabi-v7a:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B89_u5353sdk_u548Cndk_u90FD_u662F_u4EC0_u4E48"><span class="nav-number">2.</span> <span class="nav-text">安卓sdk和ndk都是什么</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u8FF0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Welcome_To_My_Website"><span class="nav-number"></span> <span class="nav-text">Welcome To My Website</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http_3A//androidso-com"><span class="nav-number"></span> <span class="nav-text">http://androidso.com</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

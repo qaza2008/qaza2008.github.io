@@ -229,6 +229,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/02/android-webview-goback-title/" itemprop="url">
+                  android_webview_goback_title
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-02-02T22:24:56+08:00" content="2016-02-02">
+              2016-02-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/02/android-webview-goback-title/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/android-webview-goback-title/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  介绍一种在Android WebView获取h5页面中title,并在原生的TextView展示title的方法:</p>
+<p>  欢迎围观另一篇: <a href="http://androidso.com/2015/12/21/Android_h5_js_share/">Android与h5通过js调用实现分享</a></p>
+<p>  一.一般做法</p>
+<p> 当使用WebView加载H5页面,可以在</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">webView.setWebChromeClient(<span class="keyword">new</span> WebChromeClient() &#123;</span><br><span class="line">           @<span class="function">Override</span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivedTitle</span><span class="params">(android.webkit.WebView view, String title)</span> </span>&#123;</span><br><span class="line">                   <span class="keyword">if</span> (!TextUtils.isEmpty(title)) &#123;</span><br><span class="line">                       <span class="keyword">if</span> (title.length() &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">                           tv_title.setText(title.substring(<span class="number">0</span>, <span class="number">10</span>) + <span class="string">"..."</span>);</span><br><span class="line">                       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                           tv_title.setText(title);</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               super.onReceivedTitle(view, title);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
+<p>存在的问题在于:  </p>
+<ul>
+<li>当h5页面进入多层级页面,调用<code>webview.goBack()</code>返回上一层页面时,不会调用上面的<code>onReceivedTitle</code>,所有页面的tv_title仍然是上一个title.  </li>
+</ul>
+<p>  二.改善做法</p>
+<p> 针对上面的问题,其实系统为WebView提供了<a href="http://wear.techbrood.com/reference/android/webkit/WebBackForwardList.html" target="_blank" rel="external">WebBackForwardList</a>,包含WebView的后退/前进集合.<code>WebView.copyBackForwardList()</code>通过这个方法来获得曾进入过的list的备份.<br> 这里还有另外一个需求:当一次进入页面的时候会传入一个指定title,所以当退到最top的页面,使用的仍然是指定的title.</p>
+ <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">webView<span class="built_in">.</span>setWebViewClient(<span class="literal">new</span> WebViewClient()&#123;</span><br><span class="line"><span class="attribute">...</span></span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line"><span class="keyword">public</span> <span class="literal">void</span> onPageFinished(WebView view, <span class="built_in">String</span> url) &#123;</span><br><span class="line">    super<span class="built_in">.</span>onPageFinished(view, url);</span><br><span class="line">    updateTitle();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="literal">void</span> updateTitle() &#123;</span><br><span class="line">            <span class="keyword">if</span> (webView != <span class="built_in">null</span>) &#123;</span><br><span class="line">                WebBackForwardList <span class="built_in">list</span> = webView<span class="built_in">.</span>copyBackForwardList();</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">list</span> != <span class="built_in">null</span>) &#123;</span><br><span class="line">                    WebHistoryItem item = <span class="built_in">list</span><span class="built_in">.</span>getCurrentItem();</span><br><span class="line">                    <span class="keyword">if</span> (item != <span class="built_in">null</span>) &#123;</span><br><span class="line">      </span><br><span class="line">                        <span class="keyword">if</span> (url<span class="built_in">.</span><span class="keyword">equals</span>(item<span class="built_in">.</span>getUrl())) &#123;</span><br><span class="line">                            <span class="comment">//top 层 ,更新为 传过来的 title</span></span><br><span class="line">                            <span class="keyword">if</span> (TextUtils<span class="built_in">.</span>isEmpty(title)) &#123;</span><br><span class="line">                                activity<span class="built_in">.</span>setTitle(item<span class="built_in">.</span>getTitle());</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                activity<span class="built_in">.</span>setTitle(title);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="comment">//更新为当前页面的title</span></span><br><span class="line">                            activity<span class="built_in">.</span>setTitle(item<span class="built_in">.</span>getTitle());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p> 这里主要用到了一个思想:使用一个集合记录浏览过往的记录,每次页面加载完毕后,把对应的title并通过对比记录判断当前页面是否是最初的url,并更新title.</p>
+<p> Done!</p>
+<h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/01/12/whats-armeabi/" itemprop="url">
                   介绍下armeabi和sdk vs ndk
                 </a>
@@ -1113,7 +1229,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
