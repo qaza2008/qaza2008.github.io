@@ -197,15 +197,293 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/29/android-res-soft-reference/" itemprop="url">
+                  android_res_soft_reference
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-02-29T09:33:57+08:00" content="2016-02-29">
+              2016-02-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/29/android-res-soft-reference/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/android-res-soft-reference/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  大家在项目中多少都会遇到这种情况:  </p>
+<ol>
+<li>同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.</li>
+<li>同一个布局需要使用include引进同一个子布局多次,怎么实现.</li>
+</ol>
+<h5 id="u9996_u5148_u89E3_u51B3_u7B2C_u4E00_u4E2A_u95EE_u9898_3A"><a href="#u9996_u5148_u89E3_u51B3_u7B2C_u4E00_u4E2A_u95EE_u9898_3A" class="headerlink" title="首先解决第一个问题:"></a>首先解决第一个问题:</h5><ol>
+<li>不要在layout中的控件使用<code>android:id=&quot;@+id/xxx&quot;</code>这样的硬代码.</li>
+<li>接下来需要在<code>[res]-[values]-ids.xml</code> 中定义<code>&lt;item name=&quot;xxx_1_1&quot; type=&quot;id&quot;&gt;&lt;/item&gt;</code>这样的id.  </li>
+<li>为layout的控件的id赋值<code>android:id=&quot;@id/xxx_1_1</code>,代码引用ids.xml中定义好的id.  </li>
+<li><p>以上是对一个id的引用策略,下面扩展到多个.<br><strong>ids:</strong>  </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?xml <span class="property">version</span>=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">  &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_1_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_1_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_2_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_2_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_3"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="type">string</span>-array <span class="property">name</span>=<span class="string">"xxx_pic"</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_1_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_1_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_2_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_2_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_3&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;/<span class="type">string</span>-array&gt;</span><br><span class="line"> &lt;resources&gt;</span><br><span class="line">  ```  </span><br><span class="line">**layout** 类似于九宫格的布局.</span><br></pre></td></tr></table></figure>
+<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:orientation="vertical" android:background="@drawable/bg_home_module_shape" android:divider="@drawable/shape_horizontal_line" android:showdividers="middle" android:layout_height="wrap_content"><br><br>    <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:weightsum="3" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="107dp"><br><br>        <imageview android:id="@id/home_shop_1_1" android:layout_width="0dp" android:layout_weight="2" android:layout_height="match_parent"><br><br>        <imageview android:id="@id/home_shop_1_2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>    </imageview></imageview></linearlayout>
+
+<pre><code>&lt;LinearLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:divider=&quot;@drawable/shape_vertical_line&quot;
+    android:showDividers=&quot;middle&quot;
+    android:layout_height=&quot;107dp&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_2_1&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_2_2&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;2&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+
+&lt;LinearLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:weightSum=&quot;3&quot;
+    android:divider=&quot;@drawable/shape_vertical_line&quot;
+    android:showDividers=&quot;middle&quot;
+    android:layout_height=&quot;107dp&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_3_1&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_3_2&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_3_3&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p></p></linearlayout><p></p>
+</li>
+</ol>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在这里涉及了7个ImageView的布局,定义好以上之后就可以操作了 :  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>activity<span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure>
+<p>  TypedArray typedArray = getResources().obtainTypedArray(R.array.xxx_pic);<br>        int length = Math.min(typedArray.length(), list.size());<br>        for (int i = 0; i &lt; length; i++) {<br>            final Item item = list.get(i);<br>            ImageView view = ((ImageView) (getView().findViewById(typedArray.getResourceId(i, 0))));<br>            view.setImageURI(Uri.parse(item.url));<br>            view.setOnClickListener(new View.OnClickListener() {<br>                @Override<br>                public void onClick(View view) {</p>
+<pre><code>        }
+    });
+}
+</code></pre><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">说明下,以上`ImageView`使用的是facebook 下的`SimpleDraweeView`,这样使用一次循环即可,不用再使用硬代码来操作,如果有重复的布局文件可以使用;  </span><br><span class="line"><span class="comment">##### 下面解决第二个问题  </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>layout<span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure>
+  <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:paddingtop="6dp" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="wrap_content"><br><br><br>            <include android:id="@id/xxxp1" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>            <include android:id="@id/xxxp2" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>            <include android:id="@id/xxxp3" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>            <include android:id="@id/xxxp4" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>        </linearlayout>
+
+<pre><code>**ids**
+</code></pre><p>  <item name="xxxp1" type="id"></item><br>    <item name="xxxp2" type="id"></item><br>    <item name="xxxp3" type="id"></item><br>    <item name="xxxp4" type="id"></item><br>    <string-array name="xxxp_group"><br>        <item>@id/xxxp1</item><br>        <item>@id/xxxp2</item><br>        <item>@id/xxxp3</item><br>        <item>@id/xxxp4</item><br>    </string-array>  </p>
+<pre><code>**activity**
+</code></pre><p> TypedArray typedArray = getResources().obtainTypedArray(R.array.xxxp_group);<br>        for (int i = 0; i &lt; list.size(); i++) {<br>            final Entity entity = list.get(i);<br>             View view = findViewById(typedArray.getResourceId(i - 1, 0));</p>
+<pre><code>}
+</code></pre><p> typedArray.recycle();</p>
+<p>```<br>要点:在include中新增加id,操作的时候首先找到这个include的id,然后通过这id获得内部的layout,在操作layout内部的控件即可.  </p>
+<p>Done!</p>
+<h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/04/JavaStript-inherit/" itemprop="url">
+                  JavaStript_inherit
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-02-04T15:40:21+08:00" content="2016-02-04">
+              2016-02-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaStript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaStript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/04/JavaStript-inherit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/JavaStript-inherit/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  最近公司的H5那条发开线人力不够,Android来凑.</p>
+<p>研读阮一峰老师的js教程(<a href="http://javascript.ruanyifeng.com" target="_blank" rel="external">JavaScript标准参考教程</a>),发觉JavaStript的灵活性不是一般的大.下面来谈谈继承:</p>
+<h4 id="u4E00-_u5229_u7528Object-create_u7EE7_u627F"><a href="#u4E00-_u5229_u7528Object-create_u7EE7_u627F" class="headerlink" title="一.利用Object.create继承."></a>一.利用Object.create继承.</h4><p>😃&nbsp;&nbsp;</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1091,106 +1369,14 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/16/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-16T17:00:41+08:00" content="2015-12-16">
-              2015-12-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/16/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
         </div>
@@ -1229,21 +1415,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

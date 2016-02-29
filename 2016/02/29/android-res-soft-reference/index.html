@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="armeabi,ndk,so," />
+  <meta name="keywords" content="res-reference," />
 
 
 
@@ -51,25 +51,34 @@
 
 
 
-<meta name="description" content="android的armeabi和armeabi-v7a:转载: http://gybin.iteye.com/blog/2031565
-在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。
-可以贴个ADT代码说明问题:
-12345678910//m_configType.equals(&quot;apk">
+<meta name="description" content="概述  大家在项目中多少都会遇到这种情况:  
+
+同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.
+同一个布局需要使用include引进同一个子布局多次,怎么实现.
+
+首先解决第一个问题:
+不要在layout中的控件使用android:id=&amp;quot;@+id/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="介绍下armeabi和sdk vs ndk">
-<meta property="og:url" content="http://androidso.com/2016/01/12/whats-armeabi/index.html">
+<meta property="og:title" content="android_res_soft_reference">
+<meta property="og:url" content="http://androidso.com/2016/02/29/android-res-soft-reference/index.html">
 <meta property="og:site_name" content="qaza2008's blog">
-<meta property="og:description" content="android的armeabi和armeabi-v7a:转载: http://gybin.iteye.com/blog/2031565
-在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。
-可以贴个ADT代码说明问题:
-12345678910//m_configType.equals(&quot;apk">
-<meta property="og:updated_time" content="2016-01-12T11:11:07.000Z">
+<meta property="og:description" content="概述  大家在项目中多少都会遇到这种情况:  
+
+同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.
+同一个布局需要使用include引进同一个子布局多次,怎么实现.
+
+首先解决第一个问题:
+不要在layout中的控件使用android:id=&amp;quot;@+id/">
+<meta property="og:updated_time" content="2016-02-29T02:35:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="介绍下armeabi和sdk vs ndk">
-<meta name="twitter:description" content="android的armeabi和armeabi-v7a:转载: http://gybin.iteye.com/blog/2031565
-在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。
-可以贴个ADT代码说明问题:
-12345678910//m_configType.equals(&quot;apk">
+<meta name="twitter:title" content="android_res_soft_reference">
+<meta name="twitter:description" content="概述  大家在项目中多少都会遇到这种情况:  
+
+同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.
+同一个布局需要使用include引进同一个子布局多次,怎么实现.
+
+首先解决第一个问题:
+不要在layout中的控件使用android:id=&amp;quot;@+id/">
 
 
 
@@ -81,7 +90,7 @@
   };
 </script>
 
-  <title> 介绍下armeabi和sdk vs ndk | qaza2008's blog </title>
+  <title> android_res_soft_reference | qaza2008's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -221,7 +230,7 @@
             
             
               
-                介绍下armeabi和sdk vs ndk
+                android_res_soft_reference
               
             
           </h1>
@@ -230,8 +239,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-12T18:00:56+08:00" content="2016-01-12">
-              2016-01-12
+            <time itemprop="dateCreated" datetime="2016-02-29T09:33:57+08:00" content="2016-02-29">
+              2016-02-29
             </time>
           </span>
 
@@ -256,8 +265,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/12/whats-armeabi/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/whats-armeabi/" itemprop="commentsCount"></span>
+                <a href="/2016/02/29/android-res-soft-reference/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/29/android-res-soft-reference/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -276,40 +285,87 @@
       
 
       
-        <span itemprop="articleBody"><h4 id="android_u7684armeabi_u548Carmeabi-v7a_3A"><a href="#android_u7684armeabi_u548Carmeabi-v7a_3A" class="headerlink" title="android的armeabi和armeabi-v7a:"></a>android的armeabi和armeabi-v7a:</h4><p>转载: <a href="http://gybin.iteye.com/blog/2031565" target="_blank" rel="external">http://gybin.iteye.com/blog/2031565</a></p>
-<p>在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。</p>
-<p>可以贴个ADT代码说明问题:</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/m_configType.equals("apk") 是否是发行模式</span><br><span class="line">/</span><span class="regexp">/(hasCaptiveRuntime() 是否带运行时</span><br><span class="line"> if ((m_configType.equals("apk")) || (hasCaptiveRuntime()))</span><br><span class="line">    &#123;</span><br><span class="line">      destApkDirectory = "lib/armeabi</span>-v7a/<span class="string">";</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">      destApkDirectory = "</span><span class="class"><span class="keyword">lib</span>/<span class="title">armeabi</span>/";</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>而这个armeabi和armeabi-v7a究竟是什么意思？</p>
-<p>有什么深意么？</p>
-<p>为什么调试模式和发行模式adobe会选择不同的文件夹？<br><a id="more"></a></p>
-<p>我在这篇记录下我对于这个小问题的理解。</p>
-<p>armeabi与armeabi-v7a表示支持不同的CPU类型<br>armeabi是指的该so库用于ARM的通用CPU，而v7a的CPU支持硬件浮点运算。因此armeabi通用性强，但速度慢，而v7a能充分发挥v7a CPU的能力，在AIR打包APK调试模式adobe选择的是通用性强的armeabi模式。</p>
-<p>android支持不同CPU的深层含义<br>首先从硬件支持方便来看，我们的adnroid设备目前为止大部分都是支持ARM芯片，（当然市面上此刻最新的android机器还支持intel等另外的几个芯片，例如intel最新的凌动项目芯片，就获得了android4.1的青睐）。从android版本与支持ARM硬件编码的程度来看：</p>
-<ul>
-<li><p>起初android1.6：只支持armv4与armv5te指令集。</p>
+        <span itemprop="articleBody"><h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  大家在项目中多少都会遇到这种情况:  </p>
+<ol>
+<li>同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.</li>
+<li>同一个布局需要使用include引进同一个子布局多次,怎么实现.</li>
+</ol>
+<h5 id="u9996_u5148_u89E3_u51B3_u7B2C_u4E00_u4E2A_u95EE_u9898_3A"><a href="#u9996_u5148_u89E3_u51B3_u7B2C_u4E00_u4E2A_u95EE_u9898_3A" class="headerlink" title="首先解决第一个问题:"></a>首先解决第一个问题:</h5><ol>
+<li>不要在layout中的控件使用<code>android:id=&quot;@+id/xxx&quot;</code>这样的硬代码.</li>
+<li>接下来需要在<code>[res]-[values]-ids.xml</code> 中定义<code>&lt;item name=&quot;xxx_1_1&quot; type=&quot;id&quot;&gt;&lt;/item&gt;</code>这样的id.  </li>
+<li>为layout的控件的id赋值<code>android:id=&quot;@id/xxx_1_1</code>,代码引用ids.xml中定义好的id.  </li>
+<li><p>以上是对一个id的引用策略,下面扩展到多个.<br><strong>ids:</strong>  </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?xml <span class="property">version</span>=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">  &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_1_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_1_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_2_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_2_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_3"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="type">string</span>-array <span class="property">name</span>=<span class="string">"xxx_pic"</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_1_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_1_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_2_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_2_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_3&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;/<span class="type">string</span>-array&gt;</span><br><span class="line"> &lt;resources&gt;</span><br><span class="line">  ```  </span><br><span class="line">**layout** 类似于九宫格的布局.</span><br></pre></td></tr></table></figure>
+<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:orientation="vertical" android:background="@drawable/bg_home_module_shape" android:divider="@drawable/shape_horizontal_line" android:showdividers="middle" android:layout_height="wrap_content"><br><br>    <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:weightsum="3" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="107dp"><br><br>        <imageview android:id="@id/home_shop_1_1" android:layout_width="0dp" android:layout_weight="2" android:layout_height="match_parent"><br><br>        <imageview android:id="@id/home_shop_1_2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>    </imageview></imageview></linearlayout>
+
+<pre><code>&lt;LinearLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:divider=&quot;@drawable/shape_vertical_line&quot;
+    android:showDividers=&quot;middle&quot;
+    android:layout_height=&quot;107dp&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_2_1&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_2_2&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;2&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+
+&lt;LinearLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:weightSum=&quot;3&quot;
+    android:divider=&quot;@drawable/shape_vertical_line&quot;
+    android:showDividers=&quot;middle&quot;
+    android:layout_height=&quot;107dp&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_3_1&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_3_2&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@id/home_shop_3_3&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_weight=&quot;1&quot;
+        android:layout_height=&quot;match_parent&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><p></p></linearlayout><p></p>
 </li>
-<li><p>到了android2.0：增加了支持arm-vfp，armv6，armv6t2指令集。</p>
-</li>
-<li><p>到了android2.2：增加支持armv7-a指令集。</p>
-</li>
-</ul>
-<p>所以armeabi-v7a 应该是与AIR限定支持android2.2以上的条件有关。android2.2以上能让硬件发挥更大的作用。</p>
-<p>我项目中使用armeabi还是armeabi-v7a<br>对于AIR项目来说性能问题是最大的瓶颈，能优化一点就一点，所以如果接平台方SDK或者写ANE的时候使用到SO库，个人推荐全部放到armeabi-v7a下，而不要为了兼容放到armeabi。</p>
-<p>-EOF-</p>
-<p>在我们android APK的根目录有一个 libs文件夹，此文件夹下包含了armeabi 和armeabi-v7a两个文件夹，我们的c代码编译成的本地库（各种.so）就会放在这两个文件夹其中的一个。那armeabi-v7a 与 armeabi有什么区别，都是什么意思呢？<br>    armeabi和armeabi-v7a是表示cpu的类型，我们知道一般的手机或平板都是用arm的cpu（mips的就悲催的被忽视了），不同的cpu的特性不一样，armeabi就是针对普通的或旧的arm v5 cpu，armeabi-v7a是针对有浮点运算或高级扩展功能的arm v7 cpu。<br>      在android.mk里可配置以下宏：<br>TARGET_CPU_API := armeabi<br>APP_ABI := armeabi</p>
-<p>当你编译时出现一些链接动态库的undefine错误，或你的apk运行时出现装载.so动态库错误时，不妨看一下这个cpu类型的配置是否有误。</p>
-<p>现在还有x86的了，其实armeabi 、armeabi-v7a 和x86是编译 NDK 库时，可以使用三种支持的应用二进制接口(ABI)：  </p>
-<pre><code>‘armeabi’ – 默认选项，将创建以基于 ARM* v5TE 的设备为目标的库。 具有这种目标的浮点运算使用软件浮点运算。 使用此 ABI 创建的二进制代码将可以在所有 ARM* 设备上运行。
-‘armeabi-v7a’ – 创建支持基于 ARM* v7 的设备的库，并将使用硬件 FPU 指令。
-‘x86’ – 生成的二进制代码可支持包含基于硬件的浮点运算的 IA-32 指令集。
-</code></pre><h4 id="u5B89_u5353sdk_u548Cndk_u90FD_u662F_u4EC0_u4E48"><a href="#u5B89_u5353sdk_u548Cndk_u90FD_u662F_u4EC0_u4E48" class="headerlink" title="安卓sdk和ndk都是什么"></a>安卓sdk和ndk都是什么</h4><p>android sdk （Android Software Development Kit, 即Android软件开发工具包）可以说只要你使用java去开发Android这个东西就必须用到。</p>
-<p>他包含了SDK Manager 和 AVD Manage<br>对于android系统的一些开发版本的管理以及模拟器管理。<br>而ndk （Native Development Kit）跟sdk差不多的是他也是一个开发工具包。用他开发c/c++是很方便的。他有一个强大的编译集合。</p>
-<p>其实名词的解释我也不想多说。这点你只需要百度分别输入sdk 和 ndk 百度百科里就有你想要的。</p>
-<p>我来说说android他为什么会有一个ndk把。<br>很早以前android是只有sdk的。并没有ndk。这就意味着一旦android的开发者要使用c/c++的三方库或者需要用到c/c++就必须使用非官方的法子。用java的jni去调用c/c++。耍小聪明走后门一样。而ndk的出现就意味着jni调用的这种方法转正了变成官方了以后你不需要再走后面大路正面随你走。</p>
-<p>可是这样还是没有说到为什么要有ndk啊。是的我只想说的就是如果你要操作底层直接操作内存。操作地址那你不得不去使用c/c++因为java这块想做这些。那恐怕有点困难。所以ndk是必须需要出现的。</p>
-<p>而这个sdk和ndk并不是完全不相溶的2门语言。对于android来说是同种语言的2种不同时期的必须品。</p>
-</span>
+</ol>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在这里涉及了7个ImageView的布局,定义好以上之后就可以操作了 :  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>activity<span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure>
+<p>  TypedArray typedArray = getResources().obtainTypedArray(R.array.xxx_pic);<br>        int length = Math.min(typedArray.length(), list.size());<br>        for (int i = 0; i &lt; length; i++) {<br>            final Item item = list.get(i);<br>            ImageView view = ((ImageView) (getView().findViewById(typedArray.getResourceId(i, 0))));<br>            view.setImageURI(Uri.parse(item.url));<br>            view.setOnClickListener(new View.OnClickListener() {<br>                @Override<br>                public void onClick(View view) {</p>
+<pre><code>        }
+    });
+}
+</code></pre><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">说明下,以上`ImageView`使用的是facebook 下的`SimpleDraweeView`,这样使用一次循环即可,不用再使用硬代码来操作,如果有重复的布局文件可以使用;  </span><br><span class="line"><span class="comment">##### 下面解决第二个问题  </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>layout<span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure>
+  <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:paddingtop="6dp" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="wrap_content"><br><br><br>            <include android:id="@id/xxxp1" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>            <include android:id="@id/xxxp2" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>            <include android:id="@id/xxxp3" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>            <include android:id="@id/xxxp4" layout="@layout/layout_xxxitem" android:layout_height="match_parent" android:layout_width="0dp" android:layout_weight="1"></include><br><br>        </linearlayout>
+
+<pre><code>**ids**
+</code></pre><p>  <item name="xxxp1" type="id"></item><br>    <item name="xxxp2" type="id"></item><br>    <item name="xxxp3" type="id"></item><br>    <item name="xxxp4" type="id"></item><br>    <string-array name="xxxp_group"><br>        <item>@id/xxxp1</item><br>        <item>@id/xxxp2</item><br>        <item>@id/xxxp3</item><br>        <item>@id/xxxp4</item><br>    </string-array>  </p>
+<pre><code>**activity**
+</code></pre><p> TypedArray typedArray = getResources().obtainTypedArray(R.array.xxxp_group);<br>        for (int i = 0; i &lt; list.size(); i++) {<br>            final Entity entity = list.get(i);<br>             View view = findViewById(typedArray.getResourceId(i - 1, 0));</p>
+<pre><code>}
+</code></pre><p> typedArray.recycle();</p>
+<p>```<br>要点:在include中新增加id,操作的时候首先找到这个include的id,然后通过这id获得内部的layout,在操作layout内部的控件即可.  </p>
+<p>Done!</p>
+<h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2></span>
       
     </div>
 
@@ -317,11 +373,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/armeabi/" rel="tag">#armeabi</a>
-          
-            <a href="/tags/ndk/" rel="tag">#ndk</a>
-          
-            <a href="/tags/so/" rel="tag">#so</a>
+            <a href="/tags/res-reference/" rel="tag">#res-reference</a>
           
         </div>
       
@@ -330,17 +382,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/07/record-voice-from-Android/" rel="next" title="record_voice_from_Android">
-                <i class="fa fa-chevron-left"></i> record_voice_from_Android
+              <a href="/2016/02/04/JavaStript-inherit/" rel="next" title="JavaStript_inherit">
+                <i class="fa fa-chevron-left"></i> JavaStript_inherit
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/02/android-webview-goback-title/" rel="prev" title="android_webview_goback_title">
-                android_webview_goback_title <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -355,10 +403,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/12/whats-armeabi/"
-     data-title="介绍下armeabi和sdk vs ndk"
+        <div class="ds-share flat" data-thread-key="2016/02/29/android-res-soft-reference/"
+     data-title="android_res_soft_reference"
      data-content=""
-     data-url="http://androidso.com/2016/01/12/whats-armeabi/">
+     data-url="http://androidso.com/2016/02/29/android-res-soft-reference/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -389,8 +437,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/12/whats-armeabi/"
-           data-title="介绍下armeabi和sdk vs ndk" data-url="http://androidso.com/2016/01/12/whats-armeabi/">
+      <div class="ds-thread" data-thread-key="2016/02/29/android-res-soft-reference/"
+           data-title="android_res_soft_reference" data-url="http://androidso.com/2016/02/29/android-res-soft-reference/">
       </div>
     
   </div>
@@ -498,7 +546,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#android_u7684armeabi_u548Carmeabi-v7a_3A"><span class="nav-number">1.</span> <span class="nav-text">android的armeabi和armeabi-v7a:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B89_u5353sdk_u548Cndk_u90FD_u662F_u4EC0_u4E48"><span class="nav-number">2.</span> <span class="nav-text">安卓sdk和ndk都是什么</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u8FF0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u9996_u5148_u89E3_u51B3_u7B2C_u4E00_u4E2A_u95EE_u9898_3A"><span class="nav-number">1.0.1.</span> <span class="nav-text">首先解决第一个问题:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Welcome_To_My_Website"><span class="nav-number"></span> <span class="nav-text">Welcome To My Website</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http_3A//androidso-com"><span class="nav-number"></span> <span class="nav-text">http://androidso.com</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
