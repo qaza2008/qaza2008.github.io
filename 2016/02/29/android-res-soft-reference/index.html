@@ -54,31 +54,22 @@
 <meta name="description" content="概述  大家在项目中多少都会遇到这种情况:  
 
 同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.
-同一个布局需要使用include引进同一个子布局多次,怎么实现.
-
-首先解决第一个问题:
-不要在layout中的控件使用android:id=&amp;quot;@+id/">
+同一个布局需要使用include引进同一个子布局多次,怎么实现.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android_res_soft_reference">
+<meta property="og:title" content="android资源文件的软引用">
 <meta property="og:url" content="http://androidso.com/2016/02/29/android-res-soft-reference/index.html">
 <meta property="og:site_name" content="qaza2008's blog">
 <meta property="og:description" content="概述  大家在项目中多少都会遇到这种情况:  
 
 同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.
-同一个布局需要使用include引进同一个子布局多次,怎么实现.
-
-首先解决第一个问题:
-不要在layout中的控件使用android:id=&amp;quot;@+id/">
-<meta property="og:updated_time" content="2016-02-29T02:35:28.000Z">
+同一个布局需要使用include引进同一个子布局多次,怎么实现.">
+<meta property="og:updated_time" content="2016-02-29T02:38:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android_res_soft_reference">
+<meta name="twitter:title" content="android资源文件的软引用">
 <meta name="twitter:description" content="概述  大家在项目中多少都会遇到这种情况:  
 
 同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.
-同一个布局需要使用include引进同一个子布局多次,怎么实现.
-
-首先解决第一个问题:
-不要在layout中的控件使用android:id=&amp;quot;@+id/">
+同一个布局需要使用include引进同一个子布局多次,怎么实现.">
 
 
 
@@ -90,7 +81,7 @@
   };
 </script>
 
-  <title> android_res_soft_reference | qaza2008's blog </title>
+  <title> android资源文件的软引用 | qaza2008's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +221,7 @@
             
             
               
-                android_res_soft_reference
+                android资源文件的软引用
               
             
           </h1>
@@ -288,65 +279,21 @@
         <span itemprop="articleBody"><h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  大家在项目中多少都会遇到这种情况:  </p>
 <ol>
 <li>同一个布局文件中会有一些相同的控件,但是这些控件的id不一致,如果要在项目中获取这些控件,多多少少得使用id硬代码来获取,如果这些控件非常多的话,估计这种使用id硬代码就有些不合理了.</li>
-<li>同一个布局需要使用include引进同一个子布局多次,怎么实现.</li>
-</ol>
+<li><p>同一个布局需要使用include引进同一个子布局多次,怎么实现.</p>
+<a id="more"></a>
 <h5 id="u9996_u5148_u89E3_u51B3_u7B2C_u4E00_u4E2A_u95EE_u9898_3A"><a href="#u9996_u5148_u89E3_u51B3_u7B2C_u4E00_u4E2A_u95EE_u9898_3A" class="headerlink" title="首先解决第一个问题:"></a>首先解决第一个问题:</h5><ol>
 <li>不要在layout中的控件使用<code>android:id=&quot;@+id/xxx&quot;</code>这样的硬代码.</li>
 <li>接下来需要在<code>[res]-[values]-ids.xml</code> 中定义<code>&lt;item name=&quot;xxx_1_1&quot; type=&quot;id&quot;&gt;&lt;/item&gt;</code>这样的id.  </li>
 <li>为layout的控件的id赋值<code>android:id=&quot;@id/xxx_1_1</code>,代码引用ids.xml中定义好的id.  </li>
-<li><p>以上是对一个id的引用策略,下面扩展到多个.<br><strong>ids:</strong>  </p>
+<li>以上是对一个id的引用策略,下面扩展到多个.<br><strong>ids:</strong>  </li>
+</ol>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?xml <span class="property">version</span>=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">  &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_1_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_1_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_2_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_2_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_1"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_2"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="property">item</span> <span class="property">name</span>=<span class="string">"xxx_3_3"</span> type=<span class="string">"id"</span>&gt;&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;<span class="type">string</span>-array <span class="property">name</span>=<span class="string">"xxx_pic"</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_1_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_1_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_2_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_2_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_1&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_2&lt;/<span class="property">item</span>&gt;</span><br><span class="line">        &lt;<span class="property">item</span>&gt;@<span class="property">id</span>/xxx_3_3&lt;/<span class="property">item</span>&gt;</span><br><span class="line">    &lt;/<span class="type">string</span>-array&gt;</span><br><span class="line"> &lt;resources&gt;</span><br><span class="line">  ```  </span><br><span class="line">**layout** 类似于九宫格的布局.</span><br></pre></td></tr></table></figure>
-<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:orientation="vertical" android:background="@drawable/bg_home_module_shape" android:divider="@drawable/shape_horizontal_line" android:showdividers="middle" android:layout_height="wrap_content"><br><br>    <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:weightsum="3" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="107dp"><br><br>        <imageview android:id="@id/home_shop_1_1" android:layout_width="0dp" android:layout_weight="2" android:layout_height="match_parent"><br><br>        <imageview android:id="@id/home_shop_1_2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>    </imageview></imageview></linearlayout>
+<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:orientation="vertical" android:background="@drawable/bg_home_module_shape" android:divider="@drawable/shape_horizontal_line" android:showdividers="middle" android:layout_height="wrap_content"><br><br>   <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:weightsum="3" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="107dp"><br><br>       <imageview android:id="@id/home_shop_1_1" android:layout_width="0dp" android:layout_weight="2" android:layout_height="match_parent"><br><br>       <imageview android:id="@id/home_shop_1_2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>   </imageview></imageview></linearlayout>
 
-<pre><code>&lt;LinearLayout
-    android:layout_width=&quot;match_parent&quot;
-    android:orientation=&quot;horizontal&quot;
-    android:divider=&quot;@drawable/shape_vertical_line&quot;
-    android:showDividers=&quot;middle&quot;
-    android:layout_height=&quot;107dp&quot;&gt;
+   <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="107dp"><br><br>       <imageview android:id="@id/home_shop_2_1" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>       <imageview android:id="@id/home_shop_2_2" android:layout_width="0dp" android:layout_weight="2" android:layout_height="match_parent"><br><br>   </imageview></imageview></linearlayout>
 
-    &lt;ImageView
-        android:id=&quot;@id/home_shop_2_1&quot;
-        android:layout_width=&quot;0dp&quot;
-        android:layout_weight=&quot;1&quot;
-        android:layout_height=&quot;match_parent&quot; /&gt;
+   <linearlayout android:layout_width="match_parent" android:orientation="horizontal" android:weightsum="3" android:divider="@drawable/shape_vertical_line" android:showdividers="middle" android:layout_height="107dp"><br><br>       <imageview android:id="@id/home_shop_3_1" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>       <imageview android:id="@id/home_shop_3_2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>       <imageview android:id="@id/home_shop_3_3" android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent"><br><br>   </imageview></imageview></imageview></linearlayout><br></linearlayout>
 
-    &lt;ImageView
-        android:id=&quot;@id/home_shop_2_2&quot;
-        android:layout_width=&quot;0dp&quot;
-        android:layout_weight=&quot;2&quot;
-        android:layout_height=&quot;match_parent&quot; /&gt;
-
-&lt;/LinearLayout&gt;
-
-&lt;LinearLayout
-    android:layout_width=&quot;match_parent&quot;
-    android:orientation=&quot;horizontal&quot;
-    android:weightSum=&quot;3&quot;
-    android:divider=&quot;@drawable/shape_vertical_line&quot;
-    android:showDividers=&quot;middle&quot;
-    android:layout_height=&quot;107dp&quot;&gt;
-
-    &lt;ImageView
-        android:id=&quot;@id/home_shop_3_1&quot;
-        android:layout_width=&quot;0dp&quot;
-        android:layout_weight=&quot;1&quot;
-        android:layout_height=&quot;match_parent&quot; /&gt;
-
-    &lt;ImageView
-        android:id=&quot;@id/home_shop_3_2&quot;
-        android:layout_width=&quot;0dp&quot;
-        android:layout_weight=&quot;1&quot;
-        android:layout_height=&quot;match_parent&quot; /&gt;
-
-    &lt;ImageView
-        android:id=&quot;@id/home_shop_3_3&quot;
-        android:layout_width=&quot;0dp&quot;
-        android:layout_weight=&quot;1&quot;
-        android:layout_height=&quot;match_parent&quot; /&gt;
-
-&lt;/LinearLayout&gt;
-</code></pre><p></p></linearlayout><p></p>
 </li>
 </ol>
 <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在这里涉及了7个ImageView的布局,定义好以上之后就可以操作了 :  </span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>activity<span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure>
@@ -404,7 +351,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/02/29/android-res-soft-reference/"
-     data-title="android_res_soft_reference"
+     data-title="android资源文件的软引用"
      data-content=""
      data-url="http://androidso.com/2016/02/29/android-res-soft-reference/">
   <div class="ds-share-inline">
@@ -438,7 +385,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/02/29/android-res-soft-reference/"
-           data-title="android_res_soft_reference" data-url="http://androidso.com/2016/02/29/android-res-soft-reference/">
+           data-title="android资源文件的软引用" data-url="http://androidso.com/2016/02/29/android-res-soft-reference/">
       </div>
     
   </div>
