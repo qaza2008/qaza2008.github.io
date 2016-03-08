@@ -197,15 +197,136 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/07/androidutil/" itemprop="url">
+                  androidutil
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-07T14:22:38+08:00" content="2016-03-07">
+              2016-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/07/androidutil/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/07/androidutil/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
-    
+        
+          <span itemprop="articleBody">
+            
+              <p>1、获取手机分辨率  </p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> getDisplayMetrix(Context context) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Constant.Screen.SCREEN_WIDTH == <span class="number">0</span> || Constant.Screen.SCREEN_HEIGHT == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (context != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="built_in">int</span> <span class="variable">width</span> = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">int</span> <span class="variable">height</span> = <span class="number">0</span>;</span><br><span class="line">            SharedPreferences DiaplayMetrixInfo = context.getSharedPreferences(<span class="string">"display_metrix_info"</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span> (context <span class="keyword">instanceof</span> Activity) &#123;</span><br><span class="line">                WindowManager windowManager = ((Activity) context).getWindowManager();</span><br><span class="line">                Display display = windowManager.getDefaultDisplay();</span><br><span class="line">                DisplayMetrics dm = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">                display.getMetrics(dm);</span><br><span class="line">                <span class="variable">width</span> = dm.widthPixels;</span><br><span class="line">                <span class="variable">height</span> = dm.heightPixels;</span><br><span class="line"> </span><br><span class="line">                Editor editor = DiaplayMetrixInfo.edit();</span><br><span class="line">                editor.putInt(<span class="string">"width"</span>, <span class="variable">width</span>);</span><br><span class="line">                editor.putInt(<span class="string">"height"</span>, <span class="variable">height</span>);</span><br><span class="line">                editor.commit();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable">width</span> = DiaplayMetrixInfo.getInt(<span class="string">"width"</span>, <span class="number">0</span>);</span><br><span class="line">                <span class="variable">height</span> = DiaplayMetrixInfo.getInt(<span class="string">"height"</span>, <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            Constant.Screen.SCREEN_WIDTH = <span class="variable">width</span>;</span><br><span class="line">            Constant.Screen.SCREEN_HEIGHT = <span class="variable">height</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Constant.Screen.SCREEN_WIDTH + <span class="string">"×"</span> + Constant.Screen.SCREEN_HEIGHT;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、关闭系统的软键盘  </p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">dismissSoftKeyboard</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">    View view = activity.getWindow().peekDecorView();</span><br><span class="line">    <span class="keyword">if</span> (view != <span class="keyword">null</span>) &#123;</span><br><span class="line">        InputMethodManager inputmanger = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);</span><br><span class="line">        inputmanger.hideSoftInputFromWindow(view.getWindowToken(), <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、dp—px相互转换   </p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> dp2px(Context context, <span class="built_in">float</span> dpValue) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">float</span> <span class="built_in">scale</span> = context.getResources().getDisplayMetrics().density;</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">int</span>) (dpValue * <span class="built_in">scale</span> + <span class="number">0.5</span>f);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">int</span> px2dp(Context context, <span class="built_in">float</span> pxValue) &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="built_in">float</span> <span class="built_in">scale</span> = context.getResources().getDisplayMetrics().density;</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">int</span>) (pxValue / <span class="built_in">scale</span> + <span class="number">0.5</span>f);</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、获取设备唯一编码</span><br></pre></td></tr></table></figure>
+<p>/**</p>
+<ul>
+<li>根据mac地址+deviceid</li>
+<li>获取设备唯一编码<br>*</li>
+<li>@return<br>*/<br>public static String getDeviceKey() {<br> if (“”.equals(DEVICEKEY)) {<pre><code>String macAddress = &quot;&quot;;
+WifiManager wifiMgr = (WifiManager) MainApplication.getIns().getSystemService(MainApplication.WIFI_SERVICE);
+WifiInfo info = (null == wifiMgr ? null : wifiMgr.getConnectionInfo());
+if (null != info) {
+    macAddress = info.getMacAddress();
+}
+TelephonyManager telephonyManager =
+        (TelephonyManager) MainApplication.getIns().getSystemService(MainApplication.TELEPHONY_SERVICE);
+String deviceId = telephonyManager.getDeviceId();
+DEVICEKEY = MD5Util.toMD5(&quot;android&quot; + Constant.APPKEY + Constant.APPPWD + macAddress + deviceId);
+</code></pre> }<br> return DEVICEKEY;<br>}    </li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>、获取手机及SIM卡相关信息</span><br></pre></td></tr></table></figure>
+<p>public static Map<string, string=""> getPhoneInfo(Context context) {<br>    Map<string, string=""> map = new HashMap<string, string="">();<br>    TelephonyManager tm = (TelephonyManager) context<br>            .getSystemService(Context.TELEPHONY_SERVICE);<br>    String imei = tm.getDeviceId();<br>    String imsi = tm.getSubscriberId();<br>    String phoneMode = android.os.Build.MODEL;<br>    String phoneSDk = android.os.Build.VERSION.RELEASE;<br>    map.put(“imei”, imei);<br>    map.put(“imsi”, imsi);<br>    map.put(“phoneMode”, phoneMode + “##” + phoneSDk);<br>    map.put(“model”, phoneMode);<br>    map.put(“sdk”, phoneSDk);<br>    return map;<br>}<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">6</span>、安装apk</span><br></pre></td></tr></table></figure></string,></string,></string,></p>
+<p>public void install(Context context, String fileName) {<br>    if (TextUtils.isEmpty(fileName) || context == null) {<br>        return;<br>    }<br>    try {<br>        Intent intent = new Intent(Intent.ACTION_VIEW);<br>        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<br>        intent.setAction(android.content.Intent.ACTION_VIEW);<br>        intent.setDataAndType(Uri.fromFile(new File(fileName)), “application/vnd.android.package-archive”);<br>        context.startActivity(intent);<br>    } catch (Exception e) {<br>        e.printStackTrace();<br>    }<br>}</p>
+<p>public void install(Context context, File file) {<br>    try {<br>        Intent intent = new Intent(Intent.ACTION_VIEW);<br>        intent.setDataAndType(Uri.fromFile(file), “application/vnd.android.package-archive”);<br>        context.startActivity(intent);<br>    } catch (Exception e) {<br>        e.printStackTrace();<br>    }<br>}<br>```  </p>
+<p>7、Strings.xml中“%s”的妙用<br>在strings.xml中添加字符串</p>
+<p><string name="text">Hello,%s!</string><br>在代码中<br>textView.setText(String.format(getResources().getString(R.string.text),”Android”));<br>输出结果：Hello,Android！</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1184,125 +1305,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/19/AutoScrollViewPageWithIndicator/" itemprop="url">
-                  快速开发AutoScrollViewPagerWithIndicator
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-19T20:00:00+08:00" content="2015-12-19">
-              2015-12-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/19/AutoScrollViewPageWithIndicator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/19/AutoScrollViewPageWithIndicator/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>项目需求在首页加入活动视图,每隔数秒钟自动切换到下一帧,支持手动滑动切换活动视图,在活动视图底部有圆形的指示点,整体的活动视图随着列表上拉而隐藏.<br>典型的ViewPager,加入自动滑动,加入指示器.并且和listview手势不冲突.</p>
-<p>在 github搜索了一下,发现了<a href="https://github.com/Trinea/android-auto-scroll-view-pager">android-auto-scroll-view-pager</a>,fork and clone.<br>发现demo还是很简洁的.</p>
-<ul>
-<li>支持自动滑动</li>
-<li>支持手势滑动</li>
-<li>支持自动回收</li>
-</ul>
-<p>但是:</p>
-<ul>
-<li>没有指示器</li>
-<li>与listview手势冲突</li>
-</ul>
-<p>基于以上,对 <a href="https://github.com/Trinea/android-auto-scroll-view-pager">android-auto-scroll-view-pager</a> 进行二次封装.解决以上2个问题.</p>
-<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/viewpager.gif" alt="demo"></p>
-<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/viewpager1.gif" alt="image"></p>
-<h4 id="u5F15_u7528_3A"><a href="#u5F15_u7528_3A" class="headerlink" title="引用:"></a>引用:</h4><p>环境: idea  ant编译</p>
-<p>源码地址: <a href="https://github.com/qaza2008/AutoScrollViewPagerWithIndicator">https://github.com/qaza2008/AutoScrollViewPagerWithIndicator</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/19/AutoScrollViewPageWithIndicator/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1349,7 +1351,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1363,7 +1365,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

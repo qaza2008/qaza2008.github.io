@@ -197,11 +197,125 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/19/AutoScrollViewPageWithIndicator/" itemprop="url">
+                  快速开发AutoScrollViewPagerWithIndicator
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-19T20:00:00+08:00" content="2015-12-19">
+              2015-12-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/19/AutoScrollViewPageWithIndicator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/19/AutoScrollViewPageWithIndicator/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
       
 
       
-    
+        
+          <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p>项目需求在首页加入活动视图,每隔数秒钟自动切换到下一帧,支持手动滑动切换活动视图,在活动视图底部有圆形的指示点,整体的活动视图随着列表上拉而隐藏.<br>典型的ViewPager,加入自动滑动,加入指示器.并且和listview手势不冲突.</p>
+<p>在 github搜索了一下,发现了<a href="https://github.com/Trinea/android-auto-scroll-view-pager">android-auto-scroll-view-pager</a>,fork and clone.<br>发现demo还是很简洁的.</p>
+<ul>
+<li>支持自动滑动</li>
+<li>支持手势滑动</li>
+<li>支持自动回收</li>
+</ul>
+<p>但是:</p>
+<ul>
+<li>没有指示器</li>
+<li>与listview手势冲突</li>
+</ul>
+<p>基于以上,对 <a href="https://github.com/Trinea/android-auto-scroll-view-pager">android-auto-scroll-view-pager</a> 进行二次封装.解决以上2个问题.</p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/viewpager.gif" alt="demo"></p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/viewpager1.gif" alt="image"></p>
+<h4 id="u5F15_u7528_3A"><a href="#u5F15_u7528_3A" class="headerlink" title="引用:"></a>引用:</h4><p>环境: idea  ant编译</p>
+<p>源码地址: <a href="https://github.com/qaza2008/AutoScrollViewPagerWithIndicator">https://github.com/qaza2008/AutoScrollViewPagerWithIndicator</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/19/AutoScrollViewPageWithIndicator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -346,7 +460,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -360,7 +474,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
