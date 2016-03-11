@@ -197,15 +197,121 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/11/leakCanary-demo/" itemprop="url">
+                  监控Android内存泄露 leakCanary
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-11T21:25:24+08:00" content="2016-03-11">
+              2016-03-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/11/leakCanary-demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/leakCanary-demo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
-    
+        
+          <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>介绍一个检测Android内存泄露的工具:leakCanary,出身于Square!<br>介绍:</p>
+<ul>
+<li>监控Android内存泄露</li>
+<li>在发生内存泄露之后会通过通知栏和在桌面上生成Leaks 程序图标通知.</li>
+<li>反正没有工具,正好用这个,Square app 可是减少94%的内存泄露的bug…</li>
+</ul>
+<p>参考:  </p>
+<p><a href="https://realm.io/cn/news/droidcon-ricau-memory-leaks-leakcanary/">用 LeakCanary 检测内存泄漏</a></p>
+<p><a href="http://www.liaohuqiu.net/cn/posts/leak-canary-read-me/">LeakCanary 中文使用说明</a></p>
+<p>效果图:  </p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/leakCanary1.png" alt="image"></p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/leakCanary2.png" alt="image"></p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/leakCanary3.png" alt="image"></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/11/leakCanary-demo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1186,121 +1292,6 @@ listView.smoothScrollToPosition(0);
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/21/Android_h5_js_share/" itemprop="url">
-                  Android与h5通过js调用实现分享
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-21T15:31:11+08:00" content="2015-12-21">
-              2015-12-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/21/Android_h5_js_share/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/21/Android_h5_js_share/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h3 id="u4E00-_u6982_u8FF0"><a href="#u4E00-_u6982_u8FF0" class="headerlink" title="一.概述"></a>一.概述</h3><p> 现在越来越多的app内嵌h5,有诸多好处:</p>
-<ul>
-<li>HTML5和原生相比优势在于跨平台，成本低，快速迭代，动态执行</li>
-<li>基于HTML5技术的应用流就会为我们的用户节省流量，带来便利同时也能节省我们手机上空间及电量“</li>
-<li><p>避免频繁发版本</p>
-<p>那么本文限定于以下情况:</p>
-</li>
-<li><p>app分享h5页面需要 <code>标题</code> , <code>url</code> ,<code>分享语</code> , <code>图标</code> ,正常情况下这些信息可以通过接口api获取</p>
-</li>
-<li>把<code>标题</code> , <code>url</code> ,<code>分享语</code> , <code>图标</code> 这些信息内嵌到h5的代码中当webview加载程序完成后</li>
-<li>通过调用原生方法来与h5中的js通信,h5在通过调用js方法将需要的参数以json格式传到app上</li>
-</ul>
-<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/app%E4%B8%8Eh5%E5%88%86%E4%BA%AB%E6%B5%81%E7%A8%8B.png" alt="图片"></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/21/Android_h5_js_share/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1347,7 +1338,7 @@ listView.smoothScrollToPosition(0);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1361,7 +1352,7 @@ listView.smoothScrollToPosition(0);
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
