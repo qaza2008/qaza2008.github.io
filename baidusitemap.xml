@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+  <url>
+    <loc>http://androidso.com/2016/03/07/androidutil/</loc>
+    <lastmod>2016-03-16T01:52:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>androidutil</title>
+        <pubTime>2016-03-07T06:22:38.000Z</pubTime>
+        
+        <tag>utils </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/03/11/leakCanary-demo/</loc>
+    <lastmod>2016-03-11T14:11:31.000Z</lastmod>
+    <data>
+        <display>
+        <title>监控Android内存泄露 leakCanary</title>
+        <pubTime>2016-03-11T13:25:24.000Z</pubTime>
+        
+        <tag>内存泄露 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/02/29/android-res-soft-reference/</loc>
+    <lastmod>2016-02-29T02:54:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>android资源文件的软引用</title>
+        <pubTime>2016-02-29T01:33:57.000Z</pubTime>
+        
+        <tag>res-reference </tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://androidso.com/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/02/04/JavaStript-inherit/</loc>
+    <lastmod>2016-02-26T03:39:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>JavaStript_inherit</title>
+        <pubTime>2016-02-04T07:40:21.000Z</pubTime>
+        
+        <tag>继承 </tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaStript" url="http://androidso.com/categories/JavaStript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/02/02/android-webview-goback-title/</loc>
+    <lastmod>2016-02-02T17:21:28.000Z</lastmod>
+    <data>
+        <display>
+        <title>android_webview_goback_title</title>
+        <pubTime>2016-02-02T14:24:56.000Z</pubTime>
+        
+        <tag>H5 </tag>
+         
+        <tag>android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/01/12/whats-armeabi/</loc>
+    <lastmod>2016-01-12T11:11:07.000Z</lastmod>
+    <data>
+        <display>
+        <title>介绍下armeabi和sdk vs ndk</title>
+        <pubTime>2016-01-12T10:00:56.000Z</pubTime>
+        
+        <tag>armeabi </tag>
+         
+        <tag>ndk </tag>
+         
+        <tag>so </tag>
+         
+         
+           
+             
+              <breadCrumb title="android" url="http://androidso.com/categories/android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/01/07/record-voice-from-Android/</loc>
+    <lastmod>2016-01-06T16:27:55.000Z</lastmod>
+    <data>
+        <display>
+        <title>record_voice_from_Android</title>
+        <pubTime>2016-01-06T16:27:55.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2015/12/28/MediaPlayProgress/</loc>
+    <lastmod>2016-01-06T16:20:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>MediaPlayProgress</title>
+        <pubTime>2015-12-28T09:46:27.000Z</pubTime>
+        
+        <tag>android </tag>
+         
+        <tag>mediaplayer </tag>
+         
+        <tag>progress </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2015/12/28/ImageViewWithFullPic/</loc>
+    <lastmod>2015-12-28T15:18:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>ImageViewWithFullPic</title>
+        <pubTime>2015-12-28T09:46:59.000Z</pubTime>
+        
+        <tag>android </tag>
+         
+        <tag>pic_full_scale </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2015/12/19/AutoScrollViewPageWithIndicator/</loc>
+    <lastmod>2015-12-25T15:59:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>快速开发AutoScrollViewPagerWithIndicator</title>
+        <pubTime>2015-12-19T12:00:00.000Z</pubTime>
+        
+        <tag>Indicator </tag>
+         
+        <tag>android </tag>
+         
+        <tag>autoScrollViewPager </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2015/12/21/Android_h5_js_share/</loc>
+    <lastmod>2015-12-25T15:28:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android与h5通过js调用实现分享</title>
+        <pubTime>2015-12-21T07:31:11.000Z</pubTime>
+        
+        <tag>H5 </tag>
+         
+        <tag>android </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2015/12/22/Fragment_switch/</loc>
+    <lastmod>2015-12-25T15:24:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>2个Fragment之间的切换</title>
+        <pubTime>2015-12-22T09:50:11.000Z</pubTime>
+        
+        <tag>android </tag>
+         
+        <tag>fragment </tag>
+         
+        <tag>switch </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+  <url>
+    <loc>http://androidso.com/2015/12/16/hello-world/</loc>
+    <lastmod>2015-12-16T09:00:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2015-12-16T09:00:41.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
