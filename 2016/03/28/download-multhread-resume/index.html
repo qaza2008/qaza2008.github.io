@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="继承," />
+  <meta name="keywords" content="多线程下载,断线续传," />
 
 
 
@@ -51,22 +51,16 @@
 
 
 
-<meta name="description" content="概述  最近公司的H5那条发开线人力不够,Android来凑.
-研读阮一峰老师的js教程(JavaScript标准参考教程),发觉JavaStript的灵活性不是一般的大.下面来谈谈继承:
-一.利用Object.create继承.😃&amp;nbsp;&amp;nbsp;">
+<meta name="description" content="概述及原理代码参考doneWelcome To My Websitehttp://androidso.com">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaStript_inherit">
-<meta property="og:url" content="http://androidso.com/2016/02/04/JavaStript-inherit/index.html">
+<meta property="og:title" content="Java / Android 多线程下载">
+<meta property="og:url" content="http://androidso.com/2016/03/28/download-multhread-resume/index.html">
 <meta property="og:site_name" content="qaza2008's blog">
-<meta property="og:description" content="概述  最近公司的H5那条发开线人力不够,Android来凑.
-研读阮一峰老师的js教程(JavaScript标准参考教程),发觉JavaStript的灵活性不是一般的大.下面来谈谈继承:
-一.利用Object.create继承.😃&amp;nbsp;&amp;nbsp;">
-<meta property="og:updated_time" content="2016-02-26T03:39:27.000Z">
+<meta property="og:description" content="概述及原理代码参考doneWelcome To My Websitehttp://androidso.com">
+<meta property="og:updated_time" content="2016-03-30T12:59:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaStript_inherit">
-<meta name="twitter:description" content="概述  最近公司的H5那条发开线人力不够,Android来凑.
-研读阮一峰老师的js教程(JavaScript标准参考教程),发觉JavaStript的灵活性不是一般的大.下面来谈谈继承:
-一.利用Object.create继承.😃&amp;nbsp;&amp;nbsp;">
+<meta name="twitter:title" content="Java / Android 多线程下载">
+<meta name="twitter:description" content="概述及原理代码参考doneWelcome To My Websitehttp://androidso.com">
 
 
 
@@ -78,7 +72,7 @@
   };
 </script>
 
-  <title> JavaStript_inherit | qaza2008's blog </title>
+  <title> Java / Android 多线程下载 | qaza2008's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -218,7 +212,7 @@
             
             
               
-                JavaStript_inherit
+                Java / Android 多线程下载
               
             
           </h1>
@@ -227,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-02-04T15:40:21+08:00" content="2016-02-04">
-              2016-02-04
+            <time itemprop="dateCreated" datetime="2016-03-28T10:39:27+08:00" content="2016-03-28">
+              2016-03-28
             </time>
           </span>
 
@@ -237,8 +231,20 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaStript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaStript</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -253,8 +259,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/04/JavaStript-inherit/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/04/JavaStript-inherit/" itemprop="commentsCount"></span>
+                <a href="/2016/03/28/download-multhread-resume/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/download-multhread-resume/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -273,10 +279,7 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  最近公司的H5那条发开线人力不够,Android来凑.</p>
-<p>研读阮一峰老师的js教程(<a href="http://javascript.ruanyifeng.com" target="_blank" rel="external">JavaScript标准参考教程</a>),发觉JavaStript的灵活性不是一般的大.下面来谈谈继承:</p>
-<h4 id="u4E00-_u5229_u7528Object-create_u7EE7_u627F"><a href="#u4E00-_u5229_u7528Object-create_u7EE7_u627F" class="headerlink" title="一.利用Object.create继承."></a>一.利用Object.create继承.</h4><p>😃&nbsp;&nbsp;</p>
-</span>
+        <span itemprop="articleBody"><h3 id="u6982_u8FF0_u53CA_u539F_u7406"><a href="#u6982_u8FF0_u53CA_u539F_u7406" class="headerlink" title="概述及原理"></a>概述及原理</h3><h3 id="u4EE3_u7801_u53C2_u8003"><a href="#u4EE3_u7801_u53C2_u8003" class="headerlink" title="代码参考"></a>代码参考</h3><h1 id="done"><a href="#done" class="headerlink" title="done"></a>done</h1><h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2></span>
       
     </div>
 
@@ -284,7 +287,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/继承/" rel="tag">#继承</a>
+            <a href="/tags/多线程下载/" rel="tag">#多线程下载</a>
+          
+            <a href="/tags/断线续传/" rel="tag">#断线续传</a>
           
         </div>
       
@@ -293,16 +298,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/02/android-webview-goback-title/" rel="next" title="android_webview_goback_title">
-                <i class="fa fa-chevron-left"></i> android_webview_goback_title
+              <a href="/2016/03/11/leakCanary-demo/" rel="next" title="监控Android内存泄露 leakCanary">
+                <i class="fa fa-chevron-left"></i> 监控Android内存泄露 leakCanary
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/29/android-res-soft-reference/" rel="prev" title="android资源文件的软引用">
-                android资源文件的软引用 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/30/Okhttp-Volley-Net-Tools/" rel="prev" title="Okhttp-Volley-Net-Tools">
+                Okhttp-Volley-Net-Tools <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -318,10 +323,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/04/JavaStript-inherit/"
-     data-title="JavaStript_inherit"
+        <div class="ds-share flat" data-thread-key="2016/03/28/download-multhread-resume/"
+     data-title="Java / Android 多线程下载"
      data-content=""
-     data-url="http://androidso.com/2016/02/04/JavaStript-inherit/">
+     data-url="http://androidso.com/2016/03/28/download-multhread-resume/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -352,8 +357,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/04/JavaStript-inherit/"
-           data-title="JavaStript_inherit" data-url="http://androidso.com/2016/02/04/JavaStript-inherit/">
+      <div class="ds-thread" data-thread-key="2016/03/28/download-multhread-resume/"
+           data-title="Java / Android 多线程下载" data-url="http://androidso.com/2016/03/28/download-multhread-resume/">
       </div>
     
   </div>
@@ -461,7 +466,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u8FF0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E00-_u5229_u7528Object-create_u7EE7_u627F"><span class="nav-number">1.1.</span> <span class="nav-text">一.利用Object.create继承.</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u6982_u8FF0_u53CA_u539F_u7406"><span class="nav-number">1.</span> <span class="nav-text">概述及原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4EE3_u7801_u53C2_u8003"><span class="nav-number">2.</span> <span class="nav-text">代码参考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#done"><span class="nav-number"></span> <span class="nav-text">done</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Welcome_To_My_Website"><span class="nav-number"></span> <span class="nav-text">Welcome To My Website</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http_3A//androidso-com"><span class="nav-number"></span> <span class="nav-text">http://androidso.com</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

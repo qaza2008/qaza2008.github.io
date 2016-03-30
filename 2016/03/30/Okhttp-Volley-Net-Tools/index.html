@@ -1,0 +1,827 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="net," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Okhttp 和 Volley 进行的封装工具.github地址 : https://github.com/qaza2008/okhttp-volley-net-tools.git
+用法
+Android Studio目前需要下载到本地,作为module library添加到项目中.
+
+目前支持
+get请求
+post请求
+文件下载及进度回调
+支持添加公共参数和cookie
+支持取消某个接口的批量请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Okhttp-Volley-Net-Tools">
+<meta property="og:url" content="http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/index.html">
+<meta property="og:site_name" content="qaza2008's blog">
+<meta property="og:description" content="Okhttp 和 Volley 进行的封装工具.github地址 : https://github.com/qaza2008/okhttp-volley-net-tools.git
+用法
+Android Studio目前需要下载到本地,作为module library添加到项目中.
+
+目前支持
+get请求
+post请求
+文件下载及进度回调
+支持添加公共参数和cookie
+支持取消某个接口的批量请求">
+<meta property="og:updated_time" content="2016-03-30T13:15:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Okhttp-Volley-Net-Tools">
+<meta name="twitter:description" content="Okhttp 和 Volley 进行的封装工具.github地址 : https://github.com/qaza2008/okhttp-volley-net-tools.git
+用法
+Android Studio目前需要下载到本地,作为module library添加到项目中.
+
+目前支持
+get请求
+post请求
+文件下载及进度回调
+支持添加公共参数和cookie
+支持取消某个接口的批量请求">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Okhttp-Volley-Net-Tools | qaza2008's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?984bf77bc42c6fe33828d3645d043e5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">qaza2008's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">contact me  wth3750@126.com</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Okhttp-Volley-Net-Tools
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-30T21:00:19+08:00" content="2016-03-30">
+              2016-03-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/30/Okhttp-Volley-Net-Tools/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/30/Okhttp-Volley-Net-Tools/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>Okhttp 和 Volley 进行的封装工具.<br>github地址 : <a href="https://github.com/qaza2008/okhttp-volley-net-tools.git" target="_blank" rel="external">https://github.com/qaza2008/okhttp-volley-net-tools.git</a></p>
+<h3 id="u7528_u6CD5"><a href="#u7528_u6CD5" class="headerlink" title="用法"></a>用法</h3><ul>
+<li>Android Studio<br>目前需要下载到本地,作为module library添加到项目中.</li>
+</ul>
+<h3 id="u76EE_u524D_u652F_u6301"><a href="#u76EE_u524D_u652F_u6301" class="headerlink" title="目前支持"></a>目前支持</h3><ul>
+<li>get请求</li>
+<li>post请求</li>
+<li>文件下载及进度回调</li>
+<li>支持添加公共参数和cookie</li>
+<li>支持取消某个接口的批量请求</li>
+<li>支持批量处理响应 </li>
+<li>支持多线程下载</li>
+<li>支持volley缓存</li>
+</ul>
+<h3 id="u7528_u6CD5_u5B9E_u4F8B_3A"><a href="#u7528_u6CD5_u5B9E_u4F8B_3A" class="headerlink" title="用法实例:"></a>用法实例:</h3><ol>
+<li>在自定义的Application初始化  </li>
+</ol>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Application</span>&#123;</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        <span class="type">RequestManager</span>.getInstance(<span class="keyword">this</span>);</span><br><span class="line">        <span class="type">HttpConfig</span>.<span class="type">DEBUG</span> = <span class="type">BuildConfig</span>.<span class="type">DEBUG</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>实现NetRequestListener接口</li>
+</ol>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">public</span> <span class="tag">class</span> <span class="tag">MainActivity</span> <span class="tag">extends</span> <span class="tag">FragmentActivity</span> <span class="tag">implements</span> <span class="tag">NetRequestListener</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidStart</span>(String requestTag) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestLoading</span>(long totalCount, long current) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidSuccess</span>(String requestTag, JSONObject response) &#123;</span><br><span class="line">        <span class="tag">if</span> (<span class="string">"query"</span>.<span class="function">equals</span>(requestTag)) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;else &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidFailed</span>(String requestTag, Throwable t, int errorNo, String strMsg) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidCancel</span>(String requestTag) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>GET 请求</li>
+</ol>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DaoRequest.<span class="keyword">get</span>(<span class="keyword">this</span>, <span class="string">"query"</span>, <span class="string">"https://suggest.taobao.com/sug?code=utf-8&amp;q=iphone"</span>, <span class="literal">null</span>, <span class="keyword">this</span>, <span class="literal">true</span>, <span class="string">"utf8"</span>);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>POST 请求</li>
+</ol>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; <span class="keyword">params</span> = <span class="literal">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">params</span><span class="built_in">.</span>put(<span class="string">"kw"</span>, <span class="string">"love"</span>);</span><br><span class="line">        <span class="keyword">params</span><span class="built_in">.</span>put(<span class="string">"pi"</span>, <span class="string">"1"</span>);</span><br><span class="line">        <span class="keyword">params</span><span class="built_in">.</span>put(<span class="string">"pz"</span>, <span class="string">"20"</span>);</span><br><span class="line">        DaoRequest<span class="built_in">.</span>post(this, <span class="string">"test"</span>, <span class="string">"http://v5.pc.duomi.com/search-ajaxsearch-searchall"</span>, <span class="keyword">params</span>, this, <span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="string">``</span><span class="string">`  </span><br><span class="line"></span><br><span class="line">5. DOWNLOAD   </span><br><span class="line"></span><br><span class="line">这里面后面的2个参数是可选项,是使用多线程下载,使用2个线程.</span></span><br></pre></td></tr></table></figure>
+<p>DaoRequest.download(this, “<a href="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif" target="_blank" rel="external">http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif</a>“, new FileCallBack(“sdcard”, “download.gif”) {<br>            @Override<br>            public void inProgress(int progress) {</p>
+<pre><code>        }
+
+        @Override
+        public File parseNetWorkResponse(Response response) throws Exception {
+            return null;
+        }
+
+        @Override
+        public void requestDidStart(String requestTag) {
+
+        }
+
+        @Override
+        public void requestLoading(long totalCount, long current) {
+
+        }
+
+        @Override
+        public void requestDidSuccess(String requestTag, JSONObject response) {
+            Log.d(TAG, &quot;requestDidSuccess: &quot;);
+
+        }
+
+        @Override
+        public void requestDidFailed(String requestTag, Throwable t, int errorNo, String strMsg) {
+
+        }
+
+        @Override
+        public void requestDidCancel(String requestTag) {
+
+        }
+    }, true, 2);
+
+}
+</code></pre><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">6.</span> 取消接口请求</span><br><span class="line">   取消掉实现这个NetRequestListener的 所有接口.</span><br></pre></td></tr></table></figure>
+<p>  @Override<br>    protected void onStop() {<br>        super.onStop();<br>        RequestManager.getInstance(this).cancelRequests(this);<br>    }</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="cpp"><span class="number">7.</span> 添加公共参数</span></span><br></pre></td></tr></table></figure>
+<p>  DaoRequest.addCommonParams(“json”, “1”);<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">### 测试结果:</span></span><br><span class="line"><span class="number">1.</span> GET</span><br></pre></td></tr></table></figure></p>
+<p>  03-30 21:04:03.031 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> query <strong>*</strong>: <strong><strong>*</strong></strong> 网络请求开始 Start <strong><strong>*</strong></strong><br>03-30 21:04:03.031 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> query <strong>*</strong>: URL: <a href="https://suggest.taobao.com/sug?code=utf-8&amp;q=iphone" target="_blank" rel="external">https://suggest.taobao.com/sug?code=utf-8&amp;q=iphone</a><br>03-30 21:04:03.461 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> query <strong>*</strong>: <strong><strong>*</strong></strong> 网络请求成功 Success <strong><strong>*</strong></strong><br>03-30 21:04:03.461 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> query <strong>*</strong>: response:{“result”:[[“iphone6手机壳”,”3398535”],[“iphone6s手机壳”,”5247220”],[“iphone6plus手机壳”,”5572726”],[“iphone5s手机壳”,”1298581”],[“iphone6钢化膜”,”714654”],[“iphone6s plus壳”,”2199991”],[“iphone6数据线”,”300376”],[“iphonese”,”44377”],[“iphone6s钢化膜”,”261317”],[“iphone5手机壳”,”1403709”]],”tmall”:”iphone”}</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="cpp"><span class="number">2.</span> POST</span></span><br></pre></td></tr></table></figure>
+<p>03-30 21:08:54.821 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> test <strong>*</strong>: <strong><strong>*</strong></strong> 网络请求开始 Start <strong><strong>*</strong></strong><br>03-30 21:08:54.821 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> test <strong>*</strong>: URL: <a href="http://v5.pc.duomi.com/search-ajaxsearch-searchall" target="_blank" rel="external">http://v5.pc.duomi.com/search-ajaxsearch-searchall</a><br>03-30 21:08:54.821 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> test <strong>*</strong>: Params: pi=1&amp;json=1&amp;pz=20&amp;kw=love<br>03-30 21:08:56.371 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> test <strong>*</strong>: <strong><strong>*</strong></strong> 网络请求成功 Success <strong><strong>*</strong></strong><br>03-30 21:08:56.371 27966-27966/com.androidso.okhttp_volley_net_tools D/RequestAgent-requestTag: <strong>*</strong> test <strong>*</strong>: response:{“album_offset”:0,”albums”:[{“artists”:[{“id”:61435612,”name”:”嵐”,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/04\/07\/71629906.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true}],”available”:true,”company”:””,”cover”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/18\/08\/71229617.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”id”:2492417,”name”:”Love”,”num_tracks”:5,”release_date”:”2013-10-23”,”type”:”专辑”},{“artists”:[{“id”:51076381,”name”:”AAA”,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/21\/29\/70892774.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true}],”available”:true,”company”:””,”cover”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/23\/14\/71241371.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”id”:2521439,”name”:”Love”,”num_tracks”:1,”release_date”:”2014-02-26”,”type”:”EP\/单曲”},{“artists”:[{“id”:51079995,”name”:”Inna”,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/17\/32\/70470674.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true}],”available”:true,”company”:””,”cover”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/07\/26\/71191817.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”id”:2331169,”name”:”Love”,”num_tracks”:4,”release_date”:”2011-07-03”,”type”:”EP\/单曲”},{“artists”:[{“id”:61604428,”name”:”Maco”,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/18\/08\/71266445.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true}],”available”:true,”company”:””,”cover”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/25\/28\/71785423.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”id”:2627760,”name”:”Love”,”num_tracks”:3,”release_date”:”2015-05-20”,”type”:”EP\/单曲”},{“artists”:[{“id”:51032372,”name”:”Peter Kater”,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/07\/27\/70775952.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true}],”available”:true,”company”:””,”cover”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/26\/15\/71755974.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”id”:2623182,”name”:”Love”,”num_tracks”:13,”release_date”:”2015-05-05”,”type”:”专辑”}],”artist_offset”:0,”artists”:[{“id”:51031253,”name”:”Love”,”num_albums”:21,”num_tracks”:199,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/09\/09\/70154280.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true},{“id”:61611513,”name”:”Love &amp; The Outcome”,”num_albums”:0,”num_tracks”:1,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/23\/22\/71513365.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true},{“id”:60005603,”name”:”G. Love”,”num_albums”:2,”num_tracks”:23,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/20\/25\/70577224.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true},{“id”:61007763,”name”:”In Love”,”num_albums”:5,”num_tracks”:51,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/03\/07\/70231960.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true},{“id”:61006500,”name”:”We Love”,”num_albums”:3,”num_tracks”:12,”portrait”:”http:\/\/pic.cdn.duomi.com\/imageproxy2\/dimgm\/scaleImage?url=http:\/\/img.kxting.cn\/\/p1\/26\/18\/70582035.jpg&amp;w=150&amp;h=150&amp;s=100&amp;c=0&amp;o=0&amp;m=”,”valid”:true}],”dm_error”:0,”error_msg”:”操作成功”,”recommend”:0,”total_albums”:6971,”total_artists”:134,”total_tracks”:109405,”track_offset”:0,”tracks”:[{“album”:{“cover”:”\/p1\/15\/15\/72099009.jpg”,”id”:2680635,”name”:”With L.O.V.E Brown Eyed Girls”},”artists”:[{“id”:61759342,”name”:”브라운아이드걸스(Brown Eyed Girls)”,”num_albums”:0,”num_tracks”:4,”portrait”:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span> DOWNLOAD</span><br></pre></td></tr></table></figure>
+<p>03-30 21:10:17.231 27966-5212/com.androidso.okhttp_volley_net_tools D/DaoRequest: downLoad onResponse<br>03-30 21:10:17.231 27966-5212/com.androidso.okhttp_volley_net_tools D/DaoRequest: multhread  i= 0  RequestMap{name=’url:<a href="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif" target="_blank" rel="external">http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif</a> Range:bytes=0-225090’, builder=com.squareup.okhttp.Request$Builder@2c5da353, callback=null, startPos=0, endPos=225090}<br>03-30 21:10:17.241 27966-5212/com.androidso.okhttp_volley_net_tools D/DaoRequest: multhread  i= 1  RequestMap{name=’url:<a href="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif" target="_blank" rel="external">http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif</a> Range:bytes=225091-450182’, builder=com.squareup.okhttp.Request$Builder@10d40490, callback=null, startPos=225091, endPos=450182}<br>03-30 21:10:17.241 27966-5212/com.androidso.okhttp_volley_net_tools D/DaoRequest: while 1: RequestMap{name=’url:<a href="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif" target="_blank" rel="external">http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif</a> Range:bytes=0-225090’, builder=com.squareup.okhttp.Request$Builder@2c5da353, callback=null, startPos=0, endPos=225090}<br>03-30 21:10:17.251 27966-5212/com.androidso.okhttp_volley_net_tools D/DaoRequest: while 1: RequestMap{name=’url:<a href="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif" target="_blank" rel="external">http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif</a> Range:bytes=225091-450182’, builder=com.squareup.okhttp.Request$Builder@10d40490, callback=null, startPos=225091, endPos=450182}<br>03-30 21:10:17.281 27966-5219/com.androidso.okhttp_volley_net_tools D/DaoRequest: while 2: onResponse<br>03-30 21:10:17.281 27966-5218/com.androidso.okhttp_volley_net_tools D/DaoRequest: while 2: onResponse<br>03-30 21:10:17.701 27966-5218/com.androidso.okhttp_volley_net_tools D/FileCallBack: OkHttp <a href="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif完成下载" target="_blank" rel="external">http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif完成下载</a>  ： 0 – 225090<br>03-30 21:10:17.701 27966-5219/com.androidso.okhttp_volley_net_tools D/FileCallBack: OkHttp <a href="http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif完成下载" target="_blank" rel="external">http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif完成下载</a>  ： 225091 – 450182<br>03-30 21:10:17.701 27966-5219/com.androidso.okhttp_volley_net_tools D/DaoRequest: /sdcard/download.gif<br>03-30 21:10:17.701 27966-5219/com.androidso.okhttp_volley_net_tools D/MainActivity: requestDidSuccess:<br>```</p>
+<h1 id="done"><a href="#done" class="headerlink" title="done"></a>done</h1><h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/net/" rel="tag">#net</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/28/download-multhread-resume/" rel="next" title="Java / Android 多线程下载">
+                <i class="fa fa-chevron-left"></i> Java / Android 多线程下载
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/30/Okhttp-Volley-Net-Tools/"
+     data-title="Okhttp-Volley-Net-Tools"
+     data-content=""
+     data-url="http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/30/Okhttp-Volley-Net-Tools/"
+           data-title="Okhttp-Volley-Net-Tools" data-url="http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.png" alt="qaza2008" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">qaza2008</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">爱代码,爱马拉松,爱妹子,也爱工作</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qaza2008" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1546454092?is_all=1" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7528_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u76EE_u524D_u652F_u6301"><span class="nav-number">2.</span> <span class="nav-text">目前支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7528_u6CD5_u5B9E_u4F8B_3A"><span class="nav-number">3.</span> <span class="nav-text">用法实例:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#done"><span class="nav-number"></span> <span class="nav-text">done</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Welcome_To_My_Website"><span class="nav-number"></span> <span class="nav-text">Welcome To My Website</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http_3A//androidso-com"><span class="nav-number"></span> <span class="nav-text">http://androidso.com</span></a></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qaza2008</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"androidso"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+  
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script type="text/javascript">
+      jQuery(function() {          
+          jQuery("#posts img").lazyload({
+            placeholder:"http://www.arao.me/loading.gif",
+              effect:"fadeIn"
+            });
+          });
+  </script>
+</body>
+</html>
