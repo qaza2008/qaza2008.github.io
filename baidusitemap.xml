@@ -3,6 +3,26 @@
 
     
   <url>
+    <loc>http://androidso.com/2016/01/07/record-voice-from-Android/</loc>
+    <lastmod>2016-03-31T07:08:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>record_voice_from_Android</title>
+        <pubTime>2016-01-06T16:27:55.000Z</pubTime>
+        
+        <tag>mediaRecorder </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/</loc>
     <lastmod>2016-03-30T13:25:04.000Z</lastmod>
     <data>
@@ -168,21 +188,6 @@
              
               <breadCrumb title="android" url="http://androidso.com/categories/android/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://androidso.com/2016/01/07/record-voice-from-Android/</loc>
-    <lastmod>2016-01-06T16:27:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>record_voice_from_Android</title>
-        <pubTime>2016-01-06T16:27:55.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
