@@ -220,6 +220,116 @@
             
               
                 
+                <a class="post-title-link" href="/2015/12/28/ImageViewWithFullPic/" itemprop="url">
+                  ImageViewWithFullPic
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-28T17:46:59+08:00" content="2015-12-28">
+              2015-12-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/28/ImageViewWithFullPic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/28/ImageViewWithFullPic/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>&nbsp;&nbsp;需求如下:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;图片尺寸是不确定的,要动态根据图片尺寸展示,并且图片的宽就是屏幕的宽度,图片的长度要根据比例展示,这样才能不失真.</p>
+<h3 id="u4EE3_u7801_u793A_u4F8B"><a href="#u4EE3_u7801_u793A_u4F8B" class="headerlink" title="代码示例"></a>代码示例</h3><p>&nbsp;&nbsp;最开始的时候觉得其实根据ImageView 的scaleType设置就能搞定,结果就是:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;ImageView&gt;</span></span><br><span class="line"><span class="keyword">xmlns</span>:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">         <span class="keyword">android</span>:id=<span class="string">"@+id/imageView"</span></span><br><span class="line">         <span class="keyword">android</span>:scaleType=<span class="string">"centerCrop"</span></span><br><span class="line">         <span class="keyword">android</span>:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">         <span class="keyword">android</span>:layout_height=<span class="string">"wrap_content"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>结果发现当图片特别长的时候,发现头部会有一部分没有展示,尤其是当图片在广告机这种大屏尺寸,尤为明显.</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> ImageView.ScaleType  CENTER_CROP</span><br><span class="line"></span><br><span class="line">均衡的缩放图像（保持图像原始比例），使图片的两个坐标（宽、高）都大于等于 相应的视图坐标（负的内边距）。图像则位于视图的中央。 在 <span class="keyword">XML</span> 中可以使用的语法：</span><br></pre></td></tr></table></figure>
+<p>即便改成CENTER_INSIDE/CENTER就会图片变小,达不到想要的效果.</p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/image1.png" alt="image"><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/28/ImageViewWithFullPic/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/28/MediaPlayProgress/" itemprop="url">
                   MediaPlayProgress
                 </a>
@@ -802,7 +912,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

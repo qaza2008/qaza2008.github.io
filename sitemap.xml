@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://androidso.com/2016/03/31/android-some-knowledge/</loc>
+    
+    <lastmod>2016-03-31T08:11:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://androidso.com/2016/03/28/download-multhread-resume/</loc>
+    
+    <lastmod>2016-03-31T07:14:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://androidso.com/2016/01/07/record-voice-from-Android/</loc>
     
-    <lastmod>2016-03-31T07:08:05.000Z</lastmod>
+    <lastmod>2016-03-31T07:09:05.000Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/</loc>
     
     <lastmod>2016-03-30T13:25:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://androidso.com/2016/03/28/download-multhread-resume/</loc>
-    
-    <lastmod>2016-03-30T12:59:07.000Z</lastmod>
     
   </url>
   
