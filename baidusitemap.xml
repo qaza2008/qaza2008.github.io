@@ -3,6 +3,101 @@
 
     
   <url>
+    <loc>http://androidso.com/2016/07/24/http-md/</loc>
+    <lastmod>2016-07-24T12:46:44.000Z</lastmod>
+    <data>
+        <display>
+        <title> http协议知识点</title>
+        <pubTime>2016-07-24T10:30:32.000Z</pubTime>
+        
+        <tag>http </tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="http://androidso.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/</loc>
+    <lastmod>2016-07-10T14:27:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>Okhttp-Volley-Net-Tools</title>
+        <pubTime>2016-03-30T13:00:19.000Z</pubTime>
+        
+        <tag>net </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/05/06/android-web-knowledge/</loc>
+    <lastmod>2016-05-09T07:08:51.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android 知识积累</title>
+        <pubTime>2016-05-06T08:01:22.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/03/31/android-some-knowledge/</loc>
+    <lastmod>2016-05-05T06:57:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>android-some-knowledge</title>
+        <pubTime>2016-03-31T08:06:31.000Z</pubTime>
+        
+        <tag>knowledge </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://androidso.com/2016/05/05/mvp/</loc>
+    <lastmod>2016-05-05T06:57:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android 初识 MVC、MVP框架</title>
+        <pubTime>2016-05-05T06:46:18.000Z</pubTime>
+        
+        <tag>mvc mvp </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://androidso.com/2016/03/28/download-multhread-resume/</loc>
     <lastmod>2016-04-05T01:35:49.000Z</lastmod>
     <data>
@@ -26,26 +121,6 @@
 
     
   <url>
-    <loc>http://androidso.com/2016/03/31/android-some-knowledge/</loc>
-    <lastmod>2016-03-31T08:37:54.000Z</lastmod>
-    <data>
-        <display>
-        <title>android-some-knowledge</title>
-        <pubTime>2016-03-31T08:06:31.000Z</pubTime>
-        
-        <tag>knowledge </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://androidso.com/2016/01/07/record-voice-from-Android/</loc>
     <lastmod>2016-03-31T07:09:05.000Z</lastmod>
     <data>
@@ -54,26 +129,6 @@
         <pubTime>2016-01-06T16:27:55.000Z</pubTime>
         
         <tag>mediaRecorder </tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="http://androidso.com/categories/Android/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/</loc>
-    <lastmod>2016-03-30T13:25:04.000Z</lastmod>
-    <data>
-        <display>
-        <title>Okhttp-Volley-Net-Tools</title>
-        <pubTime>2016-03-30T13:00:19.000Z</pubTime>
-        
-        <tag>net </tag>
          
          
            

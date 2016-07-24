@@ -1,0 +1,1177 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mvc mvp," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="转自 : Android 初识 MVC、MVP框架
+前言MVCMVP
+
+前言
+
+MVC、MVP、MVVP相信大家已经耳熟能详了，作为Android最出名的三个框架，它们的应用是非常的广泛。这篇博客就来简单介绍下其中二种框架。也加强下自己对这方面的了解。由于自己菜鸟一枚，有不对和需要补充的地方欢迎评论~
+
+
+
+MVC
+
+MVC全名是：Model(模型) View(视图) Controller(控制器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 初识 MVC、MVP框架">
+<meta property="og:url" content="http://androidso.com/2016/05/05/mvp/index.html">
+<meta property="og:site_name" content="qaza2008's blog">
+<meta property="og:description" content="转自 : Android 初识 MVC、MVP框架
+前言MVCMVP
+
+前言
+
+MVC、MVP、MVVP相信大家已经耳熟能详了，作为Android最出名的三个框架，它们的应用是非常的广泛。这篇博客就来简单介绍下其中二种框架。也加强下自己对这方面的了解。由于自己菜鸟一枚，有不对和需要补充的地方欢迎评论~
+
+
+
+MVC
+
+MVC全名是：Model(模型) View(视图) Controller(控制器">
+<meta property="og:image" content="http://img.blog.csdn.net/20160504150622236">
+<meta property="og:image" content="http://img.blog.csdn.net/20160504150709697">
+<meta property="og:image" content="http://img.blog.csdn.net/20160504151122136">
+<meta property="og:updated_time" content="2016-05-05T06:57:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 初识 MVC、MVP框架">
+<meta name="twitter:description" content="转自 : Android 初识 MVC、MVP框架
+前言MVCMVP
+
+前言
+
+MVC、MVP、MVVP相信大家已经耳熟能详了，作为Android最出名的三个框架，它们的应用是非常的广泛。这篇博客就来简单介绍下其中二种框架。也加强下自己对这方面的了解。由于自己菜鸟一枚，有不对和需要补充的地方欢迎评论~
+
+
+
+MVC
+
+MVC全名是：Model(模型) View(视图) Controller(控制器">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Android 初识 MVC、MVP框架 | qaza2008's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?984bf77bc42c6fe33828d3645d043e5b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">qaza2008's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">contact me  wth3750@126.com</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 初识 MVC、MVP框架
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-05T14:46:18+08:00" content="2016-05-05">
+              2016-05-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/05/mvp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/05/mvp/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>转自 : <a href="http://blog.csdn.net/airsaid/article/details/51315096" target="_blank" rel="external">Android 初识 MVC、MVP框架</a></p>
+<p><div class="toc"><br><ul><br><li><a href="#前言">前言</a></li><br><li><a href="#mvc">MVC</a></li><br><li><a href="#mvp">MVP</a></li><br></ul><br></div><br></p>
+
+<h1 id="前言">前言</h1>
+
+<p>MVC、MVP、MVVP相信大家已经耳熟能详了，作为Android最出名的三个框架，它们的应用是非常的广泛。这篇博客就来简单介绍下其中二种框架。也加强下自己对这方面的了解。由于自己菜鸟一枚，有不对和需要补充的地方欢迎评论~</p>
+
+
+
+<h1 id="mvc">MVC</h1>
+
+<p>MVC全名是：Model(模型) View(视图) Controller(控制器) 是软件架构中最常见的框架，简单来说，就是通过Controller的控制去操作Model层的数据，并且返回给View作展示，具体见下图： <br><br><img src="http://img.blog.csdn.net/20160504150622236" alt="这里写图片描述" title=""> <br><br><br><a id="more"></a><br><br>当用户触发了一个事件，View层会将这个事件发送给Controller控制层，然后Controller会通知Model层更新数据，Model层更新完数据之后会直接显示在View层上，这就是MVC的工作原理了。</p>
+
+<p>说到这里可能就有人会说了，明明一个Activity就能搞定的事，为什么还分三个类来写，烦不烦？</p>
+
+<p>So，那为什么要采用架构设计呢？</p>
+
+<p>通过设计，可以使我们的程序模块化，做到模块内部的高聚合和模块之间的低耦合。这样做的好处是，当我们在开发中只需专注一点即可！提高程序的开发效率，并且更容器做后期的测试以及定位问题。但是，我们不能为了设计而设计，为了架构而架构。对于不同量级的工程，具体的架构实现方法必然是不同的。</p>
+
+<p>在Android中，MVC的应用无处不在，如：我们经常写的layout.xml就对应MVC的View层，里面都是一些View的布局代码，而各种JavaBean和Adapter就类似与MVC中的Model层，Activity就是Controller层了。下面用一个登录的小例子来演示一下。</p>
+
+<p>首先看下常规写法，把所有逻辑都放在Activity里面的： <br><br>* activity_login.xml布局：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs xml"><span class="hljs-pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">TableLayout</span> <span class="hljs-attribute">xmlns:android</span>=<span class="hljs-value">"http://schemas.android.com/apk/res/android"</span>
+    <span class="hljs-attribute">xmlns:tools</span>=<span class="hljs-value">"http://schemas.android.com/tools"</span>
+    <span class="hljs-attribute">android:layout_width</span>=<span class="hljs-value">"match_parent"</span>
+    <span class="hljs-attribute">android:layout_height</span>=<span class="hljs-value">"match_parent"</span>
+    <span class="hljs-attribute">android:paddingBottom</span>=<span class="hljs-value">"@dimen/activity_vertical_margin"</span>
+    <span class="hljs-attribute">android:paddingLeft</span>=<span class="hljs-value">"@dimen/activity_horizontal_margin"</span>
+    <span class="hljs-attribute">android:paddingRight</span>=<span class="hljs-value">"@dimen/activity_horizontal_margin"</span>
+    <span class="hljs-attribute">android:paddingTop</span>=<span class="hljs-value">"@dimen/activity_vertical_margin"</span>
+    <span class="hljs-attribute">android:stretchColumns</span>=<span class="hljs-value">"1"</span>
+    <span class="hljs-attribute">tools:context</span>=<span class="hljs-value">"com.airsaid.mvcdemo.LoginActivity"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">TableRow</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">TextView
+</span>            <span class="hljs-attribute">android:layout_width</span>=<span class="hljs-value">"wrap_content"</span>
+            <span class="hljs-attribute">android:layout_height</span>=<span class="hljs-value">"wrap_content"</span>
+            <span class="hljs-attribute">android:text</span>=<span class="hljs-value">"用户名："</span> /&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">EditText
+</span>            <span class="hljs-attribute">android:id</span>=<span class="hljs-value">"@+id/et_login_username"</span>
+            <span class="hljs-attribute">android:layout_width</span>=<span class="hljs-value">"match_parent"</span>
+            <span class="hljs-attribute">android:layout_height</span>=<span class="hljs-value">"wrap_content"</span>
+            <span class="hljs-attribute">android:hint</span>=<span class="hljs-value">"请输入用户名"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">TableRow</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">TableRow</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">TextView
+</span>            <span class="hljs-attribute">android:layout_width</span>=<span class="hljs-value">"wrap_content"</span>
+            <span class="hljs-attribute">android:layout_height</span>=<span class="hljs-value">"wrap_content"</span>
+            <span class="hljs-attribute">android:text</span>=<span class="hljs-value">"密码："</span> /&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-title">EditText
+</span>            <span class="hljs-attribute">android:id</span>=<span class="hljs-value">"@+id/et_login_password"</span>
+            <span class="hljs-attribute">android:layout_width</span>=<span class="hljs-value">"match_parent"</span>
+            <span class="hljs-attribute">android:layout_height</span>=<span class="hljs-value">"wrap_content"</span>
+            <span class="hljs-attribute">android:hint</span>=<span class="hljs-value">"请输入密码"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">TableRow</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">Button
+</span>        <span class="hljs-attribute">android:layout_width</span>=<span class="hljs-value">"match_parent"</span>
+        <span class="hljs-attribute">android:layout_height</span>=<span class="hljs-value">"wrap_content"</span>
+        <span class="hljs-attribute">android:layout_marginTop</span>=<span class="hljs-value">"10dp"</span>
+        <span class="hljs-attribute">android:onClick</span>=<span class="hljs-value">"login"</span>
+        <span class="hljs-attribute">android:text</span>=<span class="hljs-value">"登录"</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">TableLayout</span>&gt;</span></code></pre>
+
+<ul><br><li>LoginActivity代码：</li><br></ul>
+
+
+
+<pre class="prettyprint"><code class=" hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> {</span>
+
+    <span class="hljs-keyword">private</span> EditText mUsername;
+    <span class="hljs-keyword">private</span> EditText mPassword;
+    <span class="hljs-keyword">private</span> ProgressDialog dialog;
+
+    <span class="hljs-annotation">@Override</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span>(Bundle savedInstanceState) {
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        initView();
+    }
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initView</span>() {
+        dialog = <span class="hljs-keyword">new</span> ProgressDialog(<span class="hljs-keyword">this</span>);
+        mUsername = (EditText) findViewById(R.id.et_login_username);
+        mPassword = (EditText) findViewById(R.id.et_login_password);
+    }
+
+    <span class="hljs-comment">// 登录</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span>(View v){
+        String username = mUsername.getText().toString();
+        String password = mPassword.getText().toString();
+        <span class="hljs-keyword">final</span> User user = <span class="hljs-keyword">new</span> User();
+        user.username = username;
+        user.password = password;
+
+        <span class="hljs-keyword">if</span>(checkUser(user)){
+            dialog.show();
+            <span class="hljs-comment">// 模拟请求登录接口</span>
+            <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
+                <span class="hljs-annotation">@Override</span>
+                <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+                    <span class="hljs-comment">// 模拟耗时操作</span>
+                    SystemClock.sleep(<span class="hljs-number">2000</span>);
+
+                    <span class="hljs-keyword">if</span> (<span class="hljs-string">"123"</span>.equals(user.username) &amp;&amp; <span class="hljs-string">"123"</span>.equals(user.password)){
+                        runOnUiThread(<span class="hljs-keyword">new</span> Runnable() {
+                            <span class="hljs-annotation">@Override</span>
+                            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+                                onLoginSuccess();
+                            }
+                        });
+
+                    }<span class="hljs-keyword">else</span>{
+                        runOnUiThread(<span class="hljs-keyword">new</span> Runnable() {
+                            <span class="hljs-annotation">@Override</span>
+                            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+                                onLoginError();
+                            }
+                        });
+                    }
+                }
+            }).start();
+        }<span class="hljs-keyword">else</span>{
+            Toast.makeText(getApplicationContext(), <span class="hljs-string">"用户名或密码不能为空"</span>, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    <span class="hljs-javadoc">/**
+     * 登录成功
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLoginSuccess</span>() {
+        Toast.makeText(getApplicationContext(), <span class="hljs-string">"登录成功"</span>, Toast.LENGTH_SHORT).show();
+        dialog.dismiss();
+    }
+
+    <span class="hljs-javadoc">/**
+     * 登录失败
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLoginError</span>() {
+        Toast.makeText(getApplicationContext(), <span class="hljs-string">"登录失败"</span>, Toast.LENGTH_SHORT).show();
+        dialog.dismiss();
+    }
+
+    <span class="hljs-javadoc">/**
+     * 判断用户输入的信息是否正确
+     *<span class="hljs-javadoctag"> @param</span> user
+     *<span class="hljs-javadoctag"> @return</span>
+     */</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">checkUser</span>(User user) {
+        <span class="hljs-comment">// 在这里由于演示，所以只做简单非空判断，实际开发中会判断更多情况</span>
+        <span class="hljs-keyword">if</span>(TextUtils.isEmpty(user.username) || TextUtils.isEmpty(user.password)){
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+}</code></pre>
+
+<ul><br><li>UserBean：</li><br></ul>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> User {
+    <span class="hljs-keyword">public</span> String username;
+    <span class="hljs-keyword">public</span> String password;
+}</code></pre>
+
+<p>这是一个超级简化版的登录，但是差不多已经有上百行代码了，如果都写出来的话，那么就太多了，所以我们就需要遵循某种模式来进行拆分，下面是用MVC模式进行拆分后的代码：</p>
+
+<p>新增一个类，将请求网络的操作抽取出来（这里由于模拟请求网络所以代码并不多）：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginModel</span> {</span>
+
+    <span class="hljs-javadoc">/**
+     * 请求网络，发送登录消息
+     *<span class="hljs-javadoctag"> @return</span>
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">sendLoginInfo</span>(User user){
+        SystemClock.sleep(<span class="hljs-number">2000</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-string">"123"</span>.equals(user.username) &amp;&amp; <span class="hljs-string">"123"</span>.equals(user.password)){
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }<span class="hljs-keyword">else</span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+    }
+}</code></pre>
+
+<p>修改Activity中的请求网络为通过创建Model调用方法去判断登录是否成功：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs java">LoginModel loginModel = <span class="hljs-keyword">new</span> LoginModel();
+<span class="hljs-keyword">if</span>(loginModel.sendLoginInfo(user)) {
+    runOnUiThread(<span class="hljs-keyword">new</span> Runnable() {
+        <span class="hljs-annotation">@Override</span>
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+            onLoginSuccess();
+        }
+    });
+}<span class="hljs-keyword">else</span>{
+    runOnUiThread(<span class="hljs-keyword">new</span> Runnable() {
+        <span class="hljs-annotation">@Override</span>
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+            onLoginError();
+        }
+    });
+}</code></pre>
+
+<p>到这里一个简单版的MVC抽取就完成了，其实代码并没有少很多，这是因为Activity存在了两部分内容，一部分是业务相关的，一部分是界面相关的。在这里问题就产生了，如果界面复杂或业务多的话，会导致Activity里面的东西会很庞大，V里面的信息就只有一个Layout，而C也就是Activity里的东西则异常庞大。</p>
+
+<p>那么这个时候，我们可以选择<strong>将业务部分的代码进行拆分</strong>，其对应的模式就是：<strong>MVP</strong>。 <br><br>如果将Activity中<strong>界面相关的内容进行拆分</strong>，其对应的模式就是<strong>MVVM</strong>。</p>
+
+<p>下面简单讲解一下MVP模式，MVVM由于涉及到data binding框架，东西比较多，下次再写。</p>
+
+
+
+<h1 id="mvp">MVP</h1>
+
+<p>MVP是从经典的MVC中演变过来的，在思想上，它们有想通的地方： <br><br><strong>Controller/Presenter负责逻辑的处理，Model用于提供数据，View负责显示。</strong> <br><br><img src="http://img.blog.csdn.net/20160504150709697" alt="这里写图片描述" title=""> <br><br>原来的Model层不变，Activity合并到View层，Presenter用于链接View层和Model层。 <br><br>下面用MVP模式重构上面的登录小例子： <br><br>布局文件和Bean如上，就不贴了。</p>
+
+<ul><br><li><p>分包： <br><br><img src="http://img.blog.csdn.net/20160504151122136" alt="这里写图片描述" title=""></p><br><br><blockquote><br>  <p>注意：Activity并不是View，setContextView()中的xml文件才是。</p><br></blockquote></li><br><li><p>V (Activity) 代码：</p></li><br></ul>
+
+
+
+<pre class="prettyprint"><code class=" hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> {</span>
+
+    <span class="hljs-keyword">private</span> EditText mUsername;
+    <span class="hljs-keyword">private</span> EditText mPassword;
+    <span class="hljs-keyword">private</span> ProgressDialog mDialog;
+    <span class="hljs-keyword">private</span> LoginPresenter mPresenter;
+
+    <span class="hljs-annotation">@Override</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span>(Bundle savedInstanceState) {
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        mUsername = (EditText) findViewById(R.id.et_login_username);
+        mPassword = (EditText) findViewById(R.id.et_login_password);
+        mDialog = <span class="hljs-keyword">new</span> ProgressDialog(<span class="hljs-keyword">this</span>);
+        mPresenter = <span class="hljs-keyword">new</span> LoginPresenter(<span class="hljs-keyword">this</span>);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span>(View v){
+        String username = mUsername.getText().toString();
+        String password = mPassword.getText().toString();
+        <span class="hljs-keyword">final</span> User user = <span class="hljs-keyword">new</span> User();
+        user.username = username;
+        user.password = password;
+        <span class="hljs-keyword">if</span>(mPresenter.checkUserInfo(user)){
+            mDialog.show();
+            mPresenter.login(user);
+        }<span class="hljs-keyword">else</span>{
+            Toast.makeText(getApplicationContext(), <span class="hljs-string">"用户名或密码不能为空"</span>, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    <span class="hljs-javadoc">/**
+     * 登录成功
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loginSuccess</span>() {
+        runOnUiThread(<span class="hljs-keyword">new</span> Runnable() {
+            <span class="hljs-annotation">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+                Toast.makeText(getApplicationContext(), <span class="hljs-string">"登录成功"</span>, Toast.LENGTH_SHORT).show();
+                mDialog.dismiss();
+            }
+        });
+    }
+
+    <span class="hljs-javadoc">/**
+     * 登录失败
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loginError</span>(){
+        runOnUiThread(<span class="hljs-keyword">new</span> Runnable() {
+            <span class="hljs-annotation">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+                Toast.makeText(getApplicationContext(), <span class="hljs-string">"登录失败"</span>, Toast.LENGTH_SHORT).show();
+                mDialog.dismiss();
+            }
+        });
+    }
+}</code></pre>
+
+<p>P （LoginPresenter）代码：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginPresenter</span> {</span>
+
+    <span class="hljs-keyword">private</span> LoginActivity mView;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title">LoginPresenter</span>(LoginActivity view){
+        <span class="hljs-keyword">this</span>.mView = view;
+    }
+
+    <span class="hljs-javadoc">/**
+     * 校验用户信息
+     *<span class="hljs-javadoctag"> @param</span> user 用户信息
+     *<span class="hljs-javadoctag"> @return</span> true:校验成功 false:校验失败
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">checkUserInfo</span>(User user){
+        <span class="hljs-comment">// 在这里由于演示，所以只做简单非空判断，实际开发中会判断更多情况</span>
+        <span class="hljs-keyword">if</span>(TextUtils.isEmpty(user.username) || TextUtils.isEmpty(user.password)){
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+
+    <span class="hljs-javadoc">/**
+     * 登录
+     *<span class="hljs-javadoctag"> @param</span> user 用户信息
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span>(<span class="hljs-keyword">final</span> User user){
+        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable() {
+            <span class="hljs-annotation">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span>() {
+                LoginModel loginModel = <span class="hljs-keyword">new</span> LoginModel();
+                <span class="hljs-keyword">if</span>(loginModel.sendLoginInfo(user)){
+                    mView.loginSuccess();
+                }<span class="hljs-keyword">else</span>{
+                    mView.loginError();
+                }
+            }
+        }).start();
+    }
+
+}</code></pre>
+
+<p>M（LoginModel）代码：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginModel</span> {</span>
+
+    <span class="hljs-javadoc">/**
+     * 请求网络，发送登录消息
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">sendLoginInfo</span>(User user) {
+        <span class="hljs-comment">// 模拟请求网络操作</span>
+        SystemClock.sleep(<span class="hljs-number">2000</span>);
+        <span class="hljs-keyword">if</span> (<span class="hljs-string">"123"</span>.equals(user.username) &amp;&amp; <span class="hljs-string">"123"</span>.equals(user.password)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+    }
+}</code></pre>
+
+<p>至此，一个简单的MVP模式的登录小例子就出来了，相比于MVC，MVP中的代码已经相当简洁了，各模块之间分工明确。 <br><br>View层负责和UI进行交互，Model层负责提供数据，Presenter层负责处理业务逻辑并处理Model层和View层的通信。</p>
+
+<p>相信大家也看出来了，MVP主要解决就是把逻辑层给抽出来成P层，还有就是不和MVC中的Molder层可以操作View层一样，而是由Presenter负责通信的角色。这样做的好处是，如果有逻辑上的修改，那么我们直接修改Presenter层的东西就可以了。</p>
+
+<p>到这里，并没有完善，我们还可以扩展下，上面的LoginActivity的构参中，我们传入了一个LoginActivity：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"> <span class="hljs-keyword">public</span> <span class="hljs-title">LoginPresenter</span>(LoginActivity view){
+        <span class="hljs-keyword">this</span>.mView = view;
+ }</code></pre>
+
+<p>这里其实并不合理，因为LoginActivity是属于V层的东西，而我们在开发过程中，V层不光会有Activity，也会有Fragment，如果按照上面写，通用性并不好，这个时候，接口开发就派上用场了。</p>
+
+<p>修改构参为接口：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs cs"> <span class="hljs-keyword">public</span> <span class="hljs-title">LoginPresenter</span>(IUserLoginView  view){
+        <span class="hljs-keyword">this</span>.mView = view;
+ }</code></pre>
+
+<p>创建IUserLoginView接口：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs java"><span class="hljs-keyword">package</span> com.airsaid.mvpdemo.i;
+
+<span class="hljs-javadoc">/**
+ * Created by zhouyou on 2016/5/4.
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserLoginView</span> {</span>
+
+    <span class="hljs-javadoc">/**
+     * 登录成功
+     */</span>
+    <span class="hljs-keyword">void</span> loginSuccess();
+
+
+    <span class="hljs-javadoc">/**
+     * 登录失败
+     */</span>
+    <span class="hljs-keyword">void</span> loginError();
+}</code></pre>
+
+<p>让LoginActivity去实现这个接口：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AppCompatActivity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IUserLoginView</span></span></code></pre>
+
+<p></p><p>到这里就扩展完成了，这只是一个MVP的简单扩展，具体大家可以看看Android官方的MVP架构实例项目。 <br><br>在这里推荐一篇相关文章，大家感兴趣可以看看：<a href="http://mp.weixin.qq.com/s?__biz=MzA3ODg4MDk0Ng==&amp;mid=403539764&amp;idx=1&amp;sn=d30d89e6848a8e13d4da0f5639100e5f#rd" target="_blank" rel="external">Android官方MVP架构实例项目解析</a></p><br>        <script type="text/javascript"><br>            $(function () {<br>                $(‘pre.prettyprint code’).each(function () {<br>                    var lines = $(this).text().split(‘\n’).length;<br>                    var $numbering = $(‘<ul/>‘).addClass(‘pre-numbering’).hide();<br>                    $(this).addClass(‘has-numbering’).parent().append($numbering);<br>                    for (i = 1; i &lt;= lines; i++) {<br>                        $numbering.append($(‘<li/>‘).text(i));<br>                    };<br>                    $numbering.fadeIn(1700);<br>                });<br>            });<br>        </script><p></p>
+<p></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mvc-mvp/" rel="tag">#mvc mvp</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/31/android-some-knowledge/" rel="next" title="android-some-knowledge">
+                <i class="fa fa-chevron-left"></i> android-some-knowledge
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/06/android-web-knowledge/" rel="prev" title="Android 知识积累">
+                Android 知识积累 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/05/mvp/"
+     data-title="Android 初识 MVC、MVP框架"
+     data-content=""
+     data-url="http://androidso.com/2016/05/05/mvp/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/05/mvp/"
+           data-title="Android 初识 MVC、MVP框架" data-url="http://androidso.com/2016/05/05/mvp/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.png" alt="qaza2008" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">qaza2008</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">爱代码,爱马拉松,爱妹子,也爱工作</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qaza2008" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1546454092?is_all=1" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mvc"><span class="nav-number">2.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mvp"><span class="nav-number">3.</span> <span class="nav-text">MVP</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qaza2008</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"androidso"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+  
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script type="text/javascript">
+      jQuery(function() {          
+          jQuery("#posts img").lazyload({
+            placeholder:"http://www.arao.me/loading.gif",
+              effect:"fadeIn"
+            });
+          });
+  </script>
+</body>
+</html>

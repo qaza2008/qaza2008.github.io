@@ -51,19 +51,16 @@
 
 
 
-<meta name="description" content="转自泡网的你应该知道的那些Android小经验
-正文原文出处：http://jayfeng.com/&amp;nbsp;做Android久了，就会踩很多坑，被坑的多了就有经验了，闲暇之余整理了部分，现挑选一些重要或者偏门的“小”经验做个记录。查看SQLite日志adb&amp;nbsp;shell&amp;nbsp;setprop&amp;nbsp;log.tag.SQLiteLog&amp;nbsp;Vadb&amp;nbsp;shell&amp;n">
+<meta name="description" content="转自泡网的你应该知道的那些Android小经验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android-some-knowledge">
 <meta property="og:url" content="http://androidso.com/2016/03/31/android-some-knowledge/index.html">
 <meta property="og:site_name" content="qaza2008's blog">
-<meta property="og:description" content="转自泡网的你应该知道的那些Android小经验
-正文原文出处：http://jayfeng.com/&amp;nbsp;做Android久了，就会踩很多坑，被坑的多了就有经验了，闲暇之余整理了部分，现挑选一些重要或者偏门的“小”经验做个记录。查看SQLite日志adb&amp;nbsp;shell&amp;nbsp;setprop&amp;nbsp;log.tag.SQLiteLog&amp;nbsp;Vadb&amp;nbsp;shell&amp;n">
-<meta property="og:updated_time" content="2016-03-31T08:37:54.000Z">
+<meta property="og:description" content="转自泡网的你应该知道的那些Android小经验">
+<meta property="og:updated_time" content="2016-05-05T06:57:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android-some-knowledge">
-<meta name="twitter:description" content="转自泡网的你应该知道的那些Android小经验
-正文原文出处：http://jayfeng.com/&amp;nbsp;做Android久了，就会踩很多坑，被坑的多了就有经验了，闲暇之余整理了部分，现挑选一些重要或者偏门的“小”经验做个记录。查看SQLite日志adb&amp;nbsp;shell&amp;nbsp;setprop&amp;nbsp;log.tag.SQLiteLog&amp;nbsp;Vadb&amp;nbsp;shell&amp;n">
+<meta name="twitter:description" content="转自泡网的你应该知道的那些Android小经验">
 
 
 
@@ -271,6 +268,7 @@
 
       
         <span itemprop="articleBody"><p>转自泡网的<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0329/4102.html" target="_blank" rel="external">你应该知道的那些Android小经验</a></p>
+<a id="more"></a>
 <h3 id="u6B63_u6587"><a href="#u6B63_u6587" class="headerlink" title="正文"></a>正文</h3><p></p><p>原文出处：<a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/" target="_self" textvalue="http://jayfeng.com/">http://jayfeng.com/</a>&nbsp;</p><p>做Android久了，就会踩很多坑，被坑的多了就有经验了，闲暇之余整理了部分，现挑选一些重要或者偏门的“小”经验做个记录。</p><h2 id="查看SQLite日志"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#查看SQLite日志" title="查看SQLite日志" target="_blank" rel="external"></a>查看SQLite日志</h2><pre class="brush:js;toolbar:false">adb&nbsp;shell&nbsp;setprop&nbsp;log.tag.SQLiteLog&nbsp;V<br>adb&nbsp;shell&nbsp;setprop&nbsp;log.tag.SQLiteStatements&nbsp;V</pre><p>因为实现里用了Log.isLoggable(TAG, Log.VERBOSE)做了判断，LessCode的LogLess中也参考了这种机制：<a href="https://github.com/openproject/LessCode/blob/master/lesscode-core/src/main/java/com/jayfeng/lesscode/core/LogLess.java" target="_blank" rel="external">LogLess</a>。<br>使用这种方法就可以在Release版本也能做到查看应用的打印日志了。</p><h2 id="PNG优化"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#PNG优化" title="PNG优化" target="_blank" rel="external"></a>PNG优化</h2><p>APK打包会自动对PNG进行无损压缩，如果自行无损压缩是无效的。<br>当然进行有损压缩是可以的：<a href="https://tinypng.com/" target="_blank" rel="external">https://tinypng.com/</a></p> <p class="runtimead"><script src="/plus/fuckblok.php?aid=23" language="javascript"></script></p>  <h2 id="Tcpdump抓包"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#Tcpdump抓包" title="Tcpdump抓包" target="_blank" rel="external"></a>Tcpdump抓包</h2><p>有些模拟器比如genymotion自带了tcpdump，如果没有的话，需要下载tcpdump:<br><a href="http://www.strazzere.com/android/tcpdump" target="_blank" rel="external">http://www.strazzere.com/android/tcpdump</a><br>把tcpdump push到/data/local下，抓包命令：</p><pre class="brush:js;toolbar:false">adb&nbsp;shell&nbsp;&nbsp;/data/local/tcpdump&nbsp;-i&nbsp;any&nbsp;-p&nbsp;-s&nbsp;0&nbsp;-w&nbsp;/sdcard/capture.pcap</pre><h2 id="查看签名">查看签名</h2><p>很多开发者服务都需要绑定签名信息，用下面的命令可以查看签名：</p><pre class="brush:js;toolbar:false">keytool&nbsp;-list&nbsp;-v&nbsp;-keystore&nbsp;release.jks</pre><p>注意，这个是需要密码的，可以查看MD5, SHA1，SHA256等等。</p><h2 id="单例模式-懒汉式-的更好的写法"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#单例模式-懒汉式-的更好的写法" title="单例模式(懒汉式)的更好的写法" target="_blank" rel="external"></a>单例模式(懒汉式)的更好的写法</h2><p>特别说到这个问题，是因为网上很多这样的代码：</p><pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;Singleton&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton&nbsp;(){}<p></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;Singleton&nbsp;getInstance()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(instance&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p></pre><p>这种写法线程不安全，改进一下，加一个同步锁：</p><pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;Singleton&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton&nbsp;(){}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;synchronized&nbsp;Singleton&nbsp;getInstance()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(instance&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</pre><p>网上这样的代码更多，可以很好的工作，但是缺点是效率低。<br style="color: rgb(85, 85, 85); font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; line-height: 32px; text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);">实际上，早在JDK1.5就引入volatile关键字，所以又有了一种更好的双重校验锁写法：</p><pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;volatile&nbsp;static&nbsp;Singleton&nbsp;singleton;<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton&nbsp;(){}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;Singleton&nbsp;getSingleton()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(singleton&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;synchronized&nbsp;(Singleton.class)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(singleton&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;singleton&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;singleton;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</pre><p>注意，别忘记volatile关键字哦，否则就是10重，100重也可能还是会出问题。<br style="color: rgb(85, 85, 85); font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; line-height: 32px; text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);">上面是用的最多的，还有一种静态内部类写法更推荐：</p><pre class="brush:js;toolbar:false">publlic&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton()&nbsp;{}<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;class&nbsp;SingletonLoader&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;Singleton&nbsp;INSTANCE&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<p></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;Singleton&nbsp;getInstance()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;SingletonLoader.INSTANCE;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p></pre><h2 id="多进程Application">多进程Application</h2><p>是不是经常发现Application里的方法执行了多次？百思不得其解。<br>因为当有多个进程的时候，Application会执行多次，可以通过pid来判断那些方法只执行一次，避免浪费资源。</p><h2 id="隐式启动Service"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#隐式启动Service" title="隐式启动Service" target="_blank" rel="external"></a>隐式启动Service</h2><p>这是Android5.0的一个改动，不支持隐式的Service调用。下面的代码在Android 5.0+上会报错：Service Intent must be explicit：</p><pre class="brush:js;toolbar:false">Intent&nbsp;serviceIntent&nbsp;=&nbsp;new&nbsp;Intent();<br>serviceIntent.setAction(&quot;com.jayfeng.MyService&quot;);<br>context.startService(serviceIntent);</pre><p>可改成如下：</p><pre class="brush:js;toolbar:false">//&nbsp;指定具体Service类，或者有packageName也行<br>Intent&nbsp;serviceIntent&nbsp;=&nbsp;new&nbsp;Intent(context,&nbsp;MyService.class);<br>context.startService(serviceIntent);</pre><h2 id="fill-parent的寿命">fill_parent的寿命</h2><p>在Android2.2之后，支持使用match_parent。你的布局文件里是不是既有fill_parent和match_parent显得很乱？<br>如果你现在的minSdkVersion是8+的话，就可以忽略fill_parent，统一使用match_parent了，否则请使用fill_parent。</p><h2 id="ListView的局部刷新"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#ListView的局部刷新" title="ListView的局部刷新" target="_blank" rel="external"></a>ListView的局部刷新</h2><p>有的列表可能notifyDataSetChanged()代价有点高，最好能局部刷新。<br>局部刷新的重点是，找到要更新的那项的View，然后再根据业务逻辑更新数据即可。</p><pre class="brush:js;toolbar:false">private&nbsp;void&nbsp;updateItem(int&nbsp;index)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;visiblePosition&nbsp;=&nbsp;listView.getFirstVisiblePosition();<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(index&nbsp;-&nbsp;visiblePosition&nbsp;&gt;=&nbsp;0)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//得到要更新的item的view<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View&nbsp;view&nbsp;=&nbsp;listView.getChildAt(index&nbsp;-&nbsp;visiblePosition);<p></p>
@@ -300,6 +298,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/05/mvp/" rel="prev" title="Android 初识 MVC、MVP框架">
+                Android 初识 MVC、MVP框架 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -393,21 +395,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

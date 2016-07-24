@@ -197,15 +197,412 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/24/http-md/" itemprop="url">
+                   http协议知识点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-07-24T18:30:32+08:00" content="2016-07-24">
+              2016-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/24/http-md/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/http-md/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="HTTP_u534F_u8BAE"><a href="#HTTP_u534F_u8BAE" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><h4 id="HTTP_u534F_u8BAE_3A_u6D88_u606F_u7684_u5206_u7C7B"><a href="#HTTP_u534F_u8BAE_3A_u6D88_u606F_u7684_u5206_u7C7B" class="headerlink" title="HTTP协议:消息的分类"></a>HTTP协议:消息的分类</h4><ul>
+<li>请求消息</li>
+<li>响应消息</li>
+</ul>
+<h4 id="Http_u534F_u8BAE_3A_u7279_u70B9"><a href="#Http_u534F_u8BAE_3A_u7279_u70B9" class="headerlink" title="Http协议:特点"></a>Http协议:特点</h4><ul>
+<li>无连接:无连接的含义是限制每次连接只处理一个请求,服务器处理完客户的请求,并收到客户的应答后,即断开连接,采用这种方式可以节省传输时间.</li>
+<li>无状态:指协议对于事务处理没有记忆功能,缺少状态意味着如果后续处理需要前面的信息,则它必须重传,这样可能导致每次传输出送的数据量增大,另一方面,在服务器不需要先前信息时他的应答比较快.</li>
+</ul>
+<h4 id="HTTP_u957F_u8FDE_u63A5_u548C_u77ED_u8FDE_u63A5_u539F_u7406_u6D45_u6790"><a href="#HTTP_u957F_u8FDE_u63A5_u548C_u77ED_u8FDE_u63A5_u539F_u7406_u6D45_u6790" class="headerlink" title="HTTP长连接和短连接原理浅析"></a>HTTP长连接和短连接原理浅析</h4><p>1.HTTP协议与TCP/IP协议的关系</p>
+<p>HTTP的长连接和短连接本质上是TCP长连接和短连接。HTTP属于应用层协议，在传输层使用TCP协议，在网络层使用IP协议。IP协议主要解决网络路由和寻址问题，TCP协议主要解决如何在IP层之上可靠的传递数据包，使在网络上的另一端收到发端发出的所有包，并且顺序与发出顺序一致。TCP有可靠，面向连接的特点。</p>
+<p>2.如何理解HTTP协议是无状态的</p>
+<p>HTTP协议是无状态的，指的是协议对于事务处理没有记忆能力，服务器不知道客户端是什么状态。也就是说，打开一个服务器上的网页和你之前打开这个服务器上的网页之间没有任何联系。HTTP是一个无状态的面向连接的协议，无状态不代表HTTP不能保持TCP连接，更不能代表HTTP使用的是UDP协议（无连接）。</p>
+<p>3.什么是长连接、短连接？</p>
+<p>在HTTP/1.0中，默认使用的是短连接。也就是说，浏览器和服务器每进行一次HTTP操作，就建立一次连接，但任务结束就中断连接。如果客户端浏览器访问的某个HTML或其他类型的 Web页中包含有其他的Web资源，如JavaScript文件、图像文件、CSS文件等；当浏览器每遇到这样一个Web资源，就会建立一个HTTP会话。</p>
+<p>但从 HTTP/1.1起，默认使用长连接，用以保持连接特性。使用长连接的HTTP协议，会在响应头有加入这行代码：</p>
+<p>Connection:keep-alive<br>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的 TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接要客户端和服务端都支持长连接。</p>
+<p>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</p>
+<p>3.1 TCP连接</p>
+<p>当网络通信时采用TCP协议时，在真正的读写操作之前，server与client之间必须建立一个连接，当读写操作完成后，双方不再需要这个连接 时它们可以释放这个连接，连接的建立是需要三次握手的，而释放则需要4次握手，所以说每个连接的建立都是需要资源消耗和时间消耗的</p>
+<p>经典的三次握手示意图：  </p>
+<p><img src="http://static.codeceo.com/images/2015/08/a25fb124b65178c39c04e428d1913a15.png" alt="image"></p>
+<p>经典的四次握手关闭图：</p>
+<p><img src="http://static.codeceo.com/images/2015/08/f05cb2b32b06337cbd4abe7567dcbbcd.png" alt="image"></p>
+<p>3.2 TCP短连接</p>
+<p>我们模拟一下TCP短连接的情况，client向server发起连接请求，server接到请求，然后双方建立连接。client向server 发送消息，server回应client，然后一次读写就完成了，这时候双方任何一个都可以发起close操作，不过一般都是client先发起 close操作。为什么呢，一般的server不会回复完client后立即关闭连接的，当然不排除有特殊的情况。从上面的描述看，短连接一般只会在 client/server间传递一次读写操作</p>
+<p>短连接的优点是：管理起来比较简单，存在的连接都是有用的连接，不需要额外的控制手段</p>
+<p>3.3 TCP长连接</p>
+<p>接下来我们再模拟一下长连接的情况，client向server发起连接，server接受client连接，双方建立连接。Client与server完成一次读写之后，它们之间的连接并不会主动关闭，后续的读写操作会继续使用这个连接。</p>
+<p>首先说一下TCP/IP详解上讲到的TCP保活功能，保活功能主要为服务器应用提供，服务器应用希望知道客户主机是否崩溃，从而可以代表客户使用资源。如果客户已经消失，使得服务器上保留一个半开放的连接，而服务器又在等待来自客户端的数据，则服务器将应远等待客户端的数据，保活功能就是试图在服务 器端检测到这种半开放的连接。</p>
+<p>如果一个给定的连接在两小时内没有任何的动作，则服务器就向客户发一个探测报文段，客户主机必须处于以下4个状态之一：</p>
+<p>客户主机依然正常运行，并从服务器可达。客户的TCP响应正常，而服务器也知道对方是正常的，服务器在两小时后将保活定时器复位。<br>客户主机已经崩溃，并且关闭或者正在重新启动。在任何一种情况下，客户的TCP都没有响应。服务端将不能收到对探测的响应，并在75秒后超时。服务器总共发送10个这样的探测 ，每个间隔75秒。如果服务器没有收到一个响应，它就认为客户主机已经关闭并终止连接。<br>客户主机崩溃并已经重新启动。服务器将收到一个对其保活探测的响应，这个响应是一个复位，使得服务器终止这个连接。<br>客户机正常运行，但是服务器不可达，这种情况与2类似，TCP能发现的就是没有收到探查的响应。<br>3.4 长连接短连接操作过程</p>
+<pre><code>短连接的操作步骤是：
+建立连接——数据传输——关闭连接...建立连接——数据传输——关闭连接
+长连接的操作步骤是：
+建立连接——数据传输...（保持连接）...数据传输——关闭连接  
+</code></pre><p>4.长连接和短连接的优点和缺点</p>
+<p>由上可以看出，长连接可以省去较多的TCP建立和关闭的操作，减少浪费，节约时间。对于频繁请求资源的客户来说，较适用长连接。不过这里存在一个问题，存活功能的探测周期太长，还有就是它只是探测TCP连接的存活，属于比较斯文的做法，遇到恶意的连接时，保活功能就不够使了。在长连接的应用场景下，client端一般不会主动关闭它们之间的连接，Client与server之间的连接如果一直不关闭的话，会存在一个问题，随着客户端连接越来越多，server早晚有扛不住的时候，这时候server端需要采取一些策略，如关闭一些长时间没有读写事件发生的连接，这样可 以避免一些恶意连接导致server端服务受损；如果条件再允许就可以以客户端机器为颗粒度，限制每个客户端的最大长连接数，这样可以完全避免某个蛋疼的客户端连累后端服务。</p>
+<p>短连接对于服务器来说管理较为简单，存在的连接都是有用的连接，不需要额外的控制手段。但如果客户请求频繁，将在TCP的建立和关闭操作上浪费时间和带宽。</p>
+<p>长连接和短连接的产生在于client和server采取的关闭策略，具体的应用场景采用具体的策略，没有十全十美的选择，只有合适的选择。</p>
+<ol>
+<li>什么时候用长连接，短连接？</li>
+</ol>
+<p>长连接多用于操作频繁，点对点的通讯，而且连接数不能太多情况，。每个TCP连接都需要三步握手，这需要时间，如果每个操作都是先连接，再操作的话那么处理速度会降低很多，所以每个操作完后都不断开，次处理时直接发送数据包就OK了，不用建立TCP连接。例如：数据库的连接用长连接， 如果用短连接频繁的通信会造成socket错误，而且频繁的socket 创建也是对资源的浪费。</p>
+<p>而像WEB网站的http服务一般都用短链接，因为长连接对于服务端来说会耗费一定的资源，而像WEB网站这么频繁的成千上万甚至上亿客户端的连接用短连接会更省一些资源，如果用长连接，而且同时有成千上万的用户，如果每个用户都占用一个连接的话，那可想而知吧。所以并发量大，但每个用户无需频繁操作情况下需用短连好。</p>
+<h4 id="http_u548Csocket_u4E4B_u957F_u8FDE_u63A5_u548C_u77ED_u8FDE_u63A5_u533A_u522B"><a href="#http_u548Csocket_u4E4B_u957F_u8FDE_u63A5_u548C_u77ED_u8FDE_u63A5_u533A_u522B" class="headerlink" title="http和socket之长连接和短连接区别"></a>http和socket之长连接和短连接区别</h4><p>TCP/IP   </p>
+<p>TCP/IP是个协议组，可分为三个层次：网络层、传输层和应用层。<br>在网络层有IP协议、ICMP协议、ARP协议、RARP协议和BOOTP协议。<br>在传输层中有TCP协议与UDP协议。<br>在应用层有:TCP包括FTP、HTTP、TELNET、SMTP等协议<br>                 UDP包括DNS、TFTP等协议<br>短连接   </p>
+<p>连接-&gt;传输数据-&gt;关闭连接<br>HTTP是无状态的，浏览器和服务器每进行一次HTTP操作，就建立一次连接，但任务结束就中断连接。<br>也可以这样说：短连接是指SOCKET连接后发送后接收完数据后马上断开连接。 </p>
+<p>长连接  </p>
+<p>连接-&gt;传输数据-&gt;保持连接 -&gt; 传输数据-&gt; 。。。 -&gt;关闭连接。<br>长连接指建立SOCKET连接后不管是否使用都保持连接，但安全性较差。 </p>
+<p>http的长连接   </p>
+<p>HTTP也可以建立长连接的，使用Connection:keep-alive，HTTP 1.1默认进行持久连接。HTTP1.1和HTTP1.0相比较而言，最大的区别就是增加了持久连接支持(貌似最新的 http1.0 可以显示的指定 keep-alive),但还是无状态的，或者说是不可以信任的。 </p>
+<p>什么时候用长连接，短连接？   </p>
+<p> 长连接多用于操作频繁，点对点的通讯，而且连接数不能太多情况，。每个TCP连接都需要三步握手，这需要时间，如果每个操作都是先连接，再操作的话那么处理速度会降低很多，所以每个操作完后都不断开，次处理时直接发送数据包就OK了，不用建立TCP连接。例如：数据库的连接用长连接， 如果用短连接频繁的通信会造成socket错误，而且频繁的socket 创建也是对资源的浪费。 </p>
+<p>而像WEB网站的http服务一般都用短链接，因为长连接对于服务端来说会耗费一定的资源，而像WEB网站这么频繁的成千上万甚至上亿客户端的连接用短连接会更省一些资源，如果用长连接，而且同时有成千上万的用户，如果每个用户都占用一个连接的话，那可想而知吧。所以并发量大，但每个用户无需频繁操作情况下需用短连好。 </p>
+<p>总之，长连接和短连接的选择要视情况而定。   </p>
+<p>发送接收方式   </p>
+<p>1、异步<br>报文发送和接收是分开的，相互独立的，互不影响。这种方式又分两种情况：<br>(1)异步双工：接收和发送在同一个程序中，由两个不同的子进程分别负责发送和接收<br>(2)异步单工：接收和发送是用两个不同的程序来完成。   </p>
+<p>2、同步<br>报文发送和接收是同步进行，既报文发送后等待接收返回报文。 同步方式一般需要考虑超时问题，即报文发出去后不能无限等待，需要设定超时时间，超过该时间发送方不再等待读返回报文，直接通知超时返回。 </p>
+<p>在长连接中一般是没有条件能够判断读写什么时候结束，所以必须要加长度报文头。读函数先是读取报文头的长度，再根据这个长度去读相应长度的报文。 </p>
+<p>Socket是什么<br>Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。<br><img src="http://www.a8z8.com/uploadfile/2012/1214/20121214082000450.bmp" alt="image"></p>
+<p>通信过程：<br><img src="http://www.a8z8.com/uploadfile/2012/1214/20121214082026922.bmp" alt="image"></p>
+<p>主机 A 的应用程序要能和主机 B 的应用程序通信，必须通过 Socket 建立连接，而建立 Socket 连接必须需要底层 TCP/IP 协议来建立 TCP 连接。建立 TCP 连接需要底层 IP 协议来寻址网络中的主机。我们知道网络层使用的 IP 协议可以帮助我们根据 IP 地址来找到目标主机，但是一台主机上可能运行着多个应用程序，如何才能与指定的应用程序通信就要通过 TCP 或 UPD 的地址也就是端口号来指定。这样就可以通过一个 Socket 实例唯一代表一个主机上的一个应用程序的通信链路了。</p>
+<p>建立通信链路<br>当客户端要与服务端通信，客户端首先要创建一个 Socket 实例，操作系统将为这个 Socket 实例分配一个没有被使用的本地端口号，并创建一个包含本地和远程地址和端口号的套接字数据结构，这个数据结构将一直保存在系统中直到这个连接关闭。在创建 Socket 实例的构造函数正确返回之前，将要进行 TCP 的三次握手协议，TCP 握手协议完成后，Socket 实例对象将创建完成，否则将抛出 IOException 错误。<br>与之对应的服务端将创建一个 ServerSocket 实例，ServerSocket 创建比较简单只要指定的端口号没有被占用，一般实例创建都会成功，同时操作系统也会为 ServerSocket 实例创建一个底层数据结构，这个数据结构中包含指定监听的端口号和包含监听地址的通配符，通常情况下都是“*”即监听所有地址。之后当调用 accept() 方法时，将进入阻塞状态，等待客户端的请求。当一个新的请求到来时，将为这个连接创建一个新的套接字数据结构，该套接字数据的信息包含的地址和端口信息正是请求源地址和端口。这个新创建的数据结构将会关联到 ServerSocket 实例的一个未完成的连接数据结构列表中，注意这时服务端与之对应的 Socket 实例并没有完成创建，而要等到与客户端的三次握手完成后，这个服务端的 Socket 实例才会返回，并将这个 Socket 实例对应的数据结构从未完成列表中移到已完成列表中。所以 ServerSocket 所关联的列表中每个数据结构，都代表与一个客户端的建立的 TCP 连接。</p>
+<p>备注：<br>Windows 下单机最大TCP连接数<br>调整系统参数来调整单机的最大TCP连接数，Windows 下单机的TCP连接数有多个参数共同决定：<br>以下都是通过修改注册表[HKEY_LOCAL_MACHINE \System \CurrentControlSet \Services \Tcpip \Parameters]</p>
+<p>1.最大TCP连接数      TcpNumConnections<br>2.TCP关闭延迟时间    TCPTimedWaitDelay    (30-240)s<br>3.最大动态端口数   MaxUserPort  (Default = 5000, Max = 65534) TCP客户端和服务器连接时，客户端必须分配一个动态端口，默认情况下这个动态端口的分配范围为 1024-5000 ，也就是说默认情况下，客户端最多可以同时发起3977 Socket 连接<br>4.最大TCB 数量   MaxFreeTcbs<br>系统为每个TCP 连接分配一个TCP 控制块(TCP control block or TCB)，这个控制块用于缓存TCP连接的一些参数，每个TCB需要分配 0.5 KB的pagepool 和 0.5KB 的Non-pagepool，也就说，每个TCP连接会占用 1KB 的系统内存。<br>非Server版本，MaxFreeTcbs 的默认值为1000 （64M 以上物理内存）Server 版本，这个的默认值为 2000。也就是说，默认情况下，Server 版本最多同时可以建立并保持2000个TCP 连接。</p>
+<ol>
+<li>最大TCB Hash table 数量   MaxHashTableSize TCB 是通过Hash table 来管理的。<br>这个值指明分配 pagepool 内存的数量，也就是说，如果MaxFreeTcbs = 1000 , 则 pagepool 的内存数量为 500KB那么 MaxHashTableSize 应大于 500 才行。这个数量越大，则Hash table 的冗余度就越高，每次分配和查找 TCP  连接用时就越少。这个值必须是2的幂，且最大为65536.</li>
+</ol>
+<p>IBM WebSphere Voice Server 在windows server 2003 下的典型配置<br>MaxUserPort = 65534 (Decimal)<br>MaxHashTableSize = 65536 (Decimal)<br>MaxFreeTcbs = 16000 (Decimal)<br>这里我们可以看到 MaxHashTableSize 被配置为比MaxFreeTcbs 大4倍，这样可以大大增加TCP建立的速度</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/06/android-web-knowledge/" itemprop="url">
+                  Android 知识积累
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-06T16:01:22+08:00" content="2016-05-06">
+              2016-05-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/06/android-web-knowledge/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/06/android-web-knowledge/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <blockquote>
+<p>我把一切都放在这里，你们来找吧<br>海贼王——哥尔·D·罗杰 </p>
+</blockquote>
+<ul>
+<li><a href="http://www.07net01.com" target="_blank" rel="external">电脑玩物</a></li>
+<li><a href="http://www.jcodecraeer.com" target="_blank" rel="external">泡网</a></li>
+<li><a href="http://gold.xitu.io/#/" target="_blank" rel="external">稀土掘金</a></li>
+</ul>
+<ul>
+<li><a href="http://blog.sina.com.cn/s/blog_740346460102w1wn.html" target="_blank" rel="external">使用新的 Android Studio 加速你的开发</a><br>说明: 提到了增量编译和Instant Run,提高了编译速度和安装速度.<br>&gt;<br>在开发用的 buildType 中使用 shrinker，而在其他 buildType 中使用 proguard。<br>&gt;<br>使用 shrinker<br>&gt;<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">debug</span> &#123;</span><br><span class="line">   	<span class="title">minifyEnabled</span> <span class="built_in">true</span></span><br><span class="line">   	useProguard <span class="built_in">false</span></span><br><span class="line">&#125;​</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>使用 proguard  </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">release</span> &#123;</span><br><span class="line">    <span class="title">minifyEnabled</span> <span class="built_in">true</span></span><br><span class="line">    useProguard <span class="built_in">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>看到google sanple 在使用这种方式. <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp/" target="_blank" rel="external">https://github.com/googlesamples/android-architecture/tree/todo-mvp/</a></p>
+<ul>
+<li><a href="http://blog.csdn.net/maosidiaoxian/article/details/41944325" target="_blank" rel="external"> Android官方技术文档翻译——Gradle 插件用户指南</a><br>&gt;</li>
+</ul>
+<ul>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0413/4139.html" target="_blank" rel="external">Android官方MVP架构示例项目解析</a><blockquote>
+<p>主要讲到todo-mvp项目的构架:<br> 我的理解:   </p>
+</blockquote>
+</li>
+<li>源码的组织方式</li>
+</ul>
+<ul>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0425/2782.html" target="_blank" rel="external">安卓中的Model-View-Presenter模式介绍</a></li>
+</ul>
+<ul>
+<li><a href="http://blog.csdn.net/lamp_zy/article/details/10156369" target="_blank" rel="external">onCreate onRestoreInstanceState onSaveInstanceState</a>  </li>
+</ul>
+<pre><code>在activity要被系统(非人)销毁时,系统会调用 onSaveInstanceState()保存bundle. 这里你可以在onCreate(bundle) 或者 onRestoreInstanceState (bundle )中进行数据还原.(onRestoreInstanceState中的bundle 也能传到oncreate(bundle) 中)
+</code></pre>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/05/mvp/" itemprop="url">
+                  Android 初识 MVC、MVP框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-05T14:46:18+08:00" content="2016-05-05">
+              2016-05-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/05/mvp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/05/mvp/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>转自 : <a href="http://blog.csdn.net/airsaid/article/details/51315096">Android 初识 MVC、MVP框架</a></p>
+<p><div class="toc"><br><ul><br><li><a href="#前言">前言</a></li><br><li><a href="#mvc">MVC</a></li><br><li><a href="#mvp">MVP</a></li><br></ul><br></div><br></p>
+
+<h1 id="前言">前言</h1>
+
+<p>MVC、MVP、MVVP相信大家已经耳熟能详了，作为Android最出名的三个框架，它们的应用是非常的广泛。这篇博客就来简单介绍下其中二种框架。也加强下自己对这方面的了解。由于自己菜鸟一枚，有不对和需要补充的地方欢迎评论~</p>
+
+
+
+<h1 id="mvc">MVC</h1>
+
+<p>MVC全名是：Model(模型) View(视图) Controller(控制器) 是软件架构中最常见的框架，简单来说，就是通过Controller的控制去操作Model层的数据，并且返回给View作展示，具体见下图： <br><br><img src="http://img.blog.csdn.net/20160504150622236" alt="这里写图片描述" title=""> <br><br><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/05/mvp/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -287,17 +684,12 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>转自泡网的<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0329/4102.html" target="_blank" rel="external">你应该知道的那些Android小经验</a></p>
-<h3 id="u6B63_u6587"><a href="#u6B63_u6587" class="headerlink" title="正文"></a>正文</h3><p></p><p>原文出处：<a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/" target="_self" textvalue="http://jayfeng.com/">http://jayfeng.com/</a>&nbsp;</p><p>做Android久了，就会踩很多坑，被坑的多了就有经验了，闲暇之余整理了部分，现挑选一些重要或者偏门的“小”经验做个记录。</p><h2 id="查看SQLite日志"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#查看SQLite日志" title="查看SQLite日志" target="_blank" rel="external"></a>查看SQLite日志</h2><pre class="brush:js;toolbar:false">adb&nbsp;shell&nbsp;setprop&nbsp;log.tag.SQLiteLog&nbsp;V<br>adb&nbsp;shell&nbsp;setprop&nbsp;log.tag.SQLiteStatements&nbsp;V</pre><p>因为实现里用了Log.isLoggable(TAG, Log.VERBOSE)做了判断，LessCode的LogLess中也参考了这种机制：<a href="https://github.com/openproject/LessCode/blob/master/lesscode-core/src/main/java/com/jayfeng/lesscode/core/LogLess.java" target="_blank" rel="external">LogLess</a>。<br>使用这种方法就可以在Release版本也能做到查看应用的打印日志了。</p><h2 id="PNG优化"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#PNG优化" title="PNG优化" target="_blank" rel="external"></a>PNG优化</h2><p>APK打包会自动对PNG进行无损压缩，如果自行无损压缩是无效的。<br>当然进行有损压缩是可以的：<a href="https://tinypng.com/" target="_blank" rel="external">https://tinypng.com/</a></p> <p class="runtimead"><script src="/plus/fuckblok.php?aid=23" language="javascript"></script></p>  <h2 id="Tcpdump抓包"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#Tcpdump抓包" title="Tcpdump抓包" target="_blank" rel="external"></a>Tcpdump抓包</h2><p>有些模拟器比如genymotion自带了tcpdump，如果没有的话，需要下载tcpdump:<br><a href="http://www.strazzere.com/android/tcpdump" target="_blank" rel="external">http://www.strazzere.com/android/tcpdump</a><br>把tcpdump push到/data/local下，抓包命令：</p><pre class="brush:js;toolbar:false">adb&nbsp;shell&nbsp;&nbsp;/data/local/tcpdump&nbsp;-i&nbsp;any&nbsp;-p&nbsp;-s&nbsp;0&nbsp;-w&nbsp;/sdcard/capture.pcap</pre><h2 id="查看签名">查看签名</h2><p>很多开发者服务都需要绑定签名信息，用下面的命令可以查看签名：</p><pre class="brush:js;toolbar:false">keytool&nbsp;-list&nbsp;-v&nbsp;-keystore&nbsp;release.jks</pre><p>注意，这个是需要密码的，可以查看MD5, SHA1，SHA256等等。</p><h2 id="单例模式-懒汉式-的更好的写法"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#单例模式-懒汉式-的更好的写法" title="单例模式(懒汉式)的更好的写法" target="_blank" rel="external"></a>单例模式(懒汉式)的更好的写法</h2><p>特别说到这个问题，是因为网上很多这样的代码：</p><pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;Singleton&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton&nbsp;(){}<p></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;Singleton&nbsp;getInstance()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(instance&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p></pre><p>这种写法线程不安全，改进一下，加一个同步锁：</p><pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;Singleton&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton&nbsp;(){}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;synchronized&nbsp;Singleton&nbsp;getInstance()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(instance&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;instance;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</pre><p>网上这样的代码更多，可以很好的工作，但是缺点是效率低。<br style="color: rgb(85, 85, 85); font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; line-height: 32px; text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);">实际上，早在JDK1.5就引入volatile关键字，所以又有了一种更好的双重校验锁写法：</p><pre class="brush:js;toolbar:false">public&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;volatile&nbsp;static&nbsp;Singleton&nbsp;singleton;<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton&nbsp;(){}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;Singleton&nbsp;getSingleton()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(singleton&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;synchronized&nbsp;(Singleton.class)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(singleton&nbsp;==&nbsp;null)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;singleton&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;singleton;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</pre><p>注意，别忘记volatile关键字哦，否则就是10重，100重也可能还是会出问题。<br style="color: rgb(85, 85, 85); font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; line-height: 32px; text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);">上面是用的最多的，还有一种静态内部类写法更推荐：</p><pre class="brush:js;toolbar:false">publlic&nbsp;class&nbsp;Singleton&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;Singleton()&nbsp;{}<br>&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;class&nbsp;SingletonLoader&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;static&nbsp;final&nbsp;Singleton&nbsp;INSTANCE&nbsp;=&nbsp;new&nbsp;Singleton();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<p></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;Singleton&nbsp;getInstance()&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;SingletonLoader.INSTANCE;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p></pre><h2 id="多进程Application">多进程Application</h2><p>是不是经常发现Application里的方法执行了多次？百思不得其解。<br>因为当有多个进程的时候，Application会执行多次，可以通过pid来判断那些方法只执行一次，避免浪费资源。</p><h2 id="隐式启动Service"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#隐式启动Service" title="隐式启动Service" target="_blank" rel="external"></a>隐式启动Service</h2><p>这是Android5.0的一个改动，不支持隐式的Service调用。下面的代码在Android 5.0+上会报错：Service Intent must be explicit：</p><pre class="brush:js;toolbar:false">Intent&nbsp;serviceIntent&nbsp;=&nbsp;new&nbsp;Intent();<br>serviceIntent.setAction(&quot;com.jayfeng.MyService&quot;);<br>context.startService(serviceIntent);</pre><p>可改成如下：</p><pre class="brush:js;toolbar:false">//&nbsp;指定具体Service类，或者有packageName也行<br>Intent&nbsp;serviceIntent&nbsp;=&nbsp;new&nbsp;Intent(context,&nbsp;MyService.class);<br>context.startService(serviceIntent);</pre><h2 id="fill-parent的寿命">fill_parent的寿命</h2><p>在Android2.2之后，支持使用match_parent。你的布局文件里是不是既有fill_parent和match_parent显得很乱？<br>如果你现在的minSdkVersion是8+的话，就可以忽略fill_parent，统一使用match_parent了，否则请使用fill_parent。</p><h2 id="ListView的局部刷新"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#ListView的局部刷新" title="ListView的局部刷新" target="_blank" rel="external"></a>ListView的局部刷新</h2><p>有的列表可能notifyDataSetChanged()代价有点高，最好能局部刷新。<br>局部刷新的重点是，找到要更新的那项的View，然后再根据业务逻辑更新数据即可。</p><pre class="brush:js;toolbar:false">private&nbsp;void&nbsp;updateItem(int&nbsp;index)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;visiblePosition&nbsp;=&nbsp;listView.getFirstVisiblePosition();<br>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(index&nbsp;-&nbsp;visiblePosition&nbsp;&gt;=&nbsp;0)&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//得到要更新的item的view<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View&nbsp;view&nbsp;=&nbsp;listView.getChildAt(index&nbsp;-&nbsp;visiblePosition);<p></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;更新界面（示例参考）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;TextView&nbsp;nameView&nbsp;=&nbsp;ViewLess.$(view,&nbsp;R.id.name);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;nameView.setText(&quot;update&nbsp;&quot;&nbsp;+&nbsp;index);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;更新列表数据（示例参考）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;list.get(index).setName(&quot;Update&nbsp;&quot;&nbsp;+&nbsp;index);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</p></pre><p>强调一下，最后那个列表数据别忘记更新， 不然数据源不变，一滚动可能又还原了。</p><h2 id="系统日志中几个重要的TAG"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#系统日志中几个重要的TAG" title="系统日志中几个重要的TAG" target="_blank" rel="external"></a>系统日志中几个重要的TAG</h2><pre class="brush:js;toolbar:false">//&nbsp;查看Activity跳转<br>adb&nbsp;logcat&nbsp;-v&nbsp;time&nbsp;|&nbsp;grep&nbsp;ActivityManager<br>//&nbsp;查看崩溃信息<br>adb&nbsp;logcat&nbsp;-v&nbsp;time&nbsp;|&nbsp;grep&nbsp;AndroidRuntime<br>//&nbsp;查看Dalvik信息，比如GC<br>adb&nbsp;logcat&nbsp;-v&nbsp;time&nbsp;|&nbsp;grep&nbsp;&quot;D\/Dalvik&quot;<br>//&nbsp;查看art信息，比如GC<br>adb&nbsp;logcat&nbsp;-v&nbsp;time&nbsp;|&nbsp;grep&nbsp;&quot;I\/art&quot;</pre><h2 id="一行居中，多行居左的TextView">一行居中，多行居左的TextView</h2><p>这个一般用于提示信息对话框，如果文字是一行就居中，多行就居左。<br>在TextView外套一层wrap_content的ViewGroup即可简单实现：</p><pre class="brush:js;toolbar:false">&lt;RelativeLayout&nbsp;xmlns:android=&quot;<a href="http://schemas.android.com/apk/res/android&amp;quot" target="_blank" rel="external">http://schemas.android.com/apk/res/android&amp;quot</a>;<br>&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width=&quot;match_parent&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height=&quot;match_parent&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;!–&nbsp;套一层wrap_content的ViewGroup&nbsp;–&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;LinearLayout<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width=&quot;wrap_content&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height=&quot;wrap_content&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_centerInParent=&quot;true&quot;&gt;<p></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;TextView<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width=&quot;wrap_content&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height=&quot;wrap_content&quot;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:text=&quot;@string/hello_world&quot;&nbsp;/&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LinearLayout&gt;<br>&lt;/RelativeLayout&gt;</p></pre><h2 id="setCompoundDrawablesWithIntrinsicBounds">setCompoundDrawablesWithIntrinsicBounds()</h2><p>网上一大堆setCompoundDrawables()方法无效不显示的问题，然后解决方法是setBounds，需要计算大小…<br>不用这么麻烦，用setCompoundDrawablesWithIntrinsicBounds()这个方法最简单！</p><h2 id="计算程序运行时间"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#计算程序运行时间" title="计算程序运行时间" target="_blank" rel="external"></a>计算程序运行时间</h2><p>为了计算一段代码运行时间，一般的做法是，在代码的前面加个startTime，在代码的后面把当前时间减去startTime，这个时间差就是运行时间。<br>这里提供一种写起来更方便的方法，完全无时间逻辑，只是加一个打印log就够了。</p><pre class="brush:js;toolbar:false">//&nbsp;测试setContentView()的时间<br>Log.d(&quot;TAG&quot;,&nbsp;&quot;Start&quot;);<br>setContentView(R.layout.activity_http);<br>Log.d(&quot;TAG&quot;,&nbsp;&quot;End&quot;);</pre><p>没有计算时间的逻辑，这能测出来？<br style="color: rgb(85, 85, 85); font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; line-height: 32px; text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);">把日志过滤出来，运行命令“adb logcat -v time | grep TAG”：</p><pre class="brush:js;toolbar:false">03-18&nbsp;14:47:25.477&nbsp;D/TAG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(14600):&nbsp;Start<br>03-18&nbsp;14:47:25.478&nbsp;D/TAG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(14600):&nbsp;End</pre><p style="margin-top: 0px; margin-bottom: 25px; color: rgb(85, 85, 85); font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; line-height: 32px; text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);">通过-v time参数，可以比较日志左边的时间来算出中间的代码运行的时间。</p><h2 id="JAVA引用类型一览表" style="margin: 20px 0px 15px; padding: 10px 0px 0px; line-height: 1.5; font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; font-size: 20px; color: rgb(85, 85, 85); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#JAVA引用类型一览表" class="headerlink" title="JAVA引用类型一览表" style="color: rgb(85, 85, 85); text-decoration: none; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(153, 153, 153); word-wrap: break-word; background-color: transparent;" target="_blank" rel="external"></a>JAVA引用类型一览表</h2><p style="margin-top: 0px; margin-bottom: 25px; color: rgb(85, 85, 85); font-family: Lato, &#39;PingFang SC&#39;, &#39;Microsoft YaHei&#39;, sans-serif; line-height: 32px; text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);">对象引用：强引用 &gt; 软引用 &gt; 弱引用 &gt; 虚引用。</p><table width="619"><thead><tr class="firstRow"><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">引用类型</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">回收时机</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">用途</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">生存时间</th></tr></thead><tbody><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">强引用</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">从来不会</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">对象的一般状态</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">JVM停止运行时终止</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">软引用</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">在内存不足时</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">对象缓存</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">内存不足时终止</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">弱引用</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">在垃圾回收时</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">对象缓存</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">GC运行后终止</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">虚引用</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">在垃圾回收时</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">对象跟踪</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">GC运行后终止</td></tr></tbody></table><h2 id="Context使用场景"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#Context使用场景" class="headerlink" title="Context使用场景" style="color: rgb(85, 85, 85); text-decoration: none; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(153, 153, 153); word-wrap: break-word; background-color: transparent;" target="_blank" rel="external"></a>Context使用场景</h2><p>为了防止Activity，Service等这样的Context泄漏于一些生命周期更长的对象，可以使用生命周期更长的ApplicationContext，但是不是所有的Context的都能替换为ApplicationContext<br>这是网上流传的一份表格：</p><table width="619"><thead><tr class="firstRow"><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);"><br></th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">Application</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">Activity</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">Service</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">ContentProvider</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">BroadcastReceiver</th></tr></thead><tbody><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Show Dialog</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Start Activity</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Layout Inflation</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Start Service</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Bind Service</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Send Broadcast</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Regist BroadcastReceiver</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">否</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">Load Resource Value</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">是</td></tr></tbody></table><h2 id="图片缓存大小"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#图片缓存大小" title="图片缓存大小" target="_blank" rel="external"></a>图片缓存大小</h2><p>现在很多图片库需要给图片设置一个最大缓存，但是这个值设置多少合适呢？<br>高端机和低端机的配置显然应该不同，可以考虑设置一个动态值。<br>建议设置为应用可用内存的1/8:</p><pre class="brush:js;toolbar:false">int&nbsp;memoryCache&nbsp;=&nbsp;(int)&nbsp;(Runtime.getRuntime().maxMemory()&nbsp;/&nbsp;8);</pre><h2 id="系统内置的一些工具类">系统内置的一些工具类</h2><p>在AOSP源码全局搜了一下包含Util关键字的类，整理出这个列表供大家参考：</p><pre class="brush:js;toolbar:false">//&nbsp;系统<br>./android/database/DatabaseUtils.java<br>./android/transition/TransitionUtils.java<br>./android/view/animation/AnimationUtils.java<br>./android/view/ViewAnimationUtils.java<br>./android/webkit/URLUtil.java<br>./android/bluetooth/le/BluetoothLeUtils.java<br>./android/gesture/GestureUtils.java<br>./android/text/TextUtils.java<br>./android/text/format/DateUtils.java<br>./android/os/FileUtils.java<br>./android/os/CommonTimeUtils.java<br>./android/net/NetworkUtils.java<br>./android/util/MathUtils.java<br>./android/util/TimeUtils.java<br>./android/util/ExceptionUtils.java<br>./android/util/DebugUtils.java<br>./android/drm/DrmUtils.java<br>./android/media/ThumbnailUtils.java<br>./android/media/ImageUtils.java<br>./android/media/Utils.java<br>./android/opengl/GLUtils.java<br>./android/opengl/ETC1Util.java<br>./android/telephony/PhoneNumberUtils.java<br>//&nbsp;设计和支持库<br>./design/src/android/support/design/widget/ViewGroupUtils.java<br>./design/src/android/support/design/widget/ThemeUtils.java<br>./design/src/android/support/design/widget/ViewUtils.java<br>./design/lollipop/android/support/design/widget/ViewUtilsLollipop.java<br>./design/base/android/support/design/widget/AnimationUtils.java<br>./design/base/android/support/design/widget/MathUtils.java<br>./design/honeycomb/android/support/design/widget/ViewGroupUtilsHoneycomb.java<br>./v7/recyclerview/src/android/support/v7/widget/helper/ItemTouchUIUtil.java<br>./v7/recyclerview/src/android/support/v7/widget/helper/ItemTouchUIUtilImpl.java<br>./v7/recyclerview/src/android/support/v7/util/MessageThreadUtil.java<br>./v7/recyclerview/src/android/support/v7/util/AsyncListUtil.java<br>./v7/recyclerview/src/android/support/v7/util/ThreadUtil.java<br>./v7/recyclerview/tests/src/android/support/v7/widget/AsyncListUtilLayoutTest.java<br>./v7/recyclerview/tests/src/android/support/v7/util/AsyncListUtilTest.java<br>./v7/recyclerview/tests/src/android/support/v7/util/ThreadUtilTest.java<br>./v7/appcompat/src/android/support/v7/graphics/drawable/DrawableUtils.java<br>./v7/appcompat/src/android/support/v7/widget/DrawableUtils.java<br>./v7/appcompat/src/android/support/v7/widget/ThemeUtils.java<br>./v7/appcompat/src/android/support/v7/widget/ViewUtils.java<br>./v4/tests/java/android/support/v4/graphics/ColorUtilsTest.java<br>./v4/jellybean-mr1/android/support/v4/text/TextUtilsCompatJellybeanMr1.java<br>./v4/jellybean/android/support/v4/app/BundleUtil.java<br>./v4/jellybean/android/support/v4/app/NavUtilsJB.java<br>./v4/java/android/support/v4/app/NavUtils.java<br>./v4/java/android/support/v4/database/DatabaseUtilsCompat.java<br>./v4/java/android/support/v4/graphics/ColorUtils.java<br>./v4/java/android/support/v4/text/TextUtilsCompat.java<br>./v4/java/android/support/v4/util/TimeUtils.java<br>./v4/java/android/support/v4/util/DebugUtils.java<br>./v4/java/android/support/v4/content/res/TypedArrayUtils.java</pre><p>这么多工具类，一定可以找到对你有用的。</p><h2 id="ClipPadding"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#ClipPadding" title="ClipPadding" target="_blank" rel="external"></a>ClipPadding</h2><p>这个不多说，ListView的ClipPadding设为false，就能为ListView设置各种padding而不会出现丑陋的滑动“禁区”了。</p><h2 id="强大的dumpsys"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#强大的dumpsys" title="强大的dumpsys" target="_blank" rel="external"></a>强大的dumpsys</h2><p>dumpsys可以查看系统服务和状态，非常强大，可通过如下查看所有支持的子命令：</p><pre class="brush:js;toolbar:false">dumpsys&nbsp;|&nbsp;grep&nbsp;&quot;DUMP&nbsp;OF&nbsp;SERVICE&quot;</pre><p>这里列举几个稍微常用的：</p><table width="619"><thead><tr class="firstRow"><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">子命令</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">备注</th></tr></thead><tbody><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">activity</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">显示所有的activities的信息</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">cpuinfo</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">显示CPU信息</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">window</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">显示键盘，窗口和它们的关系</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">meminfo</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">内存信息（meminfo $package_name or $pid 使用包名或者进程id显示内存信息）</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">alarm</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">显示Alarm信息</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">statusbar</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">显示状态栏相关的信息（找出广告通知属于哪个应用）</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">usagestats</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">每个界面启动的时间</td></tr></tbody></table><h2 id="bugreport命令"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#bugreport命令" title="bugreport命令" target="_blank" rel="external"></a>bugreport命令</h2><p>很多人都用过adb logcat，但是如果想要更详细的信息，logcat则无能为力。<br>所以大多数手机厂商测试更多的是用adb bugreport来抓log给开发人员分析。</p><pre class="brush:js;toolbar:false">//&nbsp;除了log，还包括启动后的系统状态,包括进程列表，内存信息，VM信息等等<br>//&nbsp;而且不像logcat是一直打印的，bugreport命令输出到当前时间就停止结束了。<br>adb&nbsp;bugreport&nbsp;&gt;&nbsp;main.log</pre><h2 id="dpi文件夹的换算比例">dpi文件夹的换算比例</h2><p>之前的ldpi基本可以抛弃了，主流的dpi已经从很早之前的mdip转移到了xhdpi了，特别提醒。</p><table width="619"><thead><tr class="firstRow"><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">PPI</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">RESOLUTION</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">DP</th><th style="padding: 8px 8px 10px; text-align: left; vertical-align: middle; border-bottom-width: 3px; border-right-color: rgb(238, 238, 238);">PX</th></tr></thead><tbody><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">mdpi(160dp)</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">320P</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">1</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">1</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">hdpi(240dp)</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">480P</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">1</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">1.5</td></tr><tr style="background-color: rgb(249, 249, 249);"><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">xhdpi(320dp)</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">720P</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">1</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">2</td></tr><tr><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">xxhdpi(480dpi)</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">1080P</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">1</td><td style="padding: 8px; text-align: left; vertical-align: middle; border-right-color: rgb(238, 238, 238);">3</td></tr></tbody></table><h2 id="更新媒体库文件"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#更新媒体库文件" title="更新媒体库文件" target="_blank" rel="external"></a>更新媒体库文件</h2><p>以前做ROM的时候经常碰到一些第三方软件（某音乐APP）下载了新文件或删除文件之后，但是媒体库并没有更新，因为这个是需要第三方软件主动触发。</p><pre class="brush:js;toolbar:false">//&nbsp;通知媒体库更新单个文件状态<br>Uri&nbsp;fileUri&nbsp;=&nbsp;Uri.fromFile(file);<br>sendBroadcast(new&nbsp;Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,fileUri));</pre><p>媒体库会在手机启动，SD卡插拔的情况下进行全盘扫描，不是实时的而且代价比较大，所以单个文件的刷新很有必要。</p><h2 id="Monkey参数"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#Monkey参数" title="Monkey参数" target="_blank" rel="external"></a>Monkey参数</h2><p>大家都知道，跑monkey的参数设置有一些要注意的地方，比如太快了不行不切实际，太慢了也不行等等，这里给出一个参考：</p><pre class="brush:js;toolbar:false">adb&nbsp;shell&nbsp;monkey&nbsp;-p&nbsp;&lt;packageName&gt;&nbsp;-s&nbsp;1000&nbsp;–ignore-crashes&nbsp;–ignore-timeouts&nbsp;–ignore-security-exceptions&nbsp;&nbsp;–pct-trackball&nbsp;0&nbsp;–pct-nav&nbsp;0&nbsp;–pct-majornav&nbsp;0&nbsp;–pct-anyevent&nbsp;0&nbsp;&nbsp;-v&nbsp;–throttle&nbsp;300&nbsp;1200000000</pre><p>一边跑monkey，一边抓log吧。<br>kill Monkey的命令 <code>adb shell ps</code>用来抓Monkey的pid:<code>com.android.commands.monkey</code>,然后<code>adb shell kill MonekyPId</code><br></p><h2 id="小结"><a href="http://jayfeng.com/2016/03/18/%E4%BD%A0%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E9%82%A3%E4%BA%9BAndroid%E5%B0%8F%E7%BB%8F%E9%AA%8C/#小结" title="小结" target="_blank" rel="external"></a>小结</h2><p>无论是大经验还是小经验，有用就是好经验。</p><p><br></p><br>                <p></p>
-
-            
-          </span>
+          <p>转自泡网的<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0329/4102.html">你应该知道的那些Android小经验</a></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/31/android-some-knowledge/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -414,7 +806,7 @@
 <h3 id="u7528_u6CD5_u5B9E_u4F8B_3A"><a href="#u7528_u6CD5_u5B9E_u4F8B_3A" class="headerlink" title="用法实例:"></a>用法实例:</h3><p>1.在自定义的Application初始化  </p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Application</span>&#123;</span></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    public void onCreate() &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        <span class="type">RequestManager</span>.getInstance(<span class="keyword">this</span>);</span><br><span class="line">        <span class="type">HttpConfig</span>.<span class="type">DEBUG</span> = <span class="type">BuildConfig</span>.<span class="type">DEBUG</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2.实现NetRequestListener接口</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">public</span> <span class="tag">class</span> <span class="tag">MainActivity</span> <span class="tag">extends</span> <span class="tag">FragmentActivity</span> <span class="tag">implements</span> <span class="tag">NetRequestListener</span> &#123;</span><br><span class="line"></span><br><span class="line"> <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidStart</span>(String requestTag) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestLoading</span>(long totalCount, long current) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidSuccess</span>(String requestTag, JSONObject response) &#123;</span><br><span class="line">        <span class="tag">if</span> (<span class="string">"query"</span>.<span class="function">equals</span>(requestTag)) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;else &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidFailed</span>(String requestTag, Throwable t, int errorNo, String strMsg) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidCancel</span>(String requestTag) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">public</span> <span class="tag">class</span> <span class="tag">MainActivity</span> <span class="tag">extends</span> <span class="tag">FragmentActivity</span> <span class="tag">implements</span> <span class="tag">NetRequestListener</span> &#123;</span><br><span class="line"> <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidStart</span>(String requestTag) &#123;    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestLoading</span>(long totalCount, long current) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidSuccess</span>(String requestTag, JSONObject response) &#123;</span><br><span class="line">        <span class="tag">if</span> (<span class="string">"query"</span>.<span class="function">equals</span>(requestTag)) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;else &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidFailed</span>(String requestTag, Throwable t, int errorNo, String strMsg) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">@Override</span></span><br><span class="line">    public void <span class="function">requestDidCancel</span>(String requestTag) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3.GET 请求</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DaoRequest.<span class="keyword">get</span>(<span class="keyword">this</span>, <span class="string">"query"</span>, <span class="string">"https://suggest.taobao.com/sug?code=utf-8&amp;q=iphone"</span>, <span class="literal">null</span>, <span class="keyword">this</span>, <span class="literal">true</span>, <span class="string">"utf8"</span>);</span><br></pre></td></tr></table></figure>
 <p>4.POST 请求</p>
@@ -439,6 +831,144 @@
 <li>DOWNLOAD </li>
 </ol>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.231</span> <span class="number">27966</span>-<span class="number">5212</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> downLoad onResponse</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.231</span> <span class="number">27966</span>-<span class="number">5212</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> multhread  i= <span class="number">0</span>  RequestMap&#123;name=<span class="string">'url:http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif Range:bytes=0-225090'</span>, builder=com.squareup.okhttp.Request$Builder@<span class="number">2</span>c5da353, callback=<span class="literal">null</span>, startPos=<span class="number">0</span>, endPos=<span class="number">225090</span>&#125;</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.241</span> <span class="number">27966</span>-<span class="number">5212</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> multhread  i= <span class="number">1</span>  RequestMap&#123;name=<span class="string">'url:http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif Range:bytes=225091-450182'</span>, builder=com.squareup.okhttp.Request$Builder@<span class="number">10</span>d40490, callback=<span class="literal">null</span>, startPos=<span class="number">225091</span>, endPos=<span class="number">450182</span>&#125;</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.241</span> <span class="number">27966</span>-<span class="number">5212</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> <span class="keyword">while</span> <span class="number">1</span>: RequestMap&#123;name=<span class="string">'url:http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif Range:bytes=0-225090'</span>, builder=com.squareup.okhttp.Request$Builder@<span class="number">2</span>c5da353, callback=<span class="literal">null</span>, startPos=<span class="number">0</span>, endPos=<span class="number">225090</span>&#125;</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.251</span> <span class="number">27966</span>-<span class="number">5212</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> <span class="keyword">while</span> <span class="number">1</span>: RequestMap&#123;name=<span class="string">'url:http://7vihs8.com1.z0.glb.clouddn.com/fragment1.gif Range:bytes=225091-450182'</span>, builder=com.squareup.okhttp.Request$Builder@<span class="number">10</span>d40490, callback=<span class="literal">null</span>, startPos=<span class="number">225091</span>, endPos=<span class="number">450182</span>&#125;</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.281</span> <span class="number">27966</span>-<span class="number">5219</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> <span class="keyword">while</span> <span class="number">2</span>: onResponse</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.281</span> <span class="number">27966</span>-<span class="number">5218</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> <span class="keyword">while</span> <span class="number">2</span>: onResponse</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.701</span> <span class="number">27966</span>-<span class="number">5218</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">FileCallBack:</span> OkHttp <span class="string">http:</span><span class="comment">//7vihs8.com1.z0.glb.clouddn.com/fragment1.gif完成下载  ： 0 -- 225090</span></span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.701</span> <span class="number">27966</span>-<span class="number">5219</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">FileCallBack:</span> OkHttp <span class="string">http:</span><span class="comment">//7vihs8.com1.z0.glb.clouddn.com/fragment1.gif完成下载  ： 225091 -- 450182</span></span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.701</span> <span class="number">27966</span>-<span class="number">5219</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">DaoRequest:</span> <span class="regexp">/sdcard/</span>download.gif</span><br><span class="line"><span class="number">03</span>-<span class="number">30</span> <span class="number">21</span>:<span class="number">10</span>:<span class="number">17.701</span> <span class="number">27966</span>-<span class="number">5219</span><span class="regexp">/com.androidso.okhttp_volley_net_tools D/</span><span class="string">MainActivity:</span> <span class="string">requestDidSuccess:</span></span><br></pre></td></tr></table></figure>
+<h1 id="done"><a href="#done" class="headerlink" title="done"></a>done</h1><h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/28/download-multhread-resume/" itemprop="url">
+                  Java / Android 多线程下载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-28T10:39:27+08:00" content="2016-03-28">
+              2016-03-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/28/download-multhread-resume/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/download-multhread-resume/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="u6982_u8FF0_u53CA_u539F_u7406"><a href="#u6982_u8FF0_u53CA_u539F_u7406" class="headerlink" title="概述及原理"></a>概述及原理</h3><h4 id="u6982_u8FF0_3A"><a href="#u6982_u8FF0_3A" class="headerlink" title="概述:"></a>概述:</h4><p>多线程下载这部分已经封装到起来了,<br>参考日志 : <a href="http://androidso.com/2016/03/30/Okhttp-Volley-Net-Tools/">Okhttp-Volley-Net-Tools</a><br>源代码参考及下载 : <a href="https://github.com/qaza2008/okhttp-volley-net-tools.git" target="_blank" rel="external">qaza2008/okhttp-volley-net-tools</a><br>欢迎fork and star.</p>
+<h4 id="u539F_u7406_3A"><a href="#u539F_u7406_3A" class="headerlink" title="原理:"></a>原理:</h4><ol>
+<li>先发送一次请求,获取下载文件的长度,及判断服务器是否支持多线程下载.</li>
+<li>根据文件的长度,新建本地文件并设置长度.</li>
+<li>根据给定的线程数来计算每个线程下载的数据长度和下载位置.</li>
+<li>开启多请求下载任务.</li>
+<li>下载完毕通知调用者.</li>
+</ol>
+<h3 id="u4EE3_u7801_u53C2_u8003"><a href="#u4EE3_u7801_u53C2_u8003" class="headerlink" title="代码参考"></a>代码参考</h3><p>注意:这里使用的OkHttp框架请求网络.</p>
+<p>首先看看上面的3条原理对应的代码:  </p>
+<p>1.先发送一次请求,获取下载文件的长度,及判断服务器是否支持多线程下载.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果获取响应的文件的大小.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getFileSize</span>(<span class="params">Response response</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> fileSize = TextUtils.isEmpty(response.headers().<span class="keyword">get</span>(<span class="string">"Content-Length"</span>)) ? <span class="number">0</span> : Long.parseLong(response.headers().<span class="keyword">get</span>(<span class="string">"Content-Length"</span>));</span><br><span class="line">        <span class="keyword">if</span> (fileSize &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            Log.d(<span class="string">"FileDownloadRequest"</span>, <span class="string">"Response doesn't present Content-Length!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fileSize;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断服务器是否支持多线程下载</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> boolean <span class="title">isSupportRange</span>(<span class="params">Response response</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.equals(response.headers().<span class="keyword">get</span>(<span class="string">"Accept-Ranges"</span>), <span class="string">"bytes"</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String <span class="keyword">value</span> = response.headers().<span class="keyword">get</span>(<span class="string">"Content-Range"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">value</span> != <span class="keyword">null</span> &amp;&amp; <span class="keyword">value</span>.startsWith(<span class="string">"bytes"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>2.根据文件的长度,新建本地文件并设置长度.</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">File</span> saveFile(Response response, <span class="keyword">boolean</span> mulThreadFlag) <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> (!mulThreadFlag || !isSupportRange(response)) &#123;</span><br><span class="line">           <span class="keyword">return</span> saveFile(response);</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">long</span> fileSize = getFileSize(response);</span><br><span class="line">           <span class="keyword">File</span> dir = <span class="keyword">new</span> <span class="keyword">File</span>(destFileDir);</span><br><span class="line">           <span class="keyword">if</span> (!dir.exists()) &#123;</span><br><span class="line">               dir.mkdirs();</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">File</span> <span class="keyword">file</span> = <span class="keyword">new</span> <span class="keyword">File</span>(dir, destFileName);</span><br><span class="line">           RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile(<span class="keyword">file</span>, <span class="string">"rw"</span>);</span><br><span class="line">           raf.setLength(fileSize);</span><br><span class="line">           raf.close();</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">file</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>3.根据给定的线程数来计算每个线程下载的数据长度和下载位置.</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">long</span> <span class="keyword">block </span>= fileSize % threadCount == <span class="number">0</span> ? fileSize / threadCount : fileSize / threadCount + <span class="number">1</span><span class="comment">;</span></span><br><span class="line">                        for (int i = <span class="number">0</span><span class="comment">; i &lt; threadCount; i++) &#123;</span></span><br><span class="line">                            long start = i * <span class="keyword">block;</span><br><span class="line"></span>                            long <span class="preprocessor">end</span> = start + <span class="keyword">block </span>&gt;= fileSize ? fileSize : start + <span class="keyword">block </span>- <span class="number">1</span><span class="comment">;</span></span><br><span class="line">                            <span class="keyword">MulThreadRequest.RequestMap </span>childRequestMap = new <span class="keyword">MulThreadRequest.RequestMap();</span><br><span class="line"></span>                            childRequestMap.setName(parentReq.getName() + <span class="string">" Range:bytes="</span> + start + <span class="string">"-"</span> + <span class="preprocessor">end</span>)<span class="comment">;</span></span><br><span class="line">                            Request.<span class="keyword">Builder </span>childBuilder = new Request.<span class="keyword">Builder();</span><br><span class="line"></span></span><br><span class="line">                            childRequestMap.setBuilder(</span><br><span class="line">                                    childBuilder.url(url).<span class="keyword">addHeader("Range", </span><span class="string">"bytes="</span> + start + <span class="string">"-"</span> + <span class="preprocessor">end</span>)</span><br><span class="line">                            )<span class="comment">;</span></span><br><span class="line">                            childRequestMap.setStartPos(start)<span class="comment">;</span></span><br><span class="line">                            childRequestMap.<span class="keyword">setEndPos(end);</span><br><span class="line"></span>                            Log.d(TAG, <span class="string">"multhread "</span> + <span class="string">" i= "</span> + i + <span class="string">"  "</span> + childRequestMap.toString())<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">                            <span class="keyword">mulThreadRequest.add(childRequestMap);</span><br><span class="line"></span></span><br><span class="line">                        &#125;</span><br></pre></td></tr></table></figure>
+<p>4.开启多请求下载任务.</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Enumeration</span>&lt;<span class="type">MulThreadRequest</span>.<span class="type">RequestMap</span>&gt; <span class="keyword">iterator</span> = mulThreadRequest.getChildren();</span><br><span class="line">                       <span class="keyword">while</span> (<span class="keyword">iterator</span>.hasMoreElements()) &#123;</span><br><span class="line">                           <span class="type">MulThreadRequest</span>.<span class="type">RequestMap</span> childRequestMap = <span class="keyword">iterator</span>.nextElement();</span><br><span class="line">                           <span class="type">Log</span>.d(<span class="type">TAG</span>, <span class="string">"while 1: "</span> + childRequestMap.toString());</span><br><span class="line">                           client.newCall(childRequestMap.getBuilder().build()).enqueue(new <span class="type">ChildeCallback</span>(childRequestMap) &#123;</span><br><span class="line"></span><br><span class="line">                               @<span class="type">Override</span></span><br><span class="line">                               public <span class="type">void</span> onResponse(com.squareup.okhttp.<span class="type">Response</span> response) throws <span class="type">IOException</span> &#123;</span><br><span class="line">                                   super.onResponse(response);</span><br><span class="line">                                   <span class="type">Log</span>.d(<span class="type">TAG</span>, <span class="string">"while 2: onResponse"</span>);</span><br><span class="line">                                   requestMap.getStartPos();</span><br><span class="line">                                   fileCallBack.parseNetworkResponse(response, requestMap.getStartPos(), requestMap.getEndPos());</span><br><span class="line">                                   callbackAgent.onResponse(response);</span><br><span class="line">                               &#125;</span><br><span class="line"></span><br><span class="line">                               @<span class="type">Override</span></span><br><span class="line">                               public <span class="type">void</span> onFailure(<span class="type">Request</span> request, <span class="type">IOException</span> e) &#123;</span><br><span class="line">                                   super.onFailure(request, e);</span><br><span class="line">                                   <span class="type">Log</span>.d(<span class="type">TAG</span>, <span class="string">"while 3: onFailure"</span>);</span><br><span class="line">                                   callbackAgent.onFailure(request, e);</span><br><span class="line">                               &#125;</span><br><span class="line">                           &#125;);</span><br><span class="line">                       &#125;</span><br></pre></td></tr></table></figure>
+<p>5.下载完毕通知调用者.</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Callback callbackAgent = <span class="keyword">new</span> Callback() &#123;</span><br><span class="line">                          <span class="keyword">int</span> responseCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">                          <span class="annotation">@Override</span></span><br><span class="line">                          <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span> </span>&#123;</span><br><span class="line">                              <span class="keyword">if</span> (HttpConfig.DEBUG)</span><br><span class="line">                                  Log.d(TAG, <span class="string">"downLoad onFailure"</span>);</span><br><span class="line">                              fileCallBack.requestDidFailed(<span class="string">"downLoad="</span> + url, e.getCause(), <span class="number">999</span>, e.getMessage());</span><br><span class="line">                              <span class="keyword">while</span> (mulThreadRequest.getChildren().hasMoreElements()) &#123;</span><br><span class="line">                                  MulThreadRequest.RequestMap childRequestMap = mulThreadRequest.getChildren().nextElement();</span><br><span class="line">                                  client.cancel(childRequestMap.getBuilder().build());</span><br><span class="line">                              &#125;</span><br><span class="line">                          &#125;</span><br><span class="line"></span><br><span class="line">                          <span class="annotation">@Override</span></span><br><span class="line">                          <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(com.squareup.okhttp.Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                              responseCount++;</span><br><span class="line">                              <span class="keyword">if</span> (responseCount == threadCount) &#123;</span><br><span class="line">                                  JSONObject jsonObject = <span class="keyword">new</span> JSONObject();</span><br><span class="line">                                  <span class="keyword">try</span> &#123;</span><br><span class="line">                                      jsonObject.put(<span class="string">"filePath"</span>, filePath);</span><br><span class="line">                                  &#125; <span class="keyword">catch</span> (JSONException e) &#123;</span><br><span class="line">                                      e.printStackTrace();</span><br><span class="line">                                  &#125;</span><br><span class="line">                                  Log.d(<span class="string">"DaoRequest"</span>, file.getAbsolutePath());</span><br><span class="line">                                  fileCallBack.requestDidSuccess(<span class="string">"downLoad="</span> + url, jsonObject);</span><br><span class="line">                              &#125;</span><br><span class="line">                          &#125;</span><br><span class="line">                      &#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="u7EFC_u4E0A_u4EE3_u7801_u6C47_u603B"><a href="#u7EFC_u4E0A_u4EE3_u7801_u6C47_u603B" class="headerlink" title="综上代码汇总"></a>综上代码汇总</h4><p>MulThreadRequest 类  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MulThreadRequest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> THREAD_COUNT_DEFAULT = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PART_DESIRE_SIZE_DEFAULT = <span class="number">1</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RequestMap parentBuilder;</span><br><span class="line">    <span class="keyword">private</span> Vector&lt;RequestMap&gt; children = <span class="keyword">new</span> Vector&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestMap</span> <span class="keyword">implements</span> <span class="title">Callback</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line">        <span class="keyword">private</span> Builder builder;</span><br><span class="line">        <span class="keyword">private</span> Callback callback;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">long</span> startPos;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">long</span> endPos;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getStartPos</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> startPos;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStartPos</span><span class="params">(<span class="keyword">long</span> startPos)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.startPos = startPos;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getEndPos</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> endPos;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEndPos</span><span class="params">(<span class="keyword">long</span> endPos)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.endPos = endPos;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> RequestMap <span class="title">add</span><span class="params">(RequestMap map)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = map.name;</span><br><span class="line">            <span class="keyword">this</span>.builder = map.builder;</span><br><span class="line">            <span class="keyword">this</span>.callback = map.callback;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> RequestMap <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">getBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> builder;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> RequestMap <span class="title">setBuilder</span><span class="params">(Builder builder)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.builder = builder;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Callback <span class="title">getCallback</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> callback;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> RequestMap <span class="title">setCallback</span><span class="params">(Callback callback)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.callback = callback;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (callback != <span class="keyword">null</span>) &#123;</span><br><span class="line">                callback.onFailure(request, e);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (callback != <span class="keyword">null</span>) &#123;</span><br><span class="line">                callback.onResponse(response);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"RequestMap&#123;"</span> +</span><br><span class="line">                    <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                    <span class="string">", builder="</span> + builder +</span><br><span class="line">                    <span class="string">", callback="</span> + callback +</span><br><span class="line">                    <span class="string">", startPos="</span> + startPos +</span><br><span class="line">                    <span class="string">", endPos="</span> + endPos +</span><br><span class="line">                    <span class="string">'&#125;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RequestMap <span class="title">getParentBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> parentBuilder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setParentBuilder</span><span class="params">(RequestMap parentBuilder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.parentBuilder = parentBuilder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(RequestMap requestMap)</span> </span>&#123;</span><br><span class="line">        children.add(requestMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(RequestMap requestMap)</span> </span>&#123;</span><br><span class="line">        children.remove(requestMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Enumeration&lt;RequestMap&gt; <span class="title">getChildren</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> children.elements();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>业务逻辑</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//组合模式 适配器模式...</span></span><br><span class="line">   <span class="comment">//支持多线程 </span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">download</span><span class="params">(Context context, <span class="keyword">final</span> String url, <span class="keyword">final</span> FileCallBack fileCallBack, <span class="keyword">final</span> <span class="keyword">boolean</span> mulThreadFlag, <span class="keyword">final</span> <span class="keyword">int</span> mulThreadCount)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">final</span> OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">       Request.Builder builder;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           builder = <span class="keyword">new</span> Request.Builder().url(url);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IllegalArgumentException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">           fileCallBack.requestDidFailed(<span class="string">"downLoad="</span> + url, e.getCause(), HttpURLConnection.HTTP_BAD_REQUEST, e.getMessage());</span><br><span class="line">           Toast.makeText(context, <span class="string">"下载失败"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">final</span> MulThreadRequest mulThreadRequest = <span class="keyword">new</span> MulThreadRequest();</span><br><span class="line">       <span class="keyword">final</span> MulThreadRequest.RequestMap parentReq = <span class="keyword">new</span> MulThreadRequest.RequestMap();</span><br><span class="line">       parentReq.setName(<span class="string">"url:"</span> + url);</span><br><span class="line">       parentReq.setBuilder(builder);</span><br><span class="line">       parentReq.setCallback(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">           <span class="annotation">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">if</span> (HttpConfig.DEBUG)</span><br><span class="line">                   Log.d(TAG, <span class="string">"downLoad onFailure"</span>);</span><br><span class="line">               fileCallBack.requestDidFailed(<span class="string">"downLoad="</span> + url, e.getCause(), <span class="number">999</span>, e.getMessage());</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="annotation">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(com.squareup.okhttp.Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">               <span class="keyword">if</span> (HttpConfig.DEBUG)</span><br><span class="line">                   Log.d(TAG, <span class="string">"downLoad onResponse"</span>);</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   <span class="keyword">if</span> (response.code() &gt;= <span class="number">400</span> &amp;&amp; response.code() &lt;= <span class="number">599</span>) &#123;</span><br><span class="line">                       fileCallBack.requestDidFailed(<span class="string">"downLoad="</span> + url, <span class="keyword">new</span> RuntimeException(response.body().string()), response.code(), <span class="string">"网络请求异常"</span>);</span><br><span class="line">                       <span class="keyword">return</span>;</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="comment">//单线程</span></span><br><span class="line">                   <span class="keyword">if</span> (!mulThreadFlag) &#123;</span><br><span class="line">                       File file = fileCallBack.parseNetworkResponse(response);</span><br><span class="line">                       JSONObject jsonObject = <span class="keyword">new</span> JSONObject();</span><br><span class="line">                       jsonObject.put(<span class="string">"filePath"</span>, file.getAbsolutePath());</span><br><span class="line">                       Log.d(<span class="string">"DaoRequest"</span>, file.getAbsolutePath());</span><br><span class="line">                       fileCallBack.requestDidSuccess(<span class="string">"downLoad="</span> + url, jsonObject);</span><br><span class="line">                   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                       <span class="comment">//多线程</span></span><br><span class="line">                       <span class="keyword">final</span> <span class="keyword">int</span> threadCount = mulThreadCount &lt;= <span class="number">0</span> ? MulThreadRequest.THREAD_COUNT_DEFAULT : mulThreadCount;</span><br><span class="line">                       <span class="keyword">final</span> File file = fileCallBack.parseNetworkResponse(response, mulThreadFlag);</span><br><span class="line">                       <span class="keyword">final</span> String filePath = file.getAbsolutePath();</span><br><span class="line">                       <span class="keyword">long</span> fileSize = fileCallBack.getFileSize(response);</span><br><span class="line"></span><br><span class="line">                       <span class="keyword">long</span> block = fileSize % threadCount == <span class="number">0</span> ? fileSize / threadCount : fileSize / threadCount + <span class="number">1</span>;</span><br><span class="line">                       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadCount; i++) &#123;</span><br><span class="line">                           <span class="keyword">long</span> start = i * block;</span><br><span class="line">                           <span class="keyword">long</span> end = start + block &gt;= fileSize ? fileSize : start + block - <span class="number">1</span>;</span><br><span class="line">                           MulThreadRequest.RequestMap childRequestMap = <span class="keyword">new</span> MulThreadRequest.RequestMap();</span><br><span class="line">                           childRequestMap.setName(parentReq.getName() + <span class="string">" Range:bytes="</span> + start + <span class="string">"-"</span> + end);</span><br><span class="line">                           Request.Builder childBuilder = <span class="keyword">new</span> Request.Builder();</span><br><span class="line"></span><br><span class="line">                           childRequestMap.setBuilder(</span><br><span class="line">                                   childBuilder.url(url).addHeader(<span class="string">"Range"</span>, <span class="string">"bytes="</span> + start + <span class="string">"-"</span> + end)</span><br><span class="line">                           );</span><br><span class="line">                           childRequestMap.setStartPos(start);</span><br><span class="line">                           childRequestMap.setEndPos(end);</span><br><span class="line">                           Log.d(TAG, <span class="string">"multhread "</span> + <span class="string">" i= "</span> + i + <span class="string">"  "</span> + childRequestMap.toString());</span><br><span class="line"></span><br><span class="line">                           mulThreadRequest.add(childRequestMap);</span><br><span class="line"></span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">final</span> Callback callbackAgent = <span class="keyword">new</span> Callback() &#123;</span><br><span class="line">                           <span class="keyword">int</span> responseCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">                           <span class="annotation">@Override</span></span><br><span class="line">                           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span> </span>&#123;</span><br><span class="line">                               <span class="keyword">if</span> (HttpConfig.DEBUG)</span><br><span class="line">                                   Log.d(TAG, <span class="string">"downLoad onFailure"</span>);</span><br><span class="line">                               fileCallBack.requestDidFailed(<span class="string">"downLoad="</span> + url, e.getCause(), <span class="number">999</span>, e.getMessage());</span><br><span class="line">                               <span class="keyword">while</span> (mulThreadRequest.getChildren().hasMoreElements()) &#123;</span><br><span class="line">                                   MulThreadRequest.RequestMap childRequestMap = mulThreadRequest.getChildren().nextElement();</span><br><span class="line">                                   client.cancel(childRequestMap.getBuilder().build());</span><br><span class="line">                               &#125;</span><br><span class="line">                           &#125;</span><br><span class="line"></span><br><span class="line">                           <span class="annotation">@Override</span></span><br><span class="line">                           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(com.squareup.okhttp.Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                               responseCount++;</span><br><span class="line">                               <span class="keyword">if</span> (responseCount == threadCount) &#123;</span><br><span class="line">                                   JSONObject jsonObject = <span class="keyword">new</span> JSONObject();</span><br><span class="line">                                   <span class="keyword">try</span> &#123;</span><br><span class="line">                                       jsonObject.put(<span class="string">"filePath"</span>, filePath);</span><br><span class="line">                                   &#125; <span class="keyword">catch</span> (JSONException e) &#123;</span><br><span class="line">                                       e.printStackTrace();</span><br><span class="line">                                   &#125;</span><br><span class="line">                                   Log.d(<span class="string">"DaoRequest"</span>, file.getAbsolutePath());</span><br><span class="line">                                   fileCallBack.requestDidSuccess(<span class="string">"downLoad="</span> + url, jsonObject);</span><br><span class="line">                               &#125;</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;;</span><br><span class="line"></span><br><span class="line">                       Enumeration&lt;MulThreadRequest.RequestMap&gt; iterator = mulThreadRequest.getChildren();</span><br><span class="line">                       <span class="keyword">while</span> (iterator.hasMoreElements()) &#123;</span><br><span class="line">                           MulThreadRequest.RequestMap childRequestMap = iterator.nextElement();</span><br><span class="line">                           Log.d(TAG, <span class="string">"while 1: "</span> + childRequestMap.toString());</span><br><span class="line">                           client.newCall(childRequestMap.getBuilder().build()).enqueue(<span class="keyword">new</span> ChildeCallback(childRequestMap) &#123;</span><br><span class="line"></span><br><span class="line">                               <span class="annotation">@Override</span></span><br><span class="line">                               <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(com.squareup.okhttp.Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                                   <span class="keyword">super</span>.onResponse(response);</span><br><span class="line">                                   Log.d(TAG, <span class="string">"while 2: onResponse"</span>);</span><br><span class="line">                                   requestMap.getStartPos();</span><br><span class="line">                                   fileCallBack.parseNetworkResponse(response, requestMap.getStartPos(), requestMap.getEndPos());</span><br><span class="line">                                   callbackAgent.onResponse(response);</span><br><span class="line">                               &#125;</span><br><span class="line"></span><br><span class="line">                               <span class="annotation">@Override</span></span><br><span class="line">                               <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span> </span>&#123;</span><br><span class="line">                                   <span class="keyword">super</span>.onFailure(request, e);</span><br><span class="line">                                   Log.d(TAG, <span class="string">"while 3: onFailure"</span>);</span><br><span class="line">                                   callbackAgent.onFailure(request, e);</span><br><span class="line">                               &#125;</span><br><span class="line">                           &#125;);</span><br><span class="line">                       &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">               &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       mulThreadRequest.setParentBuilder(parentReq);</span><br><span class="line">       client.newCall(parentReq.getBuilder().build()).enqueue(parentReq.getCallback());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ChildeCallback</span> <span class="keyword">implements</span> <span class="title">Callback</span> </span>&#123;</span><br><span class="line">       MulThreadRequest.RequestMap requestMap;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">ChildeCallback</span><span class="params">(MulThreadRequest.RequestMap requestMap)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">this</span>.requestMap = requestMap;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="annotation">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Request request, IOException e)</span> </span>&#123;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="annotation">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(com.squareup.okhttp.Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <h1 id="done"><a href="#done" class="headerlink" title="done"></a>done</h1><h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
             
           </span>
@@ -906,338 +1436,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/02/android-webview-goback-title/" itemprop="url">
-                  android_webview_goback_title
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-02-02T22:24:56+08:00" content="2016-02-02">
-              2016-02-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/02/android-webview-goback-title/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/android-webview-goback-title/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>  介绍一种在Android WebView获取h5页面中title,并在原生的TextView展示title的方法:</p>
-<p>  欢迎围观另一篇: <a href="http://androidso.com/2015/12/21/Android_h5_js_share/">Android与h5通过js调用实现分享</a></p>
-<p>  一.一般做法</p>
-<p> 当使用WebView加载H5页面,可以在</p>
- <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">webView.setWebChromeClient(<span class="keyword">new</span> WebChromeClient() &#123;</span><br><span class="line">           @<span class="function">Override</span><br><span class="line">           <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceivedTitle</span><span class="params">(android.webkit.WebView view, String title)</span> </span>&#123;</span><br><span class="line">                   <span class="keyword">if</span> (!TextUtils.isEmpty(title)) &#123;</span><br><span class="line">                       <span class="keyword">if</span> (title.length() &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">                           tv_title.setText(title.substring(<span class="number">0</span>, <span class="number">10</span>) + <span class="string">"..."</span>);</span><br><span class="line">                       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                           tv_title.setText(title);</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               super.onReceivedTitle(view, title);</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
-<p>存在的问题在于:  </p>
-<ul>
-<li>当h5页面进入多层级页面,调用<code>webview.goBack()</code>返回上一层页面时,不会调用上面的<code>onReceivedTitle</code>,所有页面的tv_title仍然是上一个title.  </li>
-</ul>
-<p>  二.改善做法</p>
-<p> 针对上面的问题,其实系统为WebView提供了<a href="http://wear.techbrood.com/reference/android/webkit/WebBackForwardList.html" target="_blank" rel="external">WebBackForwardList</a>,包含WebView的后退/前进集合.<code>WebView.copyBackForwardList()</code>通过这个方法来获得曾进入过的list的备份.<br> 这里还有另外一个需求:当一次进入页面的时候会传入一个指定title,所以当退到最top的页面,使用的仍然是指定的title.</p>
- <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">webView<span class="built_in">.</span>setWebViewClient(<span class="literal">new</span> WebViewClient()&#123;</span><br><span class="line"><span class="attribute">...</span></span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line"><span class="keyword">public</span> <span class="literal">void</span> onPageFinished(WebView view, <span class="built_in">String</span> url) &#123;</span><br><span class="line">    super<span class="built_in">.</span>onPageFinished(view, url);</span><br><span class="line">    updateTitle();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="literal">void</span> updateTitle() &#123;</span><br><span class="line">            <span class="keyword">if</span> (webView != <span class="built_in">null</span>) &#123;</span><br><span class="line">                WebBackForwardList <span class="built_in">list</span> = webView<span class="built_in">.</span>copyBackForwardList();</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">list</span> != <span class="built_in">null</span>) &#123;</span><br><span class="line">                    WebHistoryItem item = <span class="built_in">list</span><span class="built_in">.</span>getCurrentItem();</span><br><span class="line">                    <span class="keyword">if</span> (item != <span class="built_in">null</span>) &#123;</span><br><span class="line">      </span><br><span class="line">                        <span class="keyword">if</span> (url<span class="built_in">.</span><span class="keyword">equals</span>(item<span class="built_in">.</span>getUrl())) &#123;</span><br><span class="line">                            <span class="comment">//top 层 ,更新为 传过来的 title</span></span><br><span class="line">                            <span class="keyword">if</span> (TextUtils<span class="built_in">.</span>isEmpty(title)) &#123;</span><br><span class="line">                                activity<span class="built_in">.</span>setTitle(item<span class="built_in">.</span>getTitle());</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                activity<span class="built_in">.</span>setTitle(title);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="comment">//更新为当前页面的title</span></span><br><span class="line">                            activity<span class="built_in">.</span>setTitle(item<span class="built_in">.</span>getTitle());</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p> 这里主要用到了一个思想:使用一个集合记录浏览过往的记录,每次页面加载完毕后,把对应的title并通过对比记录判断当前页面是否是最初的url,并更新title.</p>
-<p> Done!</p>
-<h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/12/whats-armeabi/" itemprop="url">
-                  介绍下armeabi和sdk vs ndk
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-12T18:00:56+08:00" content="2016-01-12">
-              2016-01-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/12/whats-armeabi/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/12/whats-armeabi/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h4 id="android_u7684armeabi_u548Carmeabi-v7a_3A"><a href="#android_u7684armeabi_u548Carmeabi-v7a_3A" class="headerlink" title="android的armeabi和armeabi-v7a:"></a>android的armeabi和armeabi-v7a:</h4><p>转载: <a href="http://gybin.iteye.com/blog/2031565">http://gybin.iteye.com/blog/2031565</a></p>
-<p>在Android中如果SDK调用了so库，则需要把so库放到Android下/lib/armeabi （调试模式）或者 armeabi-v7a（发行模式）下。</p>
-<p>可以贴个ADT代码说明问题:</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/m_configType.equals("apk") 是否是发行模式</span><br><span class="line">/</span><span class="regexp">/(hasCaptiveRuntime() 是否带运行时</span><br><span class="line"> if ((m_configType.equals("apk")) || (hasCaptiveRuntime()))</span><br><span class="line">    &#123;</span><br><span class="line">      destApkDirectory = "lib/armeabi</span>-v7a/<span class="string">";</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">      destApkDirectory = "</span><span class="class"><span class="keyword">lib</span>/<span class="title">armeabi</span>/";</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>而这个armeabi和armeabi-v7a究竟是什么意思？</p>
-<p>有什么深意么？</p>
-<p>为什么调试模式和发行模式adobe会选择不同的文件夹？<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/12/whats-armeabi/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/07/record-voice-from-Android/" itemprop="url">
-                  record_voice_from_Android
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-07T00:27:55+08:00" content="2016-01-07">
-              2016-01-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/07/record-voice-from-Android/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/07/record-voice-from-Android/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h3 id="u6982_u8FF0"><a href="#u6982_u8FF0" class="headerlink" title="概述"></a>概述</h3><p>在项目中用到了录音及在线音频播放的功能,关于音频播放的相关请请参考我的另外一篇<a href="http://androidso.com/2015/12/28/MediaPlayProgress/">MediaPlayProgress</a>博文.</p>
-<p>这里主要讲的内容是如何使用Android录音,同时使iPhone和Android都可以播放.</p>
-<h3 id="u4EE3_u7801_u5B9E_u73B0"><a href="#u4EE3_u7801_u5B9E_u73B0" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudioRecorder</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> SAMPLE_RATE_IN_HZ = <span class="number">8000</span>; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">final</span> String path;</span><br><span class="line">	<span class="keyword">final</span> MediaRecorder recorder;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AudioRecorder</span><span class="params">(String path)</span></span><br><span class="line">	</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.path = sanitizePath(path);</span><br><span class="line">		  recorder = <span class="keyword">new</span> MediaRecorder();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sanitizePath</span><span class="params">(String path)</span></span><br><span class="line">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (!path.startsWith(<span class="string">"/"</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			path = <span class="string">"/"</span> + path;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!path.contains(<span class="string">"."</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			path += <span class="string">".amr"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> Environment.getExternalStorageDirectory().getAbsolutePath()</span><br><span class="line">				+ <span class="string">"/record_"</span> + path;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span><br><span class="line">	</span>&#123;</span><br><span class="line">		String state = Environment.getExternalStorageState();</span><br><span class="line">		<span class="keyword">if</span> (!state.equals(Environment.MEDIA_MOUNTED)) &#123; <span class="keyword">throw</span> <span class="keyword">new</span> IOException(</span><br><span class="line">				<span class="string">"SD Card is not mounted,It is  "</span> + state + <span class="string">"."</span>); &#125;</span><br><span class="line">		File directory = <span class="keyword">new</span> File(path).getParentFile();</span><br><span class="line">		<span class="keyword">if</span> (!directory.exists() &amp;&amp; !directory.mkdirs()) &#123; <span class="keyword">throw</span> <span class="keyword">new</span> IOException(</span><br><span class="line">				<span class="string">"Path to file could not be created"</span>); &#125;</span><br><span class="line">		recorder.setAudioSource(MediaRecorder.AudioSource.MIC);</span><br><span class="line">		recorder.setOutputFormat(MediaRecorder.OutputFormat.RAW_AMR);</span><br><span class="line">		recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);</span><br><span class="line">		recorder.setAudioSamplingRate(SAMPLE_RATE_IN_HZ);</span><br><span class="line">		<span class="comment">//recorder.setAudioChannels(AudioFormat.CHANNEL_CONFIGURATION_MONO);</span></span><br><span class="line">		recorder.setAudioEncodingBitRate(AudioFormat.ENCODING_PCM_16BIT);</span><br><span class="line">		recorder.setOutputFile(path);</span><br><span class="line">		recorder.prepare();</span><br><span class="line">		recorder.start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span><br><span class="line">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(recorder!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			recorder.stop();</span><br><span class="line">			recorder.release();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getAmplitude</span><span class="params">()</span> </span>&#123;		</span><br><span class="line">		<span class="keyword">if</span> (recorder != <span class="keyword">null</span>)&#123;			</span><br><span class="line">			<span class="keyword">return</span>  (recorder.getMaxAmplitude());		</span><br><span class="line">			&#125;		</span><br><span class="line">		<span class="keyword">else</span>			</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="u8C03_u7528_u65B9_u5F0F_3A"><a href="#u8C03_u7528_u65B9_u5F0F_3A" class="headerlink" title="调用方式:"></a>调用方式:</h4><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AudioRecorder mRecorder = <span class="keyword">new</span> AudioRecorder(audioUrl);</span><br><span class="line"><span class="comment">//开始</span></span><br><span class="line">mRecorder.start();</span><br><span class="line"><span class="comment">//停止</span></span><br><span class="line">mRecorder.stop();</span><br></pre></td></tr></table></figure>
-<h4 id="u76F8_u5173_3A"><a href="#u76F8_u5173_3A" class="headerlink" title="相关:"></a>相关:</h4><p>AndroidManifest.xml<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:<span class="property">name</span>=<span class="string">"android.permission.RECORD_AUDIO"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
-<h6 id="Done_21"><a href="#Done_21" class="headerlink" title="Done!"></a>Done!</h6><h2 id="Welcome_To_My_Website"><a href="#Welcome_To_My_Website" class="headerlink" title="Welcome To My Website"></a>Welcome To My Website</h2><h2 id="http_3A//androidso-com"><a href="#http_3A//androidso-com" class="headerlink" title="http://androidso.com"></a><a href="http://androidso.com">http://androidso.com</a></h2>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1284,21 +1482,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
