@@ -69,11 +69,11 @@ Http协议:特点
 Http协议:特点
 无连接:无连接的含义是限制每次连接只处理一个请求,服务器处理完客户的请求,并收到客户的应答后,即断开连接,采用这种方式可以节省传输时间.
 无状态:指协议对于事务处理没有记忆功能,缺少状态意味着如果后续处理需要前面的信息,则它必须重传,这样可能导致每次传输出送的数据量增大,另一方面,在服务器不需要先前信息时他的应答比较快">
-<meta property="og:image" content="http://static.codeceo.com/images/2015/08/a25fb124b65178c39c04e428d1913a15.png">
-<meta property="og:image" content="http://static.codeceo.com/images/2015/08/f05cb2b32b06337cbd4abe7567dcbbcd.png">
+<meta property="og:image" content="http://7vihs8.com1.z0.glb.clouddn.com/http_begin.png">
+<meta property="og:image" content="http://7vihs8.com1.z0.glb.clouddn.com/http_close.png">
 <meta property="og:image" content="http://www.a8z8.com/uploadfile/2012/1214/20121214082000450.bmp">
 <meta property="og:image" content="http://www.a8z8.com/uploadfile/2012/1214/20121214082026922.bmp">
-<meta property="og:updated_time" content="2016-07-24T12:46:44.000Z">
+<meta property="og:updated_time" content="2016-07-24T13:00:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" http协议知识点">
 <meta name="twitter:description" content="HTTP协议HTTP协议:消息的分类
@@ -297,6 +297,7 @@ Http协议:特点
 <li>无连接:无连接的含义是限制每次连接只处理一个请求,服务器处理完客户的请求,并收到客户的应答后,即断开连接,采用这种方式可以节省传输时间.</li>
 <li>无状态:指协议对于事务处理没有记忆功能,缺少状态意味着如果后续处理需要前面的信息,则它必须重传,这样可能导致每次传输出送的数据量增大,另一方面,在服务器不需要先前信息时他的应答比较快.</li>
 </ul>
+<a id="more"></a>
 <h4 id="HTTP_u957F_u8FDE_u63A5_u548C_u77ED_u8FDE_u63A5_u539F_u7406_u6D45_u6790"><a href="#HTTP_u957F_u8FDE_u63A5_u548C_u77ED_u8FDE_u63A5_u539F_u7406_u6D45_u6790" class="headerlink" title="HTTP长连接和短连接原理浅析"></a>HTTP长连接和短连接原理浅析</h4><p>1.HTTP协议与TCP/IP协议的关系</p>
 <p>HTTP的长连接和短连接本质上是TCP长连接和短连接。HTTP属于应用层协议，在传输层使用TCP协议，在网络层使用IP协议。IP协议主要解决网络路由和寻址问题，TCP协议主要解决如何在IP层之上可靠的传递数据包，使在网络上的另一端收到发端发出的所有包，并且顺序与发出顺序一致。TCP有可靠，面向连接的特点。</p>
 <p>2.如何理解HTTP协议是无状态的</p>
@@ -309,9 +310,9 @@ Http协议:特点
 <p>3.1 TCP连接</p>
 <p>当网络通信时采用TCP协议时，在真正的读写操作之前，server与client之间必须建立一个连接，当读写操作完成后，双方不再需要这个连接 时它们可以释放这个连接，连接的建立是需要三次握手的，而释放则需要4次握手，所以说每个连接的建立都是需要资源消耗和时间消耗的</p>
 <p>经典的三次握手示意图：  </p>
-<p><img src="http://static.codeceo.com/images/2015/08/a25fb124b65178c39c04e428d1913a15.png" alt="image"></p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/http_begin.png" alt="image"></p>
 <p>经典的四次握手关闭图：</p>
-<p><img src="http://static.codeceo.com/images/2015/08/f05cb2b32b06337cbd4abe7567dcbbcd.png" alt="image"></p>
+<p><img src="http://7vihs8.com1.z0.glb.clouddn.com/http_close.png" alt="image"></p>
 <p>3.2 TCP短连接</p>
 <p>我们模拟一下TCP短连接的情况，client向server发起连接请求，server接到请求，然后双方建立连接。client向server 发送消息，server回应client，然后一次读写就完成了，这时候双方任何一个都可以发起close操作，不过一般都是client先发起 close操作。为什么呢，一般的server不会回复完client后立即关闭连接的，当然不排除有特殊的情况。从上面的描述看，短连接一般只会在 client/server间传递一次读写操作</p>
 <p>短连接的优点是：管理起来比较简单，存在的连接都是有用的连接，不需要额外的控制手段</p>
